@@ -33,16 +33,20 @@ class _SuccessState extends State<Success> {
               Text('You have successfully completed the game',
                   style: TextStyle(fontSize: 20)),
               Text('Your score is: 10', style: TextStyle(fontSize: 20)),
-              RaisedButton(
-                child: Row(
-                  children: [
-                    Icon(Icons.replay),
-                    Text('Play again'),
-                  ],
-                ),
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
                 },
+                child: Container(
+                  height: 30,
+                  width: 100,
+                  child: Row(
+                    children: [
+                      Icon(Icons.replay),
+                      Text('Play again'),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

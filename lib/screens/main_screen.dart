@@ -4,25 +4,39 @@ class MyMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(context, '/settings');
-            },
-          ),
-        ],
-        centerTitle: true,
-        title: Text("Memory Matrix"),
-        backgroundColor: Colors.white54,
-      ),
+      // appBar: AppBar(
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: const Icon(Icons.settings),
+      //       onPressed: () {
+      //         Navigator.pushNamed(context, '/settings');
+      //       },
+      //     ),
+      //   ],
+      //   centerTitle: true,
+      //   title: Text("Memory Matrix"),
+      //   backgroundColor: Colors.white54,
+      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    child: Icon(
+                      Icons.settings,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ),
               Text(
                 "Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -36,19 +50,19 @@ class MyMainScreen extends StatelessWidget {
               ),
               Listofgames(1, "Memory", () {
                 Navigator.pushNamed(context, '/game11');
-              }),
-              Listofgames(2, "Memory Matrix", () {
+              }, "Memorize positions"),
+              Listofgames(2, "Memory Matrix.", () {
                 Navigator.pushNamed(context, '/game2');
-              }),
-              Listofgames(3, "Ascending Numbers", () {
+              }, "Remember and find the right cells"),
+              Listofgames(3, "Ascending Numbers.", () {
                 Navigator.pushNamed(context, '/game3');
-              }),
-              Listofgames(4, "Game 04", () {
+              }, "Remember and find numbers in ascending order."),
+              Listofgames(4, "Positions change", () {
                 Navigator.pushNamed(context, '/game4');
-              }),
-              Listofgames(5, "Game 05", () {
+              }, "Count the number of points that haven't changed their position."),
+              Listofgames(5, "Equal cells", () {
                 Navigator.pushNamed(context, '/game5');
-              }),
+              }, "Find the identical cells"),
             ],
           ),
         ),
@@ -58,8 +72,9 @@ class MyMainScreen extends StatelessWidget {
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.ind, this.text, this.pressed);
+  Listofgames(this.ind, this.text, this.pressed, this.description);
   String text;
+  String description;
   int ind;
   void Function()? pressed;
 
@@ -72,6 +87,7 @@ class Listofgames extends StatelessWidget {
         height: 100,
         width: double.infinity,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -79,7 +95,7 @@ class Listofgames extends StatelessWidget {
               children: [
                 Text(
                   '${ind}.',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   width: 5,
@@ -87,14 +103,14 @@ class Listofgames extends StatelessWidget {
                 Text(
                   "${text}",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
             Text(
-              "Description of the game something like that we need to tell about that game",
+              "${description}",
               style: TextStyle(color: Colors.grey),
             ),
           ],

@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game2.dart';
+import 'package:memory_matrix/screens/Game5.dart';
 
 class Game55 extends StatefulWidget {
   const Game55({Key? key}) : super(key: key);
@@ -20,8 +21,35 @@ class _Game55State extends State<Game55> {
   Widget build(BuildContext context) {
     count = 1;
     // assign 0 or 1 to each button
-    List<int> list = List<int>.generate(36, (i) => Random().nextInt(2));
+    final numbers = Set<int>();
+    while (numbers.length < 16) {
+      numbers.add(Random().nextInt(16) + 1);
+    }
+    print(numbers);
     bool isVissible = true;
+    List<int> lis = numbers.toList();
+    List<IconData> list1 = [
+      Icons.car_crash,
+      Icons.car_crash,
+      Icons.abc,
+      Icons.abc,
+      Icons.check,
+      Icons.check,
+      Icons.place,
+      Icons.place,
+      Icons.access_alarm,
+      Icons.access_alarm,
+      Icons.find_in_page,
+      Icons.find_in_page,
+      Icons.air,
+      Icons.air,
+      Icons.help,
+      Icons.help
+    ];
+    List<IconData> list = [];
+    for (int i = 0; i < 16; i++) {
+      list.add(list1[lis[i] - 1]);
+    }
     print(list);
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +106,7 @@ class _Game55State extends State<Game55> {
               onPressed: () {
                 setState(() {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game2(list)));
+                      MaterialPageRoute(builder: (context) => Game5(list)));
                 });
               },
             )
@@ -91,7 +119,7 @@ class _Game55State extends State<Game55> {
 
 class SingleButton extends StatefulWidget {
   SingleButton(this.text, this.index, this.isPressed, this.isVissible);
-  int text;
+  IconData text;
   bool isPressed;
   int index;
   bool isVissible;
@@ -114,10 +142,44 @@ class _SingleButtonState extends State<SingleButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 50,
-      child: ElevatedButton(
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: GestureDetector(
+        onTap: ConvertIspressed,
+        child: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          // color: Colors.white,
+          child: Center(
+            child: Icon(widget.text, size: 30, color: Colors.black),
+          ),
+        ),
+      ),
+    );
+    // return Container(
+    //   child: FlatButton(
+    //     child: Icon(
+    //       widget.text,
+    //       size: 30,
+    //     ),
+    //     onPressed: () {
+    //       ConvertIspressed();
+    //     },
+    //   ),
+    // );
+  }
+}
+
+/*
+
+child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),
@@ -126,13 +188,9 @@ class _SingleButtonState extends State<SingleButton> {
           primary: widget.text == 1 ? Colors.lightBlue : Colors.white,
         ),
         onPressed: ConvertIspressed,
-        child: Text(""),
+        child: Icon(widget.text),
       ),
-    );
-  }
-}
 
-/*
 
 widget.text == 1 ? Colors.lightBlue : Colors.white,
 @override

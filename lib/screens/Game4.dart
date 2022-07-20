@@ -3,7 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:memory_matrix/screens/Success.dart';
+import 'package:memory_matrix/screens/Game1.dart';
+import 'package:memory_matrix/screens/Game4.dart';
+
+List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 class Game4 extends StatefulWidget {
   Game4(this.list);
@@ -14,12 +17,21 @@ class Game4 extends StatefulWidget {
 }
 
 int count = 1;
-int score = 0;
 
 class _Game4State extends State<Game4> {
   @override
   Widget build(BuildContext context) {
     count = 1;
+    final numbers = Set<int>();
+    while (numbers.length < 3) {
+      numbers.add(Random().nextInt(9) + 1);
+    }
+    List<int> lis = numbers.toList();
+    print(lis);
+    list1[lis[0] - 1] = 1;
+    list1[lis[1] - 1] = 1;
+    list1[lis[2] - 1] = 1;
+    bool isVissible = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -34,37 +46,49 @@ class _Game4State extends State<Game4> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[0], 0, false),
-                SingleButton(widget.list[1], 1, false),
-                SingleButton(widget.list[2], 2, false),
+                SingleButton(widget.list[0], 0, false, isVissible),
+                SingleButton(widget.list[1], 1, false, isVissible),
+                SingleButton(widget.list[2], 2, false, isVissible),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[3], 3, false),
-                SingleButton(widget.list[4], 4, false),
-                SingleButton(widget.list[5], 5, false),
+                SingleButton(widget.list[3], 3, false, isVissible),
+                SingleButton(widget.list[4], 4, false, isVissible),
+                SingleButton(widget.list[5], 5, false, isVissible),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[6], 6, false),
-                SingleButton(widget.list[7], 7, false),
-                SingleButton(widget.list[8], 8, false)
+                SingleButton(widget.list[6], 6, false, isVissible),
+                SingleButton(widget.list[7], 7, false, isVissible),
+                SingleButton(widget.list[8], 8, false, isVissible)
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            Text(
-              'Score: $score',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnswerButton(0, widget.list),
+                AnswerButton(1, widget.list),
+                AnswerButton(2, widget.list),
+                AnswerButton(3, widget.list)
+              ],
             ),
+            RaisedButton(
+              child: Text("hide"),
+              onPressed: () {
+                setState(() {
+                  list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Game4(list1)));
+                });
+              },
+            )
           ],
         ),
       ),
@@ -72,11 +96,71 @@ class _Game4State extends State<Game4> {
   }
 }
 
+class AnswerButton extends StatefulWidget {
+  AnswerButton(this.ind, this.list);
+  int ind;
+  List<int> list;
+
+  @override
+  State<AnswerButton> createState() => _AnswerButtonState();
+}
+
+class _AnswerButtonState extends State<AnswerButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () {
+          int countt = widget.ind;
+          int temp = 0;
+          for (int i = 0; i < 9; i++) {
+            if (list1[i] == 1 && widget.list[i] == 1) {
+              temp++;
+            }
+          }
+          if (temp == countt) {
+            setState(() {
+              count++;
+            });
+          } else {
+            setState(() {
+              count = 0;
+            });
+          }
+          print(count);
+          print(list1);
+          print(widget.list);
+        },
+        child: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          // color: Colors.white,
+          child: Center(
+            child: Text(
+              '${widget.ind}',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed);
+  SingleButton(this.text, this.index, this.isPressed, this.isVissible);
   int text;
   bool isPressed;
   int index;
+  bool isVissible;
 
   @override
   State<SingleButton> createState() => _SingleButtonState();
@@ -87,17 +171,8 @@ class _SingleButtonState extends State<SingleButton> {
     setState(() {
       if (widget.text == count) {
         count++;
-        if (count == 10) {
-          score++;
-          if (score == 10) {
-            score = 0;
-            Navigator.pushNamed(context, '/success');
-            return;
-          }
-          Navigator.pop(context);
-        }
       } else {
-        Navigator.pushNamed(context, '/settings');
+        Navigator.pushNamed(context, '/wrong');
       }
       widget.isPressed = !widget.isPressed;
     });
@@ -107,53 +182,39 @@ class _SingleButtonState extends State<SingleButton> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
-            width: 2,
+      child: GestureDetector(
+        onTap: ConvertIspressed,
+        child: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(10),
           ),
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+          // color: Colors.white,
+          child: Center(
+              child: widget.text == 1
+                  ? Icon(Icons.fiber_manual_record)
+                  : Text('')),
         ),
-        child: widget.isPressed
-            ? Center(
-                child: Text(
-                widget.text.toString(),
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto'),
-              ))
-            : Text(""),
       ),
     );
   }
 }
 
-// @override
-
-//  widget.isPressed ? Colors.white : Colors.white70
-//  widget.isPressed ? Text(widget.text.toString()) : Text("")
-
-
-
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: SizedBox(
-//         height: 60,
-//         width: 60,
-//         child: ElevatedButton(
-//           style: ElevatedButton.styleFrom(
-//             primary: widget.isPressed ? Colors.white : Colors.white70,
-//             elevation: widget.isPressed ? 4 : 1,
-//           ),
-//           onPressed: ConvertIspressed,
-//           child: widget.isPressed ? Text(widget.text.toString()) : Text(""),
-//         ),
-//       ),
-//     );
-//   }
+/*
+@override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: RaisedButton(
+        color: Colors.white,
+        onPressed: ConvertIspressed,
+        child: Text(widget.text.toString()),
+      ),
+    );
+  }
+  */

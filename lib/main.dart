@@ -3,6 +3,7 @@ import 'package:memory_matrix/screens/Game11.dart';
 import 'package:memory_matrix/screens/Game22.dart';
 import 'package:memory_matrix/screens/Game33.dart';
 import 'package:memory_matrix/screens/Game44.dart';
+import 'package:memory_matrix/screens/Game55.dart';
 import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
 import 'package:memory_matrix/screens/Game1.dart';
@@ -29,14 +30,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/success',
       routes: {
         '/': (context) => MyMainScreen(),
         '/game11': (context) => Game11(),
         '/game2': (context) => Game22(),
         '/game3': (context) => Game33(),
         '/game4': (context) => Game44(),
-        '/game5': (context) => Game5(),
+        '/game5': (context) => Game55(),
         '/success': (context) => Success(),
         '/settings': (context) => MySettings(),
         '/wrong': (context) => Wrong(),

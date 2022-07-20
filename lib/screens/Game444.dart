@@ -6,16 +6,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 
-class Game44 extends StatefulWidget {
-  const Game44({Key? key}) : super(key: key);
+class Game444 extends StatefulWidget {
+  const Game444({Key? key}) : super(key: key);
 
   @override
-  State<Game44> createState() => _Game44State();
+  State<Game444> createState() => _Game444State();
 }
 
 int count = 1;
 
-class _Game44State extends State<Game44> {
+class _Game444State extends State<Game444> {
   @override
   Widget build(BuildContext context) {
     count = 1;
