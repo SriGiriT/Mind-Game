@@ -34,19 +34,19 @@ class MyMainScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Listofgames("memory game 1", () {
+              Listofgames(1, "Memory", () {
                 Navigator.pushNamed(context, '/game11');
               }),
-              Listofgames("memory game 2", () {
+              Listofgames(2, "Memory Matrix", () {
                 Navigator.pushNamed(context, '/game2');
               }),
-              Listofgames("memory game 3", () {
+              Listofgames(3, "Ascending Numbers", () {
                 Navigator.pushNamed(context, '/game3');
               }),
-              Listofgames("memory game 4", () {
+              Listofgames(4, "Game 04", () {
                 Navigator.pushNamed(context, '/game4');
               }),
-              Listofgames("memory game 5", () {
+              Listofgames(5, "Game 05", () {
                 Navigator.pushNamed(context, '/game5');
               }),
             ],
@@ -58,8 +58,9 @@ class MyMainScreen extends StatelessWidget {
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.text, this.pressed);
+  Listofgames(this.ind, this.text, this.pressed);
   String text;
+  int ind;
   void Function()? pressed;
 
   @override
@@ -77,14 +78,14 @@ class Listofgames extends StatelessWidget {
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  '${text[text.length - 1]}.',
+                  '${ind}.',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   width: 5,
                 ),
                 Text(
-                  "Game 0${text[text.length - 1]}",
+                  "${text}",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

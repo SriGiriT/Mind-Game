@@ -31,16 +31,20 @@ class _WrongState extends State<Wrong> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('You have failed the game', style: TextStyle(fontSize: 20)),
-              RaisedButton(
-                child: Row(
-                  children: [
-                    Icon(Icons.replay),
-                    Text('Play again'),
-                  ],
-                ),
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
                 },
+                child: Container(
+                  height: 30,
+                  width: 100,
+                  child: Row(
+                    children: [
+                      Icon(Icons.replay),
+                      Text('Play again'),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

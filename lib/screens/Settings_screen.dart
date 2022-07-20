@@ -23,10 +23,12 @@ class _MySettingsState extends State<MySettings> {
           },
         ),
         centerTitle: true,
-        title: Text('back'),
+        title: Text('Settings'),
       ),
       body: Container(
-        child: Text(" hello "),
+        child: Center(
+          child: Text(" Settings will come here still in development"),
+        ),
       ),
     );
   }
