@@ -1,4 +1,4 @@
-# memory_matrix
+# Mind Game
 
 A new Flutter project.
 
