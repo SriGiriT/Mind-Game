@@ -163,43 +163,5 @@ class _SingleButtonState extends State<SingleButton> {
         ),
       ),
     );
-    // return Container(
-    //   child: FlatButton(
-    //     child: Icon(
-    //       widget.text,
-    //       size: 30,
-    //     ),
-    //     onPressed: () {
-    //       ConvertIspressed();
-    //     },
-    //   ),
-    // );
   }
 }
-
-/*
-
-child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
-          ),
-          elevation: widget.isPressed ? 4 : 1,
-          primary: widget.text == 1 ? Colors.lightBlue : Colors.white,
-        ),
-        onPressed: ConvertIspressed,
-        child: Icon(widget.text),
-      ),
-
-
-widget.text == 1 ? Colors.lightBlue : Colors.white,
-@override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: RaisedButton(
-        color: widget.text == 1 ? Colors.lightBlue : Colors.white,
-        onPressed: ConvertIspressed,
-      ),
-    );
-  }
-  */

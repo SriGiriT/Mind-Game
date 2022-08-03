@@ -137,19 +137,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-
-/*
-@override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: RaisedButton(
-        color: Colors.white,
-        onPressed: ConvertIspressed,
-        child:
-            widget.text < score + 3 ? Text(widget.text.toString()) : Text(""),
-      ),
-    );
-  }
-  */

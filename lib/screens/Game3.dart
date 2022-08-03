@@ -135,38 +135,5 @@ class _SingleButtonState extends State<SingleButton> {
         ),
       ),
     );
-    // SizedBox(
-    // child:
-    // RaisedButton(
-    //   onPressed: () {
-    //     ConvertIspressed();
-    //   },
-    //   child: widget.isPressed
-    //       ? Text(
-    //           widget.text.toString(),
-    //           style: TextStyle(fontSize: 20),
-    //         )
-    //       : Text(
-    //           "",
-    //         ),
-    //   color: widget.isPressed ? Colors.white : Colors.white70,
-    //   textColor: widget.isPressed ? Colors.white70 : Colors.white,
-    //   shape: RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(10),
-    //   ),
-    // ),
-    // ),
-    // RaisedButton(
-    //   color: widget.isPressed ? Colors.white : Colors.white70,
-    //   onPressed: ConvertIspressed,
-    //   child: widget.isPressed ? Text(widget.text.toString()) : Text(""),
   }
 }
-
-/*
-RaisedButton(
-        color: widget.isPressed ? Colors.white : Colors.white70,
-        onPressed: ConvertIspressed,
-        child: widget.isPressed ? Text(widget.text.toString()) : Text(""),
-      ),
-      */

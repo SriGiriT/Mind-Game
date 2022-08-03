@@ -161,17 +161,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-/*
-
-widget.text == 1 ? Colors.lightBlue : Colors.white,
-@override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: RaisedButton(
-        color: widget.text == 1 ? Colors.lightBlue : Colors.white,
-        onPressed: ConvertIspressed,
-      ),
-    );
-  }
-  */

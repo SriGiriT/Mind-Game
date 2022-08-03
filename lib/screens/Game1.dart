@@ -135,28 +135,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-// @override
-
-//  widget.isPressed ? Colors.white : Colors.white70
-//  widget.isPressed ? Text(widget.text.toString()) : Text("")
-
-
-
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: SizedBox(
-//         height: 60,
-//         width: 60,
-//         child: ElevatedButton(
-//           style: ElevatedButton.styleFrom(
-//             primary: widget.isPressed ? Colors.white : Colors.white70,
-//             elevation: widget.isPressed ? 4 : 1,
-//           ),
-//           onPressed: ConvertIspressed,
-//           child: widget.isPressed ? Text(widget.text.toString()) : Text(""),
-//         ),
-//       ),
-//     );
-//   }

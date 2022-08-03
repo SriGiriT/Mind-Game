@@ -170,20 +170,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-/*
-child: SizedBox(
-        height: 100,
-        width: 100,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Colors.black,
-          ),
-          onPressed: ConvertIspressed,
-          child: Text(""),
-        ),
-      ),
-
-
-      widget.isPressed ? Colors.blue : Colors.white
-*/
