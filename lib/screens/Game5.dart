@@ -110,16 +110,23 @@ class _SingleButtonState extends State<SingleButton> {
         widget.isPressed = !widget.isPressed;
         count++;
         if (count == 8) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Game55(),
-            ),
-          );
+          score++;
+          if (score == 10) {
+            score = 0;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Success(),
+              ),
+            );
+            return;
+          }
+          Navigator.pop(context);
         }
       } else {
         tryy--;
         if (tryy == 0) {
+          tryy = 10;
           Navigator.push(
             context,
             MaterialPageRoute(

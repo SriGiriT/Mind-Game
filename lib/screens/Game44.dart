@@ -68,12 +68,23 @@ class _Game44State extends State<Game44> {
             SizedBox(
               height: 20,
             ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     AnswerButton(0, list),
+            //     AnswerButton(1, list),
+            //     AnswerButton(2, list),
+            //     AnswerButton(3, list)
+            //   ],
+            // ),
             RaisedButton(
               child: Text("hide"),
               onPressed: () {
                 setState(() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game4(list)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Game4(list, true, 0)));
                 });
               },
             )

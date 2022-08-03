@@ -5,12 +5,17 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
+import 'package:memory_matrix/screens/Game444.dart';
 
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+int score = 0;
+bool isCorrect = false;
 
 class Game4 extends StatefulWidget {
-  Game4(this.list);
+  Game4(this.list, this.isIt, this.score);
   List<int> list;
+  bool isIt;
+  int score;
 
   @override
   State<Game4> createState() => _Game4State();
@@ -28,6 +33,7 @@ class _Game4State extends State<Game4> {
     }
     List<int> lis = numbers.toList();
     print(lis);
+    list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     list1[lis[0] - 1] = 1;
     list1[lis[1] - 1] = 1;
     list1[lis[2] - 1] = 1;
@@ -46,25 +52,25 @@ class _Game4State extends State<Game4> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[0], 0, false, isVissible),
-                SingleButton(widget.list[1], 1, false, isVissible),
-                SingleButton(widget.list[2], 2, false, isVissible),
+                SingleButton(list1[0], 0, false, isVissible),
+                SingleButton(list1[1], 1, false, isVissible),
+                SingleButton(list1[2], 2, false, isVissible),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[3], 3, false, isVissible),
-                SingleButton(widget.list[4], 4, false, isVissible),
-                SingleButton(widget.list[5], 5, false, isVissible),
+                SingleButton(list1[3], 3, false, isVissible),
+                SingleButton(list1[4], 4, false, isVissible),
+                SingleButton(list1[5], 5, false, isVissible),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[6], 6, false, isVissible),
-                SingleButton(widget.list[7], 7, false, isVissible),
-                SingleButton(widget.list[8], 8, false, isVissible)
+                SingleButton(list1[6], 6, false, isVissible),
+                SingleButton(list1[7], 7, false, isVissible),
+                SingleButton(list1[8], 8, false, isVissible)
               ],
             ),
             SizedBox(
@@ -79,16 +85,25 @@ class _Game4State extends State<Game4> {
                 AnswerButton(3, widget.list)
               ],
             ),
-            RaisedButton(
-              child: Text("hide"),
-              onPressed: () {
-                setState(() {
-                  list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game4(list1)));
-                });
-              },
+            Container(
+              child: Text(
+                'Score: $score',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             )
+            // RaisedButton(
+            //   child: Text("hide"),
+            //   onPressed: () {
+            //     setState(() {
+            //       list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => Game4(list1)));
+            //     });
+            //   },
+            // )
           ],
         ),
       ),
@@ -120,14 +135,16 @@ class _AnswerButtonState extends State<AnswerButton> {
             }
           }
           if (temp == countt) {
+            print("hey");
             setState(() {
-              count++;
-            });
-          } else {
-            setState(() {
-              count = 0;
+              isCorrect = true;
+              score++;
             });
           }
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Game444(list1, isCorrect, score)));
           print(count);
           print(list1);
           print(widget.list);
