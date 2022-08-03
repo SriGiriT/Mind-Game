@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/success',
+      initialRoute: '/',
       routes: {
         '/': (context) => MyMainScreen(),
         '/game11': (context) => Game11(),

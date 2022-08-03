@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/screens/Game55.dart';
+import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game5 extends StatefulWidget {
@@ -16,17 +18,12 @@ IconData icon = Icons.close;
 int score = 0;
 int length = 0;
 int count = 0;
+int tryy = 10;
 
 class _Game5State extends State<Game5> {
   @override
   Widget build(BuildContext context) {
-    int temp = 0;
-    while (temp < 16) {
-      if (widget.list[temp] == 1) {
-        length++;
-      }
-      temp++;
-    }
+    count = 0;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -116,26 +113,21 @@ class _SingleButtonState extends State<SingleButton> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Success(),
+              builder: (context) => Game55(),
+            ),
+          );
+        }
+      } else {
+        tryy--;
+        if (tryy == 0) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MySettings(),
             ),
           );
         }
       }
-
-      // if (widget.text == 1) {
-      //   length--;
-      //   if (length == 0) {
-      //     score++;
-      //     if (score == 10) {
-      //       score = 0;
-      //       Navigator.pushNamed(context, '/success');
-      //       return;
-      //     }
-      //     Navigator.pop(context);
-      //   }
-      // } else {
-      //   Navigator.pushNamed(context, '/settings');
-      // }
     });
   }
 
@@ -170,20 +162,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-/*
-child: SizedBox(
-        height: 100,
-        width: 100,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Colors.black,
-          ),
-          onPressed: ConvertIspressed,
-          child: Text(""),
-        ),
-      ),
-
-
-      widget.isPressed ? Colors.blue : Colors.white
-*/
