@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 import 'package:memory_matrix/screens/Game444.dart';
+import 'package:memory_matrix/screens/Success.dart';
 
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -136,8 +137,14 @@ class _AnswerButtonState extends State<AnswerButton> {
               score++;
             });
           }
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Game444(list1, score)));
+          if (score >= 10) {
+            score = 0;
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Success()));
+          } else {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Game444(list1, score)));
+          }
           print(count);
           print(list1);
           print(widget.list);
