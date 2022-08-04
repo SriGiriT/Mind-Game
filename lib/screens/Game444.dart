@@ -8,13 +8,10 @@ import 'package:memory_matrix/screens/Game4.dart';
 import 'package:memory_matrix/screens/Game444.dart';
 
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-int score = 0;
-bool isCorrect = false;
 
 class Game444 extends StatefulWidget {
-  Game444(this.list, this.isIt, this.score);
+  Game444(this.list, this.score);
   List<int> list;
-  bool isIt;
   int score;
 
   @override
@@ -79,10 +76,10 @@ class _Game444State extends State<Game444> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnswerButton(0, widget.list),
-                AnswerButton(1, widget.list),
-                AnswerButton(2, widget.list),
-                AnswerButton(3, widget.list)
+                AnswerButton(0, widget.list, score),
+                AnswerButton(1, widget.list, score),
+                AnswerButton(2, widget.list, score),
+                AnswerButton(3, widget.list, score)
               ],
             ),
             Container(
@@ -112,9 +109,10 @@ class _Game444State extends State<Game444> {
 }
 
 class AnswerButton extends StatefulWidget {
-  AnswerButton(this.ind, this.list);
+  AnswerButton(this.ind, this.list, this.score);
   int ind;
   List<int> list;
+  int score;
 
   @override
   State<AnswerButton> createState() => _AnswerButtonState();
@@ -137,14 +135,11 @@ class _AnswerButtonState extends State<AnswerButton> {
           if (temp == countt) {
             print("hey");
             setState(() {
-              isCorrect = true;
               score++;
             });
           }
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Game4(list1, isCorrect, score)));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Game4(list1, score)));
           print(count);
           print(list1);
           print(widget.list);

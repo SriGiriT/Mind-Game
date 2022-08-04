@@ -81,10 +81,8 @@ class _Game44State extends State<Game44> {
               child: Text("hide"),
               onPressed: () {
                 setState(() {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Game4(list, true, 0)));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Game4(list, 0)));
                 });
               },
             )
