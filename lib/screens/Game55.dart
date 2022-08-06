@@ -28,24 +28,59 @@ class _Game55State extends State<Game55> {
     print(numbers);
     bool isVissible = true;
     List<int> lis = numbers.toList();
-    List<IconData> list1 = [
-      Icons.car_crash,
-      Icons.car_crash,
-      Icons.abc,
-      Icons.abc,
-      Icons.check,
-      Icons.check,
-      Icons.place,
-      Icons.place,
-      Icons.access_alarm,
-      Icons.access_alarm,
-      Icons.find_in_page,
-      Icons.find_in_page,
-      Icons.air,
-      Icons.air,
+    List<IconData> list111 = [
+      Icons.ac_unit,
+      Icons.accessibility,
+      Icons.account_balance,
+      Icons.account_balance_wallet,
+      Icons.account_box,
+      Icons.account_tree,
+      Icons.ad_units,
+      Icons.add_a_photo,
+      Icons.call,
+      Icons.dangerous,
+      Icons.delete,
+      Icons.comment,
+      Icons.home,
+      Icons.call,
+      Icons.bluetooth,
+      Icons.location_city,
+      Icons.add_reaction_sharp,
       Icons.help,
-      Icons.help
+      Icons.shopping_cart,
+      Icons.airplanemode_active,
+      Icons.android,
+      Icons.anchor_sharp,
+      Icons.apple,
+      Icons.apps,
+      Icons.archive,
+      Icons.arrow_back,
+      Icons.architecture,
+      Icons.movie,
+      Icons.run_circle,
+      Icons.local_taxi,
+      Icons.animation,
+      Icons.motorcycle,
+      Icons.fullscreen,
+      Icons.favorite,
+      Icons.person,
+      Icons.timelapse,
+      Icons.lock,
+      Icons.info,
+      Icons.photo,
+      Icons.gamepad,
+      Icons.laptop,
+      Icons.pie_chart,
+      Icons.grade,
+      Icons.zoom_in,
+      Icons.input
     ];
+    final numberss = Set<IconData>();
+    while (numberss.length < 8) {
+      numberss.add(list111[Random().nextInt(list111.length)]);
+    }
+    List<IconData> list1 = numberss.toList();
+    list1 += list1;
     List<IconData> list = [];
     for (int i = 0; i < 16; i++) {
       list.add(list1[lis[i] - 1]);
@@ -163,7 +198,8 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           // color: Colors.white,
           child: Center(
-            child: Icon(widget.text, size: 30, color: Colors.black),
+            child: Icon(widget.text,
+                size: 25, color: Color.fromARGB(221, 0, 0, 0)),
           ),
         ),
       ),

@@ -219,7 +219,10 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
               child: widget.text == 1
-                  ? Icon(Icons.fiber_manual_record)
+                  ? Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.redAccent,
+                    )
                   : Text('')),
         ),
       ),

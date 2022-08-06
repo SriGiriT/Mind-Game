@@ -44,53 +44,79 @@ class _Game44State extends State<Game44> {
       body: SafeArea(
         // create matrix of 3 x 3 buttons
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Text(
+                      'Positions Change.',
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      'Remember the location of all point BEFORE EACH CLICK. Your task is to calculate how many points DIDN\'T change the position and choose the correct answer.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
               children: [
-                SingleButton(list[0], 0, false, isVissible),
-                SingleButton(list[1], 1, false, isVissible),
-                SingleButton(list[2], 2, false, isVissible),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[0], 0, false, isVissible),
+                    SingleButton(list[1], 1, false, isVissible),
+                    SingleButton(list[2], 2, false, isVissible),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[3], 3, false, isVissible),
+                    SingleButton(list[4], 4, false, isVissible),
+                    SingleButton(list[5], 5, false, isVissible),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[6], 6, false, isVissible),
+                    SingleButton(list[7], 7, false, isVissible),
+                    SingleButton(list[8], 8, false, isVissible)
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     AnswerButton(0, list),
+                //     AnswerButton(1, list),
+                //     AnswerButton(2, list),
+                //     AnswerButton(3, list)
+                //   ],
+                // ),
+                RaisedButton(
+                  child: Text("hide"),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Game4(list, 0)));
+                    });
+                  },
+                ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[3], 3, false, isVissible),
-                SingleButton(list[4], 4, false, isVissible),
-                SingleButton(list[5], 5, false, isVissible),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[6], 6, false, isVissible),
-                SingleButton(list[7], 7, false, isVissible),
-                SingleButton(list[8], 8, false, isVissible)
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     AnswerButton(0, list),
-            //     AnswerButton(1, list),
-            //     AnswerButton(2, list),
-            //     AnswerButton(3, list)
-            //   ],
-            // ),
-            RaisedButton(
-              child: Text("hide"),
-              onPressed: () {
-                setState(() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game4(list, 0)));
-                });
-              },
-            )
           ],
         ),
       ),
@@ -140,7 +166,7 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
               child: widget.text == 1
-                  ? Icon(Icons.fiber_manual_record)
+                  ? Icon(Icons.fiber_manual_record, color: Colors.redAccent)
                   : Text('')),
         ),
       ),

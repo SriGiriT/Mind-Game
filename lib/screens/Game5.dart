@@ -14,7 +14,7 @@ class Game5 extends StatefulWidget {
   State<Game5> createState() => _Game5State();
 }
 
-IconData icon = Icons.close;
+IconData icon = Icons.fire_extinguisher;
 int score = 0;
 int length = 0;
 int count = 0;
@@ -107,11 +107,11 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   void ConvertIspressed() {
     setState(() {
-      if (icon == Icons.close) {
+      if (icon == Icons.fire_extinguisher) {
         icon = widget.text;
         widget.isPressed = !widget.isPressed;
       } else if (icon == widget.text) {
-        icon = Icons.close;
+        icon = Icons.fire_extinguisher;
         widget.isPressed = !widget.isPressed;
         count++;
         if (count == 8) {
@@ -164,8 +164,8 @@ class _SingleButtonState extends State<SingleButton> {
             child: widget.isPressed
                 ? Icon(
                     widget.text,
-                    size: 30,
-                    color: Colors.black,
+                    size: 25,
+                    color: Color.fromARGB(221, 0, 0, 0),
                   )
                 : Text(""),
           ),
