@@ -29,6 +29,11 @@ class _Game5State extends State<Game5> {
         backgroundColor: Colors.white54,
         centerTitle: true,
         title: Text('Memory Matrix'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            }),
       ),
       body: SafeArea(
         // create matrix of 3 x 3 buttons

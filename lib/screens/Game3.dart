@@ -25,6 +25,11 @@ class _Game3State extends State<Game3> {
         backgroundColor: Colors.white54,
         centerTitle: true,
         title: Text('Ascending Numbers'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            }),
       ),
       body: SafeArea(
         // create matrix of 3 x 3 buttons
@@ -90,6 +95,7 @@ class _SingleButtonState extends State<SingleButton> {
         print(score);
         if (score == 7) {
           score = 0;
+          count = 0;
           Navigator.pushNamed(context, '/success');
           return;
         }

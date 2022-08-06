@@ -40,6 +40,11 @@ class _Game4State extends State<Game4> {
         backgroundColor: Colors.white54,
         centerTitle: true,
         title: Text('Memory'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            }),
       ),
       body: SafeArea(
         // create matrix of 3 x 3 buttons
