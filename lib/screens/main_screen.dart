@@ -31,7 +31,7 @@ class MyMainScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/settings');
                     },
                     child: Icon(
-                      Icons.settings,
+                      Icons.settings_outlined,
                       size: 30,
                     ),
                   ),
