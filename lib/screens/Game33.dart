@@ -43,44 +43,69 @@ class _Game33State extends State<Game33> {
       body: SafeArea(
         // create matrix of 3 x 3 buttons
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Text(
+                      'Ascending numbers.',
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      'Remember the location of the number in the table. Then you need to find them in ascending order, starting from 1. Try not to be wrong.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(list[0], 0, false, isVissible),
-                SingleButton(list[1], 1, false, isVissible),
-                SingleButton(list[2], 2, false, isVissible),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[0], 0, false, isVissible),
+                    SingleButton(list[1], 1, false, isVissible),
+                    SingleButton(list[2], 2, false, isVissible),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[3], 3, false, isVissible),
+                    SingleButton(list[4], 4, false, isVissible),
+                    SingleButton(list[5], 5, false, isVissible),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[6], 6, false, isVissible),
+                    SingleButton(list[7], 7, false, isVissible),
+                    SingleButton(list[8], 8, false, isVissible)
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                RaisedButton(
+                  child: Text("hide"),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Game3(list)));
+                    });
+                  },
+                )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[3], 3, false, isVissible),
-                SingleButton(list[4], 4, false, isVissible),
-                SingleButton(list[5], 5, false, isVissible),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[6], 6, false, isVissible),
-                SingleButton(list[7], 7, false, isVissible),
-                SingleButton(list[8], 8, false, isVissible)
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RaisedButton(
-              child: Text("hide"),
-              onPressed: () {
-                setState(() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game3(list)));
-                });
-              },
-            )
           ],
         ),
       ),

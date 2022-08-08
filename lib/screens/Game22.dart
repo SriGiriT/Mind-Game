@@ -37,86 +37,111 @@ class _Game12State extends State<Game22> {
       body: SafeArea(
         // create matrix of 3 x 3 buttons
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Text(
+                      'Memory Matrix.',
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      'You will see green squares in front of you, which are arranged in a random order.After pressing the start button, they will disappear, and you need to find them. Try to do it as quickly as possible, but don\' make mistakes.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(list[0], 0, false, isVissible),
-                SingleButton(list[1], 1, false, isVissible),
-                SingleButton(list[2], 2, false, isVissible),
-                SingleButton(list[3], 3, false, isVissible),
-                SingleButton(list[4], 4, false, isVissible),
-                SingleButton(list[5], 5, false, isVissible)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[0], 0, false, isVissible),
+                    SingleButton(list[1], 1, false, isVissible),
+                    SingleButton(list[2], 2, false, isVissible),
+                    SingleButton(list[3], 3, false, isVissible),
+                    SingleButton(list[4], 4, false, isVissible),
+                    SingleButton(list[5], 5, false, isVissible)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[6], 6, false, isVissible),
+                    SingleButton(list[7], 7, false, isVissible),
+                    SingleButton(list[8], 8, false, isVissible),
+                    SingleButton(list[9], 9, false, isVissible),
+                    SingleButton(list[10], 10, false, isVissible),
+                    SingleButton(list[11], 11, false, isVissible)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[12], 12, false, isVissible),
+                    SingleButton(list[13], 13, false, isVissible),
+                    SingleButton(list[14], 14, false, isVissible),
+                    SingleButton(list[15], 15, false, isVissible),
+                    SingleButton(list[16], 16, false, isVissible),
+                    SingleButton(list[17], 17, false, isVissible)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[18], 18, false, isVissible),
+                    SingleButton(list[19], 19, false, isVissible),
+                    SingleButton(list[20], 20, false, isVissible),
+                    SingleButton(list[21], 21, false, isVissible),
+                    SingleButton(list[22], 22, false, isVissible),
+                    SingleButton(list[23], 23, false, isVissible)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[24], 24, false, isVissible),
+                    SingleButton(list[25], 25, false, isVissible),
+                    SingleButton(list[26], 26, false, isVissible),
+                    SingleButton(list[27], 27, false, isVissible),
+                    SingleButton(list[28], 28, false, isVissible),
+                    SingleButton(list[29], 29, false, isVissible)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(list[30], 30, false, isVissible),
+                    SingleButton(list[31], 31, false, isVissible),
+                    SingleButton(list[32], 32, false, isVissible),
+                    SingleButton(list[33], 33, false, isVissible),
+                    SingleButton(list[34], 34, false, isVissible),
+                    SingleButton(list[35], 35, false, isVissible)
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                RaisedButton(
+                  child: Text("hide"),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Game2(list)));
+                    });
+                  },
+                )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[6], 6, false, isVissible),
-                SingleButton(list[7], 7, false, isVissible),
-                SingleButton(list[8], 8, false, isVissible),
-                SingleButton(list[9], 9, false, isVissible),
-                SingleButton(list[10], 10, false, isVissible),
-                SingleButton(list[11], 11, false, isVissible)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[12], 12, false, isVissible),
-                SingleButton(list[13], 13, false, isVissible),
-                SingleButton(list[14], 14, false, isVissible),
-                SingleButton(list[15], 15, false, isVissible),
-                SingleButton(list[16], 16, false, isVissible),
-                SingleButton(list[17], 17, false, isVissible)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[18], 18, false, isVissible),
-                SingleButton(list[19], 19, false, isVissible),
-                SingleButton(list[20], 20, false, isVissible),
-                SingleButton(list[21], 21, false, isVissible),
-                SingleButton(list[22], 22, false, isVissible),
-                SingleButton(list[23], 23, false, isVissible)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[24], 24, false, isVissible),
-                SingleButton(list[25], 25, false, isVissible),
-                SingleButton(list[26], 26, false, isVissible),
-                SingleButton(list[27], 27, false, isVissible),
-                SingleButton(list[28], 28, false, isVissible),
-                SingleButton(list[29], 29, false, isVissible)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(list[30], 30, false, isVissible),
-                SingleButton(list[31], 31, false, isVissible),
-                SingleButton(list[32], 32, false, isVissible),
-                SingleButton(list[33], 33, false, isVissible),
-                SingleButton(list[34], 34, false, isVissible),
-                SingleButton(list[35], 35, false, isVissible)
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            RaisedButton(
-              child: Text("hide"),
-              onPressed: () {
-                setState(() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Game2(list)));
-                });
-              },
-            )
           ],
         ),
       ),

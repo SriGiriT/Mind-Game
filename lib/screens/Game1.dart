@@ -34,41 +34,56 @@ class _Game1State extends State<Game1> {
       body: SafeArea(
         // create matrix of 3 x 3 buttons
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SingleButton(widget.list[0], 0, false),
-                SingleButton(widget.list[1], 1, false),
-                SingleButton(widget.list[2], 2, false),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Icon(Icons.fiber_manual_record,
+                      color: Colors.red, size: 20),
+                ),
               ],
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[3], 3, false),
-                SingleButton(widget.list[4], 4, false),
-                SingleButton(widget.list[5], 5, false),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(widget.list[0], 0, false),
+                    SingleButton(widget.list[1], 1, false),
+                    SingleButton(widget.list[2], 2, false),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(widget.list[3], 3, false),
+                    SingleButton(widget.list[4], 4, false),
+                    SingleButton(widget.list[5], 5, false),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SingleButton(widget.list[6], 6, false),
+                    SingleButton(widget.list[7], 7, false),
+                    SingleButton(widget.list[8], 8, false)
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Score: $score',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto'),
+                ),
               ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[6], 6, false),
-                SingleButton(widget.list[7], 7, false),
-                SingleButton(widget.list[8], 8, false)
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Score: $score',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto'),
             ),
           ],
         ),
