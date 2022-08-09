@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "919372483374",
+    "project_id": "mind-game-90aca",
+    "storage_bucket": "mind-game-90aca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919372483374:android:0d9a56b7ee059247b5c8bf",
+        "android_client_info": {
+          "package_name": "com.example.memory_matrix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919372483374-dhf22thcfhfpm5386d8td2idncvjlev0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPne9fUCNB0Jr_TH-4sIjrQuo9z2wF2gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919372483374-dhf22thcfhfpm5386d8td2idncvjlev0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

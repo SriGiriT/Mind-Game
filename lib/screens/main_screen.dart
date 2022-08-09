@@ -26,6 +26,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
   _initBannerAd() {
     // var testAdUnitId = 'ca-app-pub-3940256099942544/6300978111';
     _bannerAd = BannerAd(
+      // adUnitId: 'ca-app-pub-5065616329586324/4643184259',
       adUnitId: 'ca-app-pub-3940256099942544/6300978111',
       size: AdSize.banner,
       listener: BannerAdListener(
