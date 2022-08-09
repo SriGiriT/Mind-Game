@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
+import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 
 class MyMainScreen extends StatelessWidget {
@@ -63,7 +64,7 @@ class MyMainScreen extends StatelessWidget {
               Listofgames(3, "Ascending Numbers.                       ", () {
                 Navigator.pushNamed(context, '/game3');
               }, "Remember and find numbers in ascending order.",
-                  TilesForGame5.getTotalScore()),
+                  TilesForGame3.getTotalScore()),
               Listofgames(4, "Positions change.                             ",
                   () {
                 Navigator.pushNamed(context, '/game4');
