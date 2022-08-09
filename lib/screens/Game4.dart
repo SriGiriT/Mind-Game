@@ -19,6 +19,7 @@ class Game4 extends StatefulWidget {
 }
 
 int count = 1;
+int score = 0;
 
 class _Game4State extends State<Game4> {
   @override

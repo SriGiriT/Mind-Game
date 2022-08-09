@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 
 class MyMainScreen extends StatelessWidget {
@@ -53,7 +54,7 @@ class MyMainScreen extends StatelessWidget {
                   1, "Memory.                                              ",
                   () {
                 Navigator.pushNamed(context, '/game11');
-              }, "Memorize positions", TilesForGame5.getTotalScore()),
+              }, "Memorize positions", TilesForGame1.getTotalScore()),
               Listofgames(2, "Memory Matrix.                                ",
                   () {
                 Navigator.pushNamed(context, '/game2');

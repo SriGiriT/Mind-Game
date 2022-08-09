@@ -3,18 +3,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/components/TilesForGame1.dart';
+import 'package:memory_matrix/data/DataOf1.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game1 extends StatefulWidget {
   Game1(this.list);
-  List<int> list;
+  List<TilesForGame1> list;
 
   @override
   State<Game1> createState() => _Game1State();
 }
 
 int count = 1;
-int score = 0;
 
 class _Game1State extends State<Game1> {
   @override
@@ -52,32 +53,32 @@ class _Game1State extends State<Game1> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(widget.list[0], 0, false),
-                    SingleButton(widget.list[1], 1, false),
-                    SingleButton(widget.list[2], 2, false),
+                    SingleButton(widget.list[0]),
+                    SingleButton(widget.list[1]),
+                    SingleButton(widget.list[2]),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(widget.list[3], 3, false),
-                    SingleButton(widget.list[4], 4, false),
-                    SingleButton(widget.list[5], 5, false),
+                    SingleButton(widget.list[3]),
+                    SingleButton(widget.list[4]),
+                    SingleButton(widget.list[5]),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(widget.list[6], 6, false),
-                    SingleButton(widget.list[7], 7, false),
-                    SingleButton(widget.list[8], 8, false)
+                    SingleButton(widget.list[6]),
+                    SingleButton(widget.list[7]),
+                    SingleButton(widget.list[8])
                   ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  'Score: $score',
+                  'Score: ${widget.list[0].getScore()}',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -93,10 +94,8 @@ class _Game1State extends State<Game1> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed);
-  int text;
-  bool isPressed;
-  int index;
+  SingleButton(this.text);
+  TilesForGame1 text;
 
   @override
   State<SingleButton> createState() => _SingleButtonState();
@@ -105,12 +104,12 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   void ConvertIspressed() {
     setState(() {
-      if (widget.text == count) {
+      if (widget.text.val == count) {
         count++;
         if (count == 10) {
-          score++;
-          if (score == 10) {
-            score = 0;
+          widget.text.addScore();
+          if (widget.text.getScore() == 10) {
+            widget.text.resetScore();
             Navigator.pushNamed(context, '/success');
             return;
           }
@@ -119,7 +118,7 @@ class _SingleButtonState extends State<SingleButton> {
       } else {
         Navigator.pushNamed(context, '/settings');
       }
-      widget.isPressed = !widget.isPressed;
+      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 
@@ -138,12 +137,12 @@ class _SingleButtonState extends State<SingleButton> {
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
-            color: widget.isPressed ? Colors.white : Colors.white70,
+            color: widget.text.isSelected ? Colors.white : Colors.white70,
           ),
-          child: widget.isPressed
+          child: widget.text.getIsSelected()
               ? Center(
                   child: Text(
-                  widget.text.toString(),
+                  widget.text.val.toString(),
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
