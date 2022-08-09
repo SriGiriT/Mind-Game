@@ -5,6 +5,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game2.dart';
+import 'package:memory_matrix/components/TilesForGame2.dart';
+import 'package:memory_matrix/data/DataOf2.dart';
 
 class Game22 extends StatefulWidget {
   const Game22({Key? key}) : super(key: key);
@@ -20,8 +22,7 @@ class _Game12State extends State<Game22> {
   Widget build(BuildContext context) {
     count = 1;
     // assign 0 or 1 to each button
-    List<int> list = List<int>.generate(36, (i) => Random().nextInt(2));
-    bool isVissible = true;
+    List<TilesForGame2> list = getPairs();
     print(list);
     return Scaffold(
       appBar: AppBar(
@@ -65,67 +66,67 @@ class _Game12State extends State<Game22> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[0], 0, false, isVissible),
-                    SingleButton(list[1], 1, false, isVissible),
-                    SingleButton(list[2], 2, false, isVissible),
-                    SingleButton(list[3], 3, false, isVissible),
-                    SingleButton(list[4], 4, false, isVissible),
-                    SingleButton(list[5], 5, false, isVissible)
+                    SingleButton(list[0]),
+                    SingleButton(list[1]),
+                    SingleButton(list[2]),
+                    SingleButton(list[3]),
+                    SingleButton(list[4]),
+                    SingleButton(list[5])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[6], 6, false, isVissible),
-                    SingleButton(list[7], 7, false, isVissible),
-                    SingleButton(list[8], 8, false, isVissible),
-                    SingleButton(list[9], 9, false, isVissible),
-                    SingleButton(list[10], 10, false, isVissible),
-                    SingleButton(list[11], 11, false, isVissible)
+                    SingleButton(list[6]),
+                    SingleButton(list[7]),
+                    SingleButton(list[8]),
+                    SingleButton(list[9]),
+                    SingleButton(list[10]),
+                    SingleButton(list[11])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[12], 12, false, isVissible),
-                    SingleButton(list[13], 13, false, isVissible),
-                    SingleButton(list[14], 14, false, isVissible),
-                    SingleButton(list[15], 15, false, isVissible),
-                    SingleButton(list[16], 16, false, isVissible),
-                    SingleButton(list[17], 17, false, isVissible)
+                    SingleButton(list[12]),
+                    SingleButton(list[13]),
+                    SingleButton(list[14]),
+                    SingleButton(list[15]),
+                    SingleButton(list[16]),
+                    SingleButton(list[17])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[18], 18, false, isVissible),
-                    SingleButton(list[19], 19, false, isVissible),
-                    SingleButton(list[20], 20, false, isVissible),
-                    SingleButton(list[21], 21, false, isVissible),
-                    SingleButton(list[22], 22, false, isVissible),
-                    SingleButton(list[23], 23, false, isVissible)
+                    SingleButton(list[18]),
+                    SingleButton(list[19]),
+                    SingleButton(list[20]),
+                    SingleButton(list[21]),
+                    SingleButton(list[22]),
+                    SingleButton(list[23])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[24], 24, false, isVissible),
-                    SingleButton(list[25], 25, false, isVissible),
-                    SingleButton(list[26], 26, false, isVissible),
-                    SingleButton(list[27], 27, false, isVissible),
-                    SingleButton(list[28], 28, false, isVissible),
-                    SingleButton(list[29], 29, false, isVissible)
+                    SingleButton(list[24]),
+                    SingleButton(list[25]),
+                    SingleButton(list[26]),
+                    SingleButton(list[27]),
+                    SingleButton(list[28]),
+                    SingleButton(list[29])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[30], 30, false, isVissible),
-                    SingleButton(list[31], 31, false, isVissible),
-                    SingleButton(list[32], 32, false, isVissible),
-                    SingleButton(list[33], 33, false, isVissible),
-                    SingleButton(list[34], 34, false, isVissible),
-                    SingleButton(list[35], 35, false, isVissible)
+                    SingleButton(list[30]),
+                    SingleButton(list[31]),
+                    SingleButton(list[32]),
+                    SingleButton(list[33]),
+                    SingleButton(list[34]),
+                    SingleButton(list[35])
                   ],
                 ),
                 SizedBox(
@@ -150,28 +151,14 @@ class _Game12State extends State<Game22> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed, this.isVissible);
-  int text;
-  bool isPressed;
-  int index;
-  bool isVissible;
+  SingleButton(this.text);
+  TilesForGame2 text;
 
   @override
   State<SingleButton> createState() => _SingleButtonState();
 }
 
 class _SingleButtonState extends State<SingleButton> {
-  void ConvertIspressed() {
-    setState(() {
-      if (widget.text == 1) {
-        count++;
-      } else {
-        Navigator.pushNamed(context, '/settings');
-      }
-      widget.isPressed = !widget.isPressed;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -182,10 +169,11 @@ class _SingleButtonState extends State<SingleButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),
           ),
-          elevation: widget.isPressed ? 4 : 1,
-          primary: widget.text == 1 ? Colors.lightBlue : Colors.white,
+          elevation: widget.text.getIsSelected() ? 4 : 1,
+          primary:
+              widget.text.getIconData() == 1 ? Colors.lightBlue : Colors.white,
         ),
-        onPressed: ConvertIspressed,
+        onPressed: () {},
         child: Text(""),
       ),
     );

@@ -3,11 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game2 extends StatefulWidget {
   Game2(this.list);
-  List<int> list;
+  List<TilesForGame2> list;
   @override
   State<Game2> createState() => _Game2State();
 }
@@ -18,12 +19,12 @@ int length = 0;
 class _Game2State extends State<Game2> {
   @override
   Widget build(BuildContext context) {
-    int temp = 0;
-    while (temp < 36) {
-      if (widget.list[temp] == 1) {
+    length = 0;
+    int n = 36;
+    while (n-- > 0) {
+      if (widget.list[n].val == 1) {
         length++;
       }
-      temp++;
     }
     return Scaffold(
       appBar: AppBar(
@@ -44,67 +45,67 @@ class _Game2State extends State<Game2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[0], 0, false),
-                SingleButton(widget.list[1], 1, false),
-                SingleButton(widget.list[2], 2, false),
-                SingleButton(widget.list[3], 3, false),
-                SingleButton(widget.list[4], 4, false),
-                SingleButton(widget.list[5], 5, false)
+                SingleButton(widget.list[0]),
+                SingleButton(widget.list[1]),
+                SingleButton(widget.list[2]),
+                SingleButton(widget.list[3]),
+                SingleButton(widget.list[4]),
+                SingleButton(widget.list[5])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[6], 6, false),
-                SingleButton(widget.list[7], 7, false),
-                SingleButton(widget.list[8], 8, false),
-                SingleButton(widget.list[9], 9, false),
-                SingleButton(widget.list[10], 10, false),
-                SingleButton(widget.list[11], 11, false)
+                SingleButton(widget.list[6]),
+                SingleButton(widget.list[7]),
+                SingleButton(widget.list[8]),
+                SingleButton(widget.list[9]),
+                SingleButton(widget.list[10]),
+                SingleButton(widget.list[11])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[12], 12, false),
-                SingleButton(widget.list[13], 13, false),
-                SingleButton(widget.list[14], 14, false),
-                SingleButton(widget.list[15], 15, false),
-                SingleButton(widget.list[16], 16, false),
-                SingleButton(widget.list[17], 17, false)
+                SingleButton(widget.list[12]),
+                SingleButton(widget.list[13]),
+                SingleButton(widget.list[14]),
+                SingleButton(widget.list[15]),
+                SingleButton(widget.list[16]),
+                SingleButton(widget.list[17])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[18], 18, false),
-                SingleButton(widget.list[19], 19, false),
-                SingleButton(widget.list[20], 20, false),
-                SingleButton(widget.list[21], 21, false),
-                SingleButton(widget.list[22], 22, false),
-                SingleButton(widget.list[23], 23, false)
+                SingleButton(widget.list[18]),
+                SingleButton(widget.list[19]),
+                SingleButton(widget.list[20]),
+                SingleButton(widget.list[21]),
+                SingleButton(widget.list[22]),
+                SingleButton(widget.list[23])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[24], 24, false),
-                SingleButton(widget.list[25], 25, false),
-                SingleButton(widget.list[26], 26, false),
-                SingleButton(widget.list[27], 27, false),
-                SingleButton(widget.list[28], 28, false),
-                SingleButton(widget.list[29], 29, false)
+                SingleButton(widget.list[24]),
+                SingleButton(widget.list[25]),
+                SingleButton(widget.list[26]),
+                SingleButton(widget.list[27]),
+                SingleButton(widget.list[28]),
+                SingleButton(widget.list[29])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[30], 30, false),
-                SingleButton(widget.list[31], 31, false),
-                SingleButton(widget.list[32], 32, false),
-                SingleButton(widget.list[33], 33, false),
-                SingleButton(widget.list[34], 34, false),
-                SingleButton(widget.list[35], 35, false)
+                SingleButton(widget.list[30]),
+                SingleButton(widget.list[31]),
+                SingleButton(widget.list[32]),
+                SingleButton(widget.list[33]),
+                SingleButton(widget.list[34]),
+                SingleButton(widget.list[35])
               ],
             ),
             SizedBox(
@@ -126,11 +127,8 @@ class _Game2State extends State<Game2> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed);
-  int text;
-  bool isPressed;
-  int index;
-
+  SingleButton(this.text);
+  TilesForGame2 text;
   @override
   State<SingleButton> createState() => _SingleButtonState();
 }
@@ -138,12 +136,12 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   void ConvertIspressed() {
     setState(() {
-      if (widget.text == 1) {
+      if (widget.text.val == 1) {
         length--;
         if (length == 0) {
-          score++;
-          if (score == 10) {
-            score = 0;
+          widget.text.addScore();
+          if (widget.text.getScore() == 10) {
+            widget.text.resetScore();
             Navigator.pushNamed(context, '/success');
             return;
           }
@@ -152,7 +150,7 @@ class _SingleButtonState extends State<SingleButton> {
       } else {
         Navigator.pushNamed(context, '/settings');
       }
-      widget.isPressed = !widget.isPressed;
+      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 
@@ -166,8 +164,8 @@ class _SingleButtonState extends State<SingleButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),
           ),
-          elevation: widget.isPressed ? 4 : 1,
-          primary: widget.isPressed ? Colors.blue : Colors.white,
+          elevation: widget.text.getIsSelected() ? 4 : 1,
+          primary: widget.text.getIsSelected() ? Colors.blue : Colors.white,
         ),
         onPressed: ConvertIspressed,
         child: Text(""),
