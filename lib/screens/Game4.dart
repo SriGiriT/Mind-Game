@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 import 'package:memory_matrix/screens/Game444.dart';
@@ -11,9 +12,8 @@ import 'package:memory_matrix/screens/Success.dart';
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 class Game4 extends StatefulWidget {
-  Game4(this.list, this.score);
+  Game4(this.list);
   List<int> list;
-  int score;
   @override
   State<Game4> createState() => _Game4State();
 }
@@ -25,6 +25,7 @@ class _Game4State extends State<Game4> {
   @override
   Widget build(BuildContext context) {
     count = 1;
+    DataOf4 dat = DataOf4();
     final numbers = Set<int>();
     while (numbers.length < 3) {
       numbers.add(Random().nextInt(9) + 1);
@@ -55,25 +56,25 @@ class _Game4State extends State<Game4> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(list1[0], 0, false, isVissible),
-                SingleButton(list1[1], 1, false, isVissible),
-                SingleButton(list1[2], 2, false, isVissible),
+                SingleButton(list1[0], 0, false),
+                SingleButton(list1[1], 1, false),
+                SingleButton(list1[2], 2, false),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(list1[3], 3, false, isVissible),
-                SingleButton(list1[4], 4, false, isVissible),
-                SingleButton(list1[5], 5, false, isVissible),
+                SingleButton(list1[3], 3, false),
+                SingleButton(list1[4], 4, false),
+                SingleButton(list1[5], 5, false),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(list1[6], 6, false, isVissible),
-                SingleButton(list1[7], 7, false, isVissible),
-                SingleButton(list1[8], 8, false, isVissible)
+                SingleButton(list1[6], 6, false),
+                SingleButton(list1[7], 7, false),
+                SingleButton(list1[8], 8, false)
               ],
             ),
             SizedBox(
@@ -82,15 +83,15 @@ class _Game4State extends State<Game4> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnswerButton(0, widget.list, score),
-                AnswerButton(1, widget.list, score),
-                AnswerButton(2, widget.list, score),
-                AnswerButton(3, widget.list, score)
+                AnswerButton(0, widget.list),
+                AnswerButton(1, widget.list),
+                AnswerButton(2, widget.list),
+                AnswerButton(3, widget.list)
               ],
             ),
             Container(
               child: Text(
-                'Score: $score',
+                'Score: ${dat.getScore()}',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -115,10 +116,9 @@ class _Game4State extends State<Game4> {
 }
 
 class AnswerButton extends StatefulWidget {
-  AnswerButton(this.ind, this.list, this.score);
+  AnswerButton(this.ind, this.list);
   int ind;
   List<int> list;
-  int score;
   @override
   State<AnswerButton> createState() => _AnswerButtonState();
 }
@@ -126,6 +126,7 @@ class AnswerButton extends StatefulWidget {
 class _AnswerButtonState extends State<AnswerButton> {
   @override
   Widget build(BuildContext context) {
+    DataOf4 data = DataOf4();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -140,16 +141,16 @@ class _AnswerButtonState extends State<AnswerButton> {
           if (temp == countt) {
             print("hey");
             setState(() {
-              score++;
+              data.addScore();
             });
           }
-          if (score >= 10) {
-            score = 0;
+          if (data.getScore() >= 10) {
+            data.resetScore();
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Success()));
           } else {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Game444(list1, score)));
+                MaterialPageRoute(builder: (context) => Game444(list1)));
           }
           print(count);
           print(list1);
@@ -179,11 +180,10 @@ class _AnswerButtonState extends State<AnswerButton> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed, this.isVissible);
+  SingleButton(this.text, this.index, this.isPressed);
   int text;
   bool isPressed;
   int index;
-  bool isVissible;
 
   @override
   State<SingleButton> createState() => _SingleButtonState();

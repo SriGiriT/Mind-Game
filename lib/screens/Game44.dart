@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 
@@ -19,6 +20,7 @@ class _Game44State extends State<Game44> {
   @override
   Widget build(BuildContext context) {
     count = 1;
+    DataOf4 data = DataOf4();
     final numbers = Set<int>();
     while (numbers.length < 3) {
       numbers.add(Random().nextInt(9) + 1);
@@ -29,7 +31,6 @@ class _Game44State extends State<Game44> {
     list[lis[0] - 1] = 1;
     list[lis[1] - 1] = 1;
     list[lis[2] - 1] = 1;
-    bool isVissible = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -71,47 +72,36 @@ class _Game44State extends State<Game44> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[0], 0, false, isVissible),
-                    SingleButton(list[1], 1, false, isVissible),
-                    SingleButton(list[2], 2, false, isVissible),
+                    SingleButton(list[0], false),
+                    SingleButton(list[1], false),
+                    SingleButton(list[2], false),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[3], 3, false, isVissible),
-                    SingleButton(list[4], 4, false, isVissible),
-                    SingleButton(list[5], 5, false, isVissible),
+                    SingleButton(list[3], false),
+                    SingleButton(list[4], false),
+                    SingleButton(list[5], false),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleButton(list[6], 6, false, isVissible),
-                    SingleButton(list[7], 7, false, isVissible),
-                    SingleButton(list[8], 8, false, isVissible)
+                    SingleButton(list[6], false),
+                    SingleButton(list[7], false),
+                    SingleButton(list[8], false)
                   ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     AnswerButton(0, list),
-                //     AnswerButton(1, list),
-                //     AnswerButton(2, list),
-                //     AnswerButton(3, list)
-                //   ],
-                // ),
                 RaisedButton(
                   child: Text("hide"),
                   onPressed: () {
                     setState(() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Game4(list, 0)));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Game4(list)));
                     });
                   },
                 ),
@@ -125,34 +115,20 @@ class _Game44State extends State<Game44> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed, this.isVissible);
+  SingleButton(this.text, this.isPressed);
   int text;
   bool isPressed;
-  int index;
-  bool isVissible;
-
   @override
   State<SingleButton> createState() => _SingleButtonState();
 }
 
 class _SingleButtonState extends State<SingleButton> {
-  void ConvertIspressed() {
-    setState(() {
-      if (widget.text == count) {
-        count++;
-      } else {
-        Navigator.pushNamed(context, '/wrong');
-      }
-      widget.isPressed = !widget.isPressed;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: ConvertIspressed,
+        onTap: () {},
         child: Container(
           width: 50,
           height: 50,

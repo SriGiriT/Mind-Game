@@ -3,6 +3,7 @@ import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/data/DataOf4.dart';
 
 class MyMainScreen extends StatelessWidget {
   @override
@@ -70,7 +71,7 @@ class MyMainScreen extends StatelessWidget {
                   () {
                 Navigator.pushNamed(context, '/game4');
               }, "Count the number of points that haven't changed their position.",
-                  TilesForGame5.getTotalScore()),
+                  DataOf4.getTotalScore()),
               Listofgames(
                   5, "Equal cells.                                         ",
                   () {
