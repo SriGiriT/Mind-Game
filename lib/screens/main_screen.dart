@@ -53,27 +53,23 @@ class MyMainScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Listofgames(
-                  1, "Memory.                                              ",
+              Listofgames(1, "Memory.                                         ",
                   () {
                 Navigator.pushNamed(context, '/game11');
               }, "Memorize positions", TilesForGame1.getTotalScore()),
-              Listofgames(2, "Memory Matrix.                                ",
-                  () {
+              Listofgames(2, "Memory Matrix.                           ", () {
                 Navigator.pushNamed(context, '/game2');
               }, "Remember and find the right cells",
                   TilesForGame2.getTotalScore()),
-              Listofgames(3, "Ascending Numbers.                       ", () {
+              Listofgames(3, "Ascending Numbers.                  ", () {
                 Navigator.pushNamed(context, '/game3');
               }, "Remember and find numbers in ascending order.",
                   TilesForGame3.getTotalScore()),
-              Listofgames(4, "Positions change.                             ",
-                  () {
+              Listofgames(4, "Positions change.                        ", () {
                 Navigator.pushNamed(context, '/game4');
               }, "Count the number of points that haven't changed their position.",
                   DataOf4.getTotalScore()),
-              Listofgames(
-                  5, "Equal cells.                                         ",
+              Listofgames(5, "Equal cells.                                    ",
                   () {
                 Navigator.pushNamed(context, '/game5');
               }, "Find the identical cells", TilesForGame5.getTotalScore()),
