@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/screens/Game11.dart';
 import 'package:memory_matrix/screens/Game22.dart';
 import 'package:memory_matrix/screens/Game33.dart';
@@ -15,6 +16,8 @@ import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Wrong.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 

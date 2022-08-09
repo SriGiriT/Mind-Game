@@ -1,11 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 
-class MyMainScreen extends StatelessWidget {
+class MyMainScreen extends StatefulWidget {
+  @override
+  State<MyMainScreen> createState() => _MyMainScreenState();
+}
+
+class _MyMainScreenState extends State<MyMainScreen> {
+  late BannerAd _bannerAd;
+
+  bool _isAdLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initBannerAd();
+    _isAdLoaded = true;
+  }
+
+  _initBannerAd() {
+    // var testAdUnitId = 'ca-app-pub-3940256099942544/6300978111';
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      size: AdSize.banner,
+      listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            setState(() {
+              _isAdLoaded = true;
+            });
+          },
+          onAdFailedToLoad: (ad, error) {}),
+      request: AdRequest(),
+    );
+
+    _bannerAd.load().then((value) => setState(() => _isAdLoaded = true));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +112,13 @@ class MyMainScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: _isAdLoaded
+          ? Container(
+              height: _bannerAd.size.height.toDouble(),
+              width: _bannerAd.size.width.toDouble(),
+              child: AdWidget(ad: _bannerAd),
+            )
+          : SizedBox(),
     );
   }
 }
