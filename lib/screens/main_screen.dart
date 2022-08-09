@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/TilesForGame5.dart';
 
 class MyMainScreen extends StatelessWidget {
   @override
@@ -48,21 +49,30 @@ class MyMainScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Listofgames(1, "Memory", () {
+              Listofgames(
+                  1, "Memory.                                              ",
+                  () {
                 Navigator.pushNamed(context, '/game11');
-              }, "Memorize positions"),
-              Listofgames(2, "Memory Matrix.", () {
+              }, "Memorize positions", TilesForGame5.getTotalScore()),
+              Listofgames(2, "Memory Matrix.                                ",
+                  () {
                 Navigator.pushNamed(context, '/game2');
-              }, "Remember and find the right cells"),
-              Listofgames(3, "Ascending Numbers.", () {
+              }, "Remember and find the right cells",
+                  TilesForGame5.getTotalScore()),
+              Listofgames(3, "Ascending Numbers.                       ", () {
                 Navigator.pushNamed(context, '/game3');
-              }, "Remember and find numbers in ascending order."),
-              Listofgames(4, "Positions change", () {
+              }, "Remember and find numbers in ascending order.",
+                  TilesForGame5.getTotalScore()),
+              Listofgames(4, "Positions change.                             ",
+                  () {
                 Navigator.pushNamed(context, '/game4');
-              }, "Count the number of points that haven't changed their position."),
-              Listofgames(5, "Equal cells", () {
+              }, "Count the number of points that haven't changed their position.",
+                  TilesForGame5.getTotalScore()),
+              Listofgames(
+                  5, "Equal cells.                                         ",
+                  () {
                 Navigator.pushNamed(context, '/game5');
-              }, "Find the identical cells"),
+              }, "Find the identical cells", TilesForGame5.getTotalScore()),
             ],
           ),
         ),
@@ -72,12 +82,12 @@ class MyMainScreen extends StatelessWidget {
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.ind, this.text, this.pressed, this.description);
+  Listofgames(this.ind, this.text, this.pressed, this.description, this.score);
   String text;
   String description;
   int ind;
   void Function()? pressed;
-
+  int score;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -102,6 +112,16 @@ class Listofgames extends StatelessWidget {
                 ),
                 Text(
                   "${text}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  "${score}",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

@@ -3,13 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/screens/Game55.dart';
 import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game5 extends StatefulWidget {
   Game5(this.list);
-  List<IconData> list;
+  List<TilesForGame5> list;
   @override
   State<Game5> createState() => _Game5State();
 }
@@ -23,6 +24,7 @@ int tryy = 10;
 class _Game5State extends State<Game5> {
   @override
   Widget build(BuildContext context) {
+    tryy = 10;
     count = 0;
     return Scaffold(
       appBar: AppBar(
@@ -43,44 +45,44 @@ class _Game5State extends State<Game5> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[0], 0, false),
-                SingleButton(widget.list[1], 1, false),
-                SingleButton(widget.list[2], 2, false),
-                SingleButton(widget.list[3], 3, false),
+                SingleButton(widget.list[0], 0),
+                SingleButton(widget.list[1], 1),
+                SingleButton(widget.list[2], 2),
+                SingleButton(widget.list[3], 3),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[4], 4, false),
-                SingleButton(widget.list[5], 5, false),
-                SingleButton(widget.list[6], 6, false),
-                SingleButton(widget.list[7], 7, false)
+                SingleButton(widget.list[4], 4),
+                SingleButton(widget.list[5], 5),
+                SingleButton(widget.list[6], 6),
+                SingleButton(widget.list[7], 7)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[8], 8, false),
-                SingleButton(widget.list[9], 9, false),
-                SingleButton(widget.list[10], 10, false),
-                SingleButton(widget.list[11], 11, false)
+                SingleButton(widget.list[8], 8),
+                SingleButton(widget.list[9], 9),
+                SingleButton(widget.list[10], 10),
+                SingleButton(widget.list[11], 11)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SingleButton(widget.list[12], 12, false),
-                SingleButton(widget.list[13], 13, false),
-                SingleButton(widget.list[14], 14, false),
-                SingleButton(widget.list[15], 15, false)
+                SingleButton(widget.list[12], 12),
+                SingleButton(widget.list[13], 13),
+                SingleButton(widget.list[14], 14),
+                SingleButton(widget.list[15], 15)
               ],
             ),
             SizedBox(
               height: 30,
             ),
             Text(
-              'Score: $score',
+              'Score: ${widget.list[0].getScore()}',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -95,9 +97,8 @@ class _Game5State extends State<Game5> {
 }
 
 class SingleButton extends StatefulWidget {
-  SingleButton(this.text, this.index, this.isPressed);
-  IconData text;
-  bool isPressed;
+  SingleButton(this.text, this.index);
+  TilesForGame5 text;
   int index;
 
   @override
@@ -105,42 +106,63 @@ class SingleButton extends StatefulWidget {
 }
 
 class _SingleButtonState extends State<SingleButton> {
+  bool isSelected = false;
+  bool canSelect = true;
   void ConvertIspressed() {
-    setState(() {
-      if (icon == Icons.fire_extinguisher) {
-        icon = widget.text;
-        widget.isPressed = !widget.isPressed;
-      } else if (icon == widget.text) {
-        icon = Icons.fire_extinguisher;
-        widget.isPressed = !widget.isPressed;
-        count++;
-        if (count == 8) {
-          score++;
-          if (score == 10) {
-            score = 0;
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Success(),
-              ),
-            );
-            return;
+    if (canSelect) {
+      setState(() {
+        if (icon == Icons.fire_extinguisher) {
+          print("in if");
+          icon = widget.text.iconToDisplay;
+          widget.text.setIsSelected(true);
+          isSelected = widget.text.getIsSelected();
+          print(isSelected);
+        } else if (icon == widget.text.iconToDisplay) {
+          print("in else");
+          icon = Icons.fire_extinguisher;
+          widget.text.setIsSelected(true);
+          isSelected = widget.text.getIsSelected();
+          print(isSelected);
+          count++;
+          if (count == 8) {
+            widget.text.addScore();
+            if (widget.text.getScore() == 10) {
+              widget.text.resetScore();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Success(),
+                ),
+              );
+              return;
+            }
+            Navigator.pop(context);
           }
-          Navigator.pop(context);
+        } else {
+          setState(() {
+            canSelect = false;
+            isSelected = true;
+          });
+          Future.delayed(Duration(seconds: 1), () {
+            setState(() {
+              canSelect = true;
+              isSelected = false;
+            });
+          });
+          tryy--;
+          if (tryy == 0) {
+            print("attempt ended");
+            //   tryy = 10;
+            //   Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => MySettings(),
+            //     ),
+            //   );
+          }
         }
-      } else {
-        tryy--;
-        if (tryy == 0) {
-          tryy = 10;
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MySettings(),
-            ),
-          );
-        }
-      }
-    });
+      });
+    }
   }
 
   @override
@@ -161,9 +183,9 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           // color: Colors.white,
           child: Center(
-            child: widget.isPressed
+            child: isSelected
                 ? Icon(
-                    widget.text,
+                    widget.text.iconToDisplay,
                     size: 25,
                     color: Color.fromARGB(221, 0, 0, 0),
                   )
