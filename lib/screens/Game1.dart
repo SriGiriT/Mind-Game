@@ -16,11 +16,13 @@ class Game1 extends StatefulWidget {
 }
 
 int count = 1;
+int tryy = 10;
 
 class _Game1State extends State<Game1> {
   @override
   Widget build(BuildContext context) {
     count = 1;
+    tryy = 10;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -37,16 +39,6 @@ class _Game1State extends State<Game1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Icon(Icons.fiber_manual_record,
-                      color: Colors.red, size: 20),
-                ),
-              ],
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -115,10 +107,14 @@ class _SingleButtonState extends State<SingleButton> {
           }
           Navigator.pop(context);
         }
+        widget.text.setIsSelected(!widget.text.getIsSelected());
       } else {
-        Navigator.pushNamed(context, '/settings');
+        tryy--;
+        if (tryy == 0) {
+          Navigator.pushNamed(context, '/wrong');
+        }
+        print(tryy);
       }
-      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 

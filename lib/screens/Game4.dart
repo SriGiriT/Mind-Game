@@ -190,23 +190,12 @@ class SingleButton extends StatefulWidget {
 }
 
 class _SingleButtonState extends State<SingleButton> {
-  void ConvertIspressed() {
-    setState(() {
-      if (widget.text == count) {
-        count++;
-      } else {
-        Navigator.pushNamed(context, '/wrong');
-      }
-      widget.isPressed = !widget.isPressed;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: ConvertIspressed,
+        onTap: () {},
         child: Container(
           width: 50,
           height: 50,

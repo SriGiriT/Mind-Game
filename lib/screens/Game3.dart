@@ -15,6 +15,7 @@ class Game3 extends StatefulWidget {
 }
 
 int count = 1;
+int tryy = 10;
 
 class _Game3State extends State<Game3> {
   @override
@@ -102,7 +103,10 @@ class _SingleButtonState extends State<SingleButton> {
           Navigator.pop(context);
         }
       } else {
-        Navigator.pushNamed(context, '/settings');
+        tryy--;
+        if (tryy == 0) {
+          Navigator.pushNamed(context, '/wrong');
+        }
       }
       count++;
       widget.text.setIsSelected(!widget.text.getIsSelected());

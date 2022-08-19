@@ -112,17 +112,13 @@ class _SingleButtonState extends State<SingleButton> {
     if (canSelect) {
       setState(() {
         if (icon == Icons.fire_extinguisher) {
-          print("in if");
           icon = widget.text.iconToDisplay;
           widget.text.setIsSelected(true);
           isSelected = widget.text.getIsSelected();
-          print(isSelected);
         } else if (icon == widget.text.iconToDisplay) {
-          print("in else");
           icon = Icons.fire_extinguisher;
           widget.text.setIsSelected(true);
           isSelected = widget.text.getIsSelected();
-          print(isSelected);
           count++;
           if (count == 8) {
             widget.text.addScore();
@@ -152,13 +148,8 @@ class _SingleButtonState extends State<SingleButton> {
           tryy--;
           if (tryy == 0) {
             print("attempt ended");
-            //   tryy = 10;
-            //   Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (context) => MySettings(),
-            //     ),
-            //   );
+            tryy = 10;
+            Navigator.pushNamed(context, '/wrong');
           }
         }
       });
