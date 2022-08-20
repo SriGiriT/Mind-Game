@@ -15,12 +15,14 @@ class Game2 extends StatefulWidget {
 
 int score = 0;
 int length = 0;
+int tryy = 10;
 
 class _Game2State extends State<Game2> {
   @override
   Widget build(BuildContext context) {
     length = 0;
     int n = 36;
+    int tryy = 10;
     while (n-- > 0) {
       if (widget.list[n].val == 1) {
         length++;
@@ -112,7 +114,7 @@ class _Game2State extends State<Game2> {
               height: 30,
             ),
             Text(
-              'Score: $score',
+              'Score: ${widget.list[0].getScore()}',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -136,21 +138,27 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   void ConvertIspressed() {
     setState(() {
-      if (widget.text.val == 1) {
-        length--;
-        if (length == 0) {
-          widget.text.addScore();
-          if (widget.text.getScore() == 10) {
-            widget.text.resetScore();
-            Navigator.pushNamed(context, '/success');
-            return;
+      if (!widget.text.getIsSelected()) {
+        if (widget.text.val == 1) {
+          length--;
+          if (length == 0) {
+            widget.text.addScore();
+            if (widget.text.getScore() == 10) {
+              widget.text.resetScore();
+              Navigator.pushNamed(context, '/success');
+              return;
+            }
+            Navigator.pop(context);
           }
-          Navigator.pop(context);
+          widget.text.setIsSelected(!widget.text.getIsSelected());
+        } else {
+          tryy--;
+          if (tryy == 0) {
+            tryy = 10;
+            Navigator.pushNamed(context, '/wrong');
+          }
         }
-      } else {
-        Navigator.pushNamed(context, '/settings');
       }
-      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 
