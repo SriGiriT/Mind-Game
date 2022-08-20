@@ -1,11 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/data/DataOf3.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
-import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game3.dart';
 
 int score = 0;
@@ -28,9 +25,9 @@ class _Game33State extends State<Game33> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Ascending numbers'),
+        title: const Text('Ascending numbers'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -46,13 +43,13 @@ class _Game33State extends State<Game33> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Ascending numbers.',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Remember the location of the number in the table. Then you need to find them in ascending order, starting from 1. Try not to be wrong.',
                       style: TextStyle(fontSize: 14),
                     ),
@@ -87,11 +84,11 @@ class _Game33State extends State<Game33> {
                     SingleButton(list[8])
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 RaisedButton(
-                  child: Text("hide"),
+                  child: const Text("hide"),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -137,11 +134,11 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
             child: widget.text.val <= 4 + widget.text.getScore()
                 ? Text(widget.text.val.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Roboto'))
-                : Text(""),
+                : const Text(""),
           ),
         ),
       ),

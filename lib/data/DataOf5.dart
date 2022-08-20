@@ -1,8 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
-import 'package:memory_matrix/screens/Game2.dart';
 
 List<IconData> list = [
   Icons.ac_unit,

@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
 
 List<TilesForGame3> getPairs() {

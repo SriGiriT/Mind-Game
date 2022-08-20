@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
@@ -27,9 +26,9 @@ class _Game1State extends State<Game1> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory'),
+        title: const Text('Memory'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -66,12 +65,12 @@ class _Game1State extends State<Game1> {
                     SingleButton(widget.list[8])
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
                   'Score: ${widget.list[0].getScore()}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Roboto'),
@@ -139,12 +138,12 @@ class _SingleButtonState extends State<SingleButton> {
               ? Center(
                   child: Text(
                   widget.text.val.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Roboto'),
                 ))
-              : Text(""),
+              : const Text(""),
         ),
       ),
     );

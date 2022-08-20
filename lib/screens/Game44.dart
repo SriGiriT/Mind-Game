@@ -1,10 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
-import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 
 class Game44 extends StatefulWidget {
@@ -20,8 +17,7 @@ class _Game44State extends State<Game44> {
   @override
   Widget build(BuildContext context) {
     count = 1;
-    DataOf4 data = DataOf4();
-    final numbers = Set<int>();
+    final numbers = <int>{};
     while (numbers.length < 3) {
       numbers.add(Random().nextInt(9) + 1);
     }
@@ -35,9 +31,9 @@ class _Game44State extends State<Game44> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory'),
+        title: const Text('Memory'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -53,13 +49,13 @@ class _Game44State extends State<Game44> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Positions Change.',
-                      style: TextStyle(fontSize: 30),
+                      style: const TextStyle(fontSize: 30),
                     ),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Remember the location of all point BEFORE EACH CLICK. Your task is to calculate how many points DIDN\'T change the position and choose the correct answer.',
                       style: TextStyle(fontSize: 14),
                     ),
@@ -93,11 +89,11 @@ class _Game44State extends State<Game44> {
                     SingleButton(list[8], false)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 RaisedButton(
-                  child: Text("hide"),
+                  child: const Text("hide"),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -142,8 +138,9 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
               child: widget.text == 1
-                  ? Icon(Icons.fiber_manual_record, color: Colors.redAccent)
-                  : Text('')),
+                  ? const Icon(Icons.fiber_manual_record,
+                      color: Colors.redAccent)
+                  : const Text('')),
         ),
       ),
     );

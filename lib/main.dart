@@ -7,11 +7,6 @@ import 'package:memory_matrix/screens/Game44.dart';
 import 'package:memory_matrix/screens/Game55.dart';
 import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
-import 'package:memory_matrix/screens/Game1.dart';
-import 'package:memory_matrix/screens/Game2.dart';
-import 'package:memory_matrix/screens/Game3.dart';
-import 'package:memory_matrix/screens/Game4.dart';
-import 'package:memory_matrix/screens/Game5.dart';
 import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Wrong.dart';
 

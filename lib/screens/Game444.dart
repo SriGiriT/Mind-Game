@@ -1,12 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
-import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game4.dart';
-import 'package:memory_matrix/screens/Game444.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -26,7 +21,7 @@ class _Game444State extends State<Game444> {
   Widget build(BuildContext context) {
     count = 1;
     DataOf4 dat = DataOf4();
-    final numbers = Set<int>();
+    final numbers = <int>{};
     while (numbers.length < 3) {
       numbers.add(Random().nextInt(9) + 1);
     }
@@ -41,9 +36,9 @@ class _Game444State extends State<Game444> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory'),
+        title: const Text('Memory'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -77,7 +72,7 @@ class _Game444State extends State<Game444> {
                 SingleButton(list1[8], 8, false)
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -92,7 +87,7 @@ class _Game444State extends State<Game444> {
             Container(
               child: Text(
                 'Score: ${dat.getScore()}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -148,8 +143,8 @@ class _AnswerButtonState extends State<AnswerButton> {
           }
           if (data.getScore() >= 10) {
             data.resetScore();
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Success()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Success()));
           } else {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Game4(list1)));
@@ -172,7 +167,7 @@ class _AnswerButtonState extends State<AnswerButton> {
           child: Center(
             child: Text(
               '${widget.ind}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -222,11 +217,11 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
               child: widget.text == 1
-                  ? Icon(
+                  ? const Icon(
                       Icons.fiber_manual_record,
                       color: Colors.redAccent,
                     )
-                  : Text('')),
+                  : const Text('')),
         ),
       ),
     );

@@ -36,7 +36,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
             });
           },
           onAdFailedToLoad: (ad, error) {}),
-      request: AdRequest(),
+      request: const AdRequest(),
     );
 
     _bannerAd.load().then((value) => setState(() => _isAdLoaded = true));
@@ -71,22 +71,22 @@ class _MyMainScreenState extends State<MyMainScreen> {
                     onTap: () {
                       Navigator.pushNamed(context, '/settings');
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.settings_outlined,
                       size: 30,
                     ),
                   ),
                 ],
               ),
-              Text(
+              const Text(
                 "Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                 "Practice daily or when you can't concentrate and you will see improvement very soon.",
                 style: TextStyle(color: Colors.grey),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Listofgames(1, "Memory.                                         ",
@@ -119,7 +119,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
               width: _bannerAd.size.width.toDouble(),
               child: AdWidget(ad: _bannerAd),
             )
-          : SizedBox(),
+          : const SizedBox(),
     );
   }
 }
@@ -148,24 +148,25 @@ class Listofgames extends StatelessWidget {
               children: [
                 Text(
                   '${ind}.',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Text(
                   "${text}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Text(
                   "${score}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -174,7 +175,7 @@ class Listofgames extends StatelessWidget {
             ),
             Text(
               "${description}",
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
           ],
         ),

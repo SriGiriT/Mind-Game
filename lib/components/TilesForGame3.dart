@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class TilesForGame3 {
   static int score = 0;
   static int totalScore = 0;

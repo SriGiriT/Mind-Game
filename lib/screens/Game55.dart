@@ -1,11 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
-import 'package:memory_matrix/screens/Game1.dart';
-import 'package:memory_matrix/screens/Game2.dart';
 import 'package:memory_matrix/screens/Game5.dart';
 import 'package:memory_matrix/data/DataOf5.dart';
 
@@ -33,9 +29,9 @@ class _Game55State extends State<Game55> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory Matrix'),
+        title: const Text('Memory Matrix'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -51,15 +47,15 @@ class _Game55State extends State<Game55> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Equal Cells.',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Remember the location of the same pictures. The open them in pairs. Try not to be wrong.',
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                   ),
                 ],
@@ -104,11 +100,11 @@ class _Game55State extends State<Game55> {
                     SingleButton(list[15].iconToDisplay)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 RaisedButton(
-                  child: Text("hide"),
+                  child: const Text("hide"),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -153,7 +149,7 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
             child: Icon(widget.text,
-                size: 25, color: Color.fromARGB(221, 0, 0, 0)),
+                size: 25, color: const Color.fromARGB(221, 0, 0, 0)),
           ),
         ),
       ),

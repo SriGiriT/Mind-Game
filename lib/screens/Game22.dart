@@ -1,9 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:memory_matrix/screens/Game1.dart';
 import 'package:memory_matrix/screens/Game2.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/data/DataOf2.dart';
@@ -23,14 +20,13 @@ class _Game12State extends State<Game22> {
     count = 1;
     // assign 0 or 1 to each button
     List<TilesForGame2> list = getPairs();
-    print(list);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory Matrix'),
+        title: const Text('Memory Matrix'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -45,14 +41,16 @@ class _Game12State extends State<Game22> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // ignore: avoid_unnecessary_containers
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Memory Matrix.',
-                      style: TextStyle(fontSize: 30),
+                      style: const TextStyle(fontSize: 30),
                     ),
                   ),
+                  // ignore: avoid_unnecessary_containers
                   Container(
-                    child: Text(
+                    child: const Text(
                       'You will see green squares in front of you, which are arranged in a random order.After pressing the start button, they will disappear, and you need to find them. Try to do it as quickly as possible, but don\' make mistakes.',
                       style: TextStyle(fontSize: 14),
                     ),
@@ -129,11 +127,11 @@ class _Game12State extends State<Game22> {
                     SingleButton(list[35])
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 RaisedButton(
-                  child: Text("hide"),
+                  child: const Text("hide"),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -174,7 +172,7 @@ class _SingleButtonState extends State<SingleButton> {
               widget.text.getIconData() == 1 ? Colors.lightBlue : Colors.white,
         ),
         onPressed: () {},
-        child: Text(""),
+        child: const Text(""),
       ),
     );
   }

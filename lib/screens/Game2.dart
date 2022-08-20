@@ -1,10 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
-import 'package:memory_matrix/screens/Success.dart';
 
 class Game2 extends StatefulWidget {
   Game2(this.list);
@@ -32,9 +28,9 @@ class _Game2State extends State<Game2> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory Matrix'),
+        title: const Text('Memory Matrix'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -110,12 +106,12 @@ class _Game2State extends State<Game2> {
                 SingleButton(widget.list[35])
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text(
               'Score: ${widget.list[0].getScore()}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto',
@@ -176,7 +172,7 @@ class _SingleButtonState extends State<SingleButton> {
           primary: widget.text.getIsSelected() ? Colors.blue : Colors.white,
         ),
         onPressed: ConvertIspressed,
-        child: Text(""),
+        child: const Text(""),
       ),
     );
   }

@@ -1,11 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
-import 'package:memory_matrix/screens/Game55.dart';
-import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game5 extends StatefulWidget {
@@ -30,9 +24,9 @@ class _Game5State extends State<Game5> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory Matrix'),
+        title: const Text('Memory Matrix'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -78,12 +72,12 @@ class _Game5State extends State<Game5> {
                 SingleButton(widget.list[15], 15)
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text(
               'Score: ${widget.list[0].getScore()}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto',
@@ -127,7 +121,7 @@ class _SingleButtonState extends State<SingleButton> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Success(),
+                  builder: (context) => const Success(),
                 ),
               );
               return;
@@ -139,7 +133,7 @@ class _SingleButtonState extends State<SingleButton> {
             canSelect = false;
             isSelected = true;
           });
-          Future.delayed(Duration(seconds: 1), () {
+          Future.delayed(const Duration(seconds: 1), () {
             setState(() {
               canSelect = true;
               isSelected = false;
@@ -178,9 +172,9 @@ class _SingleButtonState extends State<SingleButton> {
                 ? Icon(
                     widget.text.iconToDisplay,
                     size: 25,
-                    color: Color.fromARGB(221, 0, 0, 0),
+                    color: const Color.fromARGB(221, 0, 0, 0),
                   )
-                : Text(""),
+                : const Text(""),
           ),
         ),
       ),

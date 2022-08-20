@@ -1,8 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
 import 'package:memory_matrix/screens/Game1.dart';
@@ -25,9 +23,9 @@ class _Game11State extends State<Game11> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: Text('Memory'),
+        title: const Text('Memory'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/');
             }),
@@ -43,15 +41,15 @@ class _Game11State extends State<Game11> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Memory.',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       'Remember the positions of all numbers and click the Hide button.After that, the number will be shown to you one by one - and you need to open them on the playing field. Try not to be wrong.',
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                   ),
                 ],
@@ -84,11 +82,11 @@ class _Game11State extends State<Game11> {
                     SingleButton(list[8].val)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 RaisedButton(
-                  child: Text("hide"),
+                  child: const Text("hide"),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -134,7 +132,7 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
               child: Text(
             widget.text.toString(),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto'),
