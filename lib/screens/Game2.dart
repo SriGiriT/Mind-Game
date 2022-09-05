@@ -19,6 +19,9 @@ class _Game2State extends State<Game2> {
     length = 0;
     int n = 36;
     int tryy = 10;
+    for (int i = 0; i < widget.list.length; i++) {
+      print(widget.list[i].val);
+    }
     while (n-- > 0) {
       if (widget.list[n].val == 1) {
         length++;

@@ -13,6 +13,7 @@ class MyMainScreen extends StatefulWidget {
 
 class _MyMainScreenState extends State<MyMainScreen> {
   late BannerAd _bannerAd;
+  late RewardedAd _rewardedAd;
 
   bool _isAdLoaded = false;
 
@@ -20,7 +21,38 @@ class _MyMainScreenState extends State<MyMainScreen> {
   void initState() {
     super.initState();
     _initBannerAd();
+    loadRewardedAd();
     _isAdLoaded = true;
+  }
+
+  void loadRewardedAd() {
+    RewardedAd.load(
+        adUnitId: 'ca-app-pub-3940256099942544/5224354917',
+        request: AdRequest(),
+        rewardedAdLoadCallback:
+            RewardedAdLoadCallback(onAdLoaded: (RewardedAd ad) {
+          this._rewardedAd = ad;
+        }, onAdFailedToLoad: (LoadAdError err) {
+          //
+        }));
+  }
+
+  void showRewardedAd() {
+    _rewardedAd.show(onUserEarnedReward: ((ad, reward) {
+      print("Reward Earned in ${reward.amount}");
+    }));
+
+    _rewardedAd.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (RewardedAd ad) {},
+      onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError err) {
+        ad.dispose();
+      },
+      onAdDismissedFullScreenContent: (RewardedAd ad) {
+        ad.dispose();
+      },
+      onAdImpression: (RewardedAd ad) => print("${ad} impression occurred"),
+    );
+    loadRewardedAd();
   }
 
   _initBannerAd() {
@@ -89,6 +121,11 @@ class _MyMainScreenState extends State<MyMainScreen> {
               const SizedBox(
                 height: 20,
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    showRewardedAd();
+                  },
+                  child: Text("kk")),
               Listofgames(1, "Memory.                                         ",
                   () {
                 Navigator.pushNamed(context, '/game11');

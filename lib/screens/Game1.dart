@@ -22,6 +22,9 @@ class _Game1State extends State<Game1> {
   Widget build(BuildContext context) {
     count = 1;
     tryy = 10;
+    for (int i = 0; i < widget.list.length; i++) {
+      print(widget.list[i].val);
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,

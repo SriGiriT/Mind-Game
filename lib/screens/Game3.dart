@@ -17,6 +17,9 @@ class _Game3State extends State<Game3> {
   @override
   Widget build(BuildContext context) {
     count = 1;
+    for (int i = 0; i < widget.list.length; i++) {
+      print(widget.list[i].val);
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
