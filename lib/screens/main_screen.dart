@@ -121,11 +121,6 @@ class _MyMainScreenState extends State<MyMainScreen> {
               const SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    showRewardedAd();
-                  },
-                  child: Text("kk")),
               Listofgames(1, "Memory.                                         ",
                   () {
                 Navigator.pushNamed(context, '/game11');
