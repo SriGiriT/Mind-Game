@@ -5,6 +5,7 @@ import 'package:memory_matrix/screens/Game22.dart';
 import 'package:memory_matrix/screens/Game33.dart';
 import 'package:memory_matrix/screens/Game44.dart';
 import 'package:memory_matrix/screens/Game55.dart';
+import 'package:memory_matrix/screens/Game66.dart';
 import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
         '/game3': (context) => Game33(),
         '/game4': (context) => Game44(),
         '/game5': (context) => Game55(),
+        '/game6': (context) => Game66(),
         '/success': (context) => Success(),
         '/settings': (context) => MySettings(),
         '/wrong': (context) => Wrong(),

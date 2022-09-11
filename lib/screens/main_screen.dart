@@ -4,6 +4,7 @@ import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 
 class MyMainScreen extends StatefulWidget {
@@ -141,6 +142,10 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   () {
                 Navigator.pushNamed(context, '/game5');
               }, "Find the identical cells", TilesForGame5.getTotalScore()),
+              Listofgames(6, "Remember word.                         ",
+                  () {
+                Navigator.pushNamed(context, '/game6');
+              }, "Remember the word!", TilesForGame6.getTotalScore()),
             ],
           ),
         ),
