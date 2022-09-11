@@ -3003,7 +3003,12 @@ class DataOf6 {
     'zone'
   ];
 
-  String getWord(){
+  String getWord() {
     return list[Random().nextInt(list.length)];
+  }
+
+  bool isCorrect(String pre, String inp) {
+    if (pre == inp) return true;
+    return false;
   }
 }
