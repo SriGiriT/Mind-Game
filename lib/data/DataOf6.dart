@@ -3,6 +3,29 @@ import 'dart:math';
 class DataOf6 {
   List<String> list = [
     'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't'
+  ];
+  /*
+  List<String> list = [
+    'a',
     'abandon',
     'ability',
     'able',
@@ -3002,13 +3025,17 @@ class DataOf6 {
     'youth',
     'zone'
   ];
+  */
 
   String getWord() {
     return list[Random().nextInt(list.length)];
   }
 
   bool isCorrect(String pre, String inp) {
-    if (pre == inp) return true;
+    if (pre.trim().toLowerCase() == inp.trim().toLowerCase()) {
+      print(pre+" "+ inp);
+      return true;
+    }
     return false;
   }
 }

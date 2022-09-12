@@ -68,9 +68,7 @@ class _Game66State extends State<Game66> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Game6(
-                                      "hello", inp
-                                    )));
+                                builder: (context) => Game6(word: "hello")));
                       });
                     },
                   )

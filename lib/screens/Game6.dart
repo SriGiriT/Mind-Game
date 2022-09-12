@@ -8,22 +8,22 @@ import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Game6.dart';
 
 class Game6 extends StatefulWidget {
-  Game6(this.word, this.pre_inp);
+  Game6({required this.word});
   String word;
-  String pre_inp;
 
   @override
   State<Game6> createState() => _Game6State();
 }
 
 int count = 1;
+String inp = "";
 
 class _Game6State extends State<Game6> {
   @override
   String word1 = new DataOf6().getWord();
   Widget build(BuildContext context) {
     TilesForGame6 tile = TilesForGame6();
-    String inp = "";
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -45,12 +45,18 @@ class _Game6State extends State<Game6> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(word1),
-                  TextField(
-                    autocorrect: true,
-                    textAlign: TextAlign.center,
-                    onChanged: (newText) {
-                      inp = newText;
-                    },
+                  SizedBox(
+                    height: 40,
+                    width: 150,
+                    child: TextField(
+                      autocorrect: true,
+                      textAlign: TextAlign.center,
+                      onChanged: (newText) {
+                        setState(() {
+                          inp = newText;
+                        });
+                      },
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -58,25 +64,25 @@ class _Game6State extends State<Game6> {
                   RaisedButton(
                     child: const Text("Next"),
                     onPressed: () {
+                      print(inp + " | " + widget.word);
                       if (tile.getScore() > 10) {
+                        tile.resetScore();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Success()));
+                      } else {
+                        bool isCorrect =
+                            new DataOf6().isCorrect(inp, widget.word);
+                        if (isCorrect) {
+                          tile.addScore();
+                          print(tile.getScore());
+                        }
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Game6(word: word1)));
+                        });
                       }
-                      bool isCorrect =
-                          new DataOf6().isCorrect(widget.pre_inp, widget.word);
-                      if (isCorrect) {
-                        tile.addScore();
-                        print(tile.getScore());
-                      Future.delayed(Duration(seconds: 1), (){
-                        print("Executed after 1 seconds");
-                      });
-                      }
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Game6(word1, inp)));
-                      });
                     },
                   )
                 ],
