@@ -11,12 +11,12 @@ class Game66 extends StatefulWidget {
   State<Game66> createState() => _Game66State();
 }
 
-int count = 1;
+String inp = "";
 
 class _Game66State extends State<Game66> {
   @override
+  String word1 = new DataOf6().getWord();
   Widget build(BuildContext context) {
-    String inp = "";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -58,6 +58,10 @@ class _Game66State extends State<Game66> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text(
+                    word1,
+                    style: TextStyle(fontSize: 24),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -68,7 +72,7 @@ class _Game66State extends State<Game66> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Game6(word: "hello")));
+                                builder: (context) => Game6(word: word1)));
                       });
                     },
                   )

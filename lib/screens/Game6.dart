@@ -15,7 +15,6 @@ class Game6 extends StatefulWidget {
   State<Game6> createState() => _Game6State();
 }
 
-int count = 1;
 String inp = "";
 
 class _Game6State extends State<Game6> {
@@ -23,7 +22,6 @@ class _Game6State extends State<Game6> {
   String word1 = new DataOf6().getWord();
   Widget build(BuildContext context) {
     TilesForGame6 tile = TilesForGame6();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white54,
@@ -65,7 +63,7 @@ class _Game6State extends State<Game6> {
                     child: const Text("Next"),
                     onPressed: () {
                       print(inp + " | " + widget.word);
-                      if (tile.getScore() > 10) {
+                      if (tile.getScore() > 9) {
                         tile.resetScore();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Success()));
