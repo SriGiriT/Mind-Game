@@ -68,19 +68,24 @@ class _Game12State extends State<Game22> {
                     SingleButton(list[1]),
                     SingleButton(list[2]),
                     SingleButton(list[3]),
-                    SingleButton(list[4]),
-                    SingleButton(list[5])
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SingleButton(list[4]),
+                    SingleButton(list[5]),
                     SingleButton(list[6]),
                     SingleButton(list[7]),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     SingleButton(list[8]),
                     SingleButton(list[9]),
                     SingleButton(list[10]),
-                    SingleButton(list[11])
+                    SingleButton(list[11]),
                   ],
                 ),
                 Row(
@@ -90,41 +95,6 @@ class _Game12State extends State<Game22> {
                     SingleButton(list[13]),
                     SingleButton(list[14]),
                     SingleButton(list[15]),
-                    SingleButton(list[16]),
-                    SingleButton(list[17])
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[18]),
-                    SingleButton(list[19]),
-                    SingleButton(list[20]),
-                    SingleButton(list[21]),
-                    SingleButton(list[22]),
-                    SingleButton(list[23])
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[24]),
-                    SingleButton(list[25]),
-                    SingleButton(list[26]),
-                    SingleButton(list[27]),
-                    SingleButton(list[28]),
-                    SingleButton(list[29])
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[30]),
-                    SingleButton(list[31]),
-                    SingleButton(list[32]),
-                    SingleButton(list[33]),
-                    SingleButton(list[34]),
-                    SingleButton(list[35])
                   ],
                 ),
                 const SizedBox(

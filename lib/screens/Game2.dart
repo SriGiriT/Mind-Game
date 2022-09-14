@@ -17,7 +17,7 @@ class _Game2State extends State<Game2> {
   @override
   Widget build(BuildContext context) {
     length = 0;
-    int n = 36;
+    int n = 16;
     int tryy = 10;
     for (int i = 0; i < widget.list.length; i++) {
       print(widget.list[i].val);
@@ -50,19 +50,24 @@ class _Game2State extends State<Game2> {
                 SingleButton(widget.list[1]),
                 SingleButton(widget.list[2]),
                 SingleButton(widget.list[3]),
-                SingleButton(widget.list[4]),
-                SingleButton(widget.list[5])
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SingleButton(widget.list[4]),
+                SingleButton(widget.list[5]),
                 SingleButton(widget.list[6]),
                 SingleButton(widget.list[7]),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 SingleButton(widget.list[8]),
                 SingleButton(widget.list[9]),
                 SingleButton(widget.list[10]),
-                SingleButton(widget.list[11])
+                SingleButton(widget.list[11]),
               ],
             ),
             Row(
@@ -72,41 +77,6 @@ class _Game2State extends State<Game2> {
                 SingleButton(widget.list[13]),
                 SingleButton(widget.list[14]),
                 SingleButton(widget.list[15]),
-                SingleButton(widget.list[16]),
-                SingleButton(widget.list[17])
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[18]),
-                SingleButton(widget.list[19]),
-                SingleButton(widget.list[20]),
-                SingleButton(widget.list[21]),
-                SingleButton(widget.list[22]),
-                SingleButton(widget.list[23])
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[24]),
-                SingleButton(widget.list[25]),
-                SingleButton(widget.list[26]),
-                SingleButton(widget.list[27]),
-                SingleButton(widget.list[28]),
-                SingleButton(widget.list[29])
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[30]),
-                SingleButton(widget.list[31]),
-                SingleButton(widget.list[32]),
-                SingleButton(widget.list[33]),
-                SingleButton(widget.list[34]),
-                SingleButton(widget.list[35])
               ],
             ),
             const SizedBox(

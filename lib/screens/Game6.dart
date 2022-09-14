@@ -82,6 +82,17 @@ class _Game6State extends State<Game6> {
                         });
                       }
                     },
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    'Score: ${tile.getScore()}', 
+                    style: const TextStyle(
+                      fontSize: 20, 
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto'
+                    ),
                   )
                 ],
               ),
