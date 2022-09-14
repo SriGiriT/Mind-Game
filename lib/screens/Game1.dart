@@ -96,28 +96,44 @@ class SingleButton extends StatefulWidget {
 }
 
 class _SingleButtonState extends State<SingleButton> {
+  bool isSelected = false;
+  bool canSelect = true;
   void ConvertIspressed() {
-    setState(() {
-      if (widget.text.val == count) {
-        count++;
-        if (count == 10) {
-          widget.text.addScore();
-          if (widget.text.getScore() == 10) {
-            widget.text.resetScore();
-            Navigator.pushNamed(context, '/success');
-            return;
+    if (canSelect) {
+      setState(() {
+        if (widget.text.val == count) {
+          count++;
+          widget.text.setIsSelected(true);
+          isSelected = widget.text.getIsSelected();
+          if (count == 10) {
+            widget.text.addScore();
+            if (widget.text.getScore() == 10) {
+              widget.text.resetScore();
+              Navigator.pushNamed(context, '/success');
+              return;
+            }
+            Navigator.pop(context);
           }
-          Navigator.pop(context);
+          widget.text.setIsSelected(!widget.text.getIsSelected());
+        } else {
+          setState(() {
+            canSelect = false;
+            isSelected = true;
+          });
+          Future.delayed(const Duration(milliseconds: 600), () {
+            setState(() {
+              canSelect = true;
+              isSelected = false;
+            });
+          });
+          tryy--;
+          if (tryy == 0) {
+            Navigator.pushNamed(context, '/wrong');
+          }
+          print(tryy);
         }
-        widget.text.setIsSelected(!widget.text.getIsSelected());
-      } else {
-        tryy--;
-        if (tryy == 0) {
-          Navigator.pushNamed(context, '/wrong');
-        }
-        print(tryy);
-      }
-    });
+      });
+    }
   }
 
   @override
@@ -137,7 +153,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(10),
             color: widget.text.isSelected ? Colors.white : Colors.white70,
           ),
-          child: widget.text.getIsSelected()
+          child: isSelected
               ? Center(
                   child: Text(
                   widget.text.val.toString(),

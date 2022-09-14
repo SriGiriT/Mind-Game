@@ -136,7 +136,7 @@ class _SingleButtonState extends State<SingleButton> {
             canSelect = false;
             isSelected = true;
           });
-          Future.delayed(const Duration(seconds: 1), () {
+          Future.delayed(const Duration(milliseconds: 600), () {
             setState(() {
               canSelect = true;
               isSelected = false;
