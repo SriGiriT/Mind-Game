@@ -30,9 +30,11 @@ class _SuccessState extends State<Success> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('You have successfully completed the game',
-                  style: TextStyle(fontSize: 20)),
-              Text('Your score is: 10', style: TextStyle(fontSize: 20)),
+              Center(
+                child: Text('You have successfully completed the game',
+                    style: TextStyle(fontSize: 20)),
+              ),
+              Text('Your score is: 3', style: TextStyle(fontSize: 20)),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');

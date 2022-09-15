@@ -30,7 +30,7 @@ class _WrongState extends State<Wrong> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('You have failed the game', style: TextStyle(fontSize: 20)),
+              Center(child: Text('You have failed the game', style: TextStyle(fontSize: 20))),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');

@@ -42,7 +42,10 @@ class _Game6State extends State<Game6> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(word1),
+                  Text(
+                    word1,
+                    style: TextStyle(fontSize: 30, fontFamily: "Roboto"),
+                  ),
                   SizedBox(
                     height: 40,
                     width: 150,
@@ -63,7 +66,7 @@ class _Game6State extends State<Game6> {
                     child: const Text("Next"),
                     onPressed: () {
                       print(inp + " | " + widget.word);
-                      if (tile.getScore() > 9) {
+                      if (tile.getScore() > 3) {
                         tile.resetScore();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Success()));
@@ -87,12 +90,11 @@ class _Game6State extends State<Game6> {
                     height: 30,
                   ),
                   Text(
-                    'Score: ${tile.getScore()}', 
+                    'Score: ${tile.getScore()}',
                     style: const TextStyle(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'
-                    ),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto'),
                   )
                 ],
               ),
