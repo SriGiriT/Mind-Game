@@ -105,10 +105,15 @@ class SingleButton extends StatefulWidget {
 }
 
 class _SingleButtonState extends State<SingleButton> {
+  bool isSelected = false;
+  bool canSelect = true;
   void ConvertIspressed() {
-    setState(() {
-      if (!widget.text.getIsSelected()) {
+    if (canSelect) {
+      setState(() {
+        // if (!widget.text.getIsSelected()) {
         if (widget.text.val == 1) {
+          widget.text.setIsSelected(true);
+          isSelected = widget.text.getIsSelected();
           length--;
           if (length == 0) {
             widget.text.addScore();
@@ -121,14 +126,25 @@ class _SingleButtonState extends State<SingleButton> {
           }
           widget.text.setIsSelected(!widget.text.getIsSelected());
         } else {
+          setState(() {
+            canSelect = false;
+            isSelected = true;
+          });
+          Future.delayed(const Duration(milliseconds: 600), () {
+            setState(() {
+              canSelect = true;
+              isSelected = false;
+            });
+          });
           tryy--;
           if (tryy == 0) {
             tryy = 10;
             Navigator.pushNamed(context, '/wrong');
           }
         }
-      }
-    });
+        // }
+      });
+    }
   }
 
   @override
@@ -141,8 +157,8 @@ class _SingleButtonState extends State<SingleButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0),
           ),
-          elevation: widget.text.getIsSelected() ? 4 : 1,
-          primary: widget.text.getIsSelected() ? Colors.blue : Colors.white,
+          elevation: isSelected ? 4 : 1,
+          primary: isSelected ? Colors.blue : Colors.white,
         ),
         onPressed: ConvertIspressed,
         child: const Text(""),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
@@ -15,7 +16,7 @@ class MyMainScreen extends StatefulWidget {
 class _MyMainScreenState extends State<MyMainScreen> {
   late BannerAd _bannerAd;
   late RewardedAd _rewardedAd;
-
+  bool toShow() => Random().nextInt(6) == 1;
   bool _isAdLoaded = false;
 
   @override
@@ -124,26 +125,43 @@ class _MyMainScreenState extends State<MyMainScreen> {
               ),
               Listofgames(1, "Memory.                                         ",
                   () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game11');
               }, "Memorize positions", TilesForGame1.getTotalScore()),
               Listofgames(2, "Memory Matrix.                           ", () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game2');
               }, "Remember and find the right cells",
                   TilesForGame2.getTotalScore()),
               Listofgames(3, "Ascending Numbers.                  ", () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game3');
               }, "Remember and find numbers in ascending order.",
                   TilesForGame3.getTotalScore()),
               Listofgames(4, "Positions change.                        ", () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game4');
               }, "Count the number of points that haven't changed their position.",
                   DataOf4.getTotalScore()),
               Listofgames(5, "Equal cells.                                    ",
                   () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game5');
               }, "Find the identical cells", TilesForGame5.getTotalScore()),
-              Listofgames(6, "Remember word.                         ",
-                  () {
+              Listofgames(6, "Remember word.                         ", () {
+                if (toShow()) {
+                  showRewardedAd();
+                }
                 Navigator.pushNamed(context, '/game6');
               }, "Remember the word!", TilesForGame6.getTotalScore()),
             ],
