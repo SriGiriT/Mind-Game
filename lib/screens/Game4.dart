@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game444.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
@@ -37,7 +38,10 @@ class _Game4State extends State<Game4> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory'),
+        title: Text(
+          'Memory',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -88,10 +92,7 @@ class _Game4State extends State<Game4> {
             Container(
               child: Text(
                 'Score: ${dat.getScore()}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: large_text
               ),
             )
             // RaisedButton(
@@ -166,7 +167,7 @@ class _AnswerButtonState extends State<AnswerButton> {
           child: Center(
             child: Text(
               '${widget.ind}',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: small_text
             ),
           ),
         ),

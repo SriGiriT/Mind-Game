@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/data/DataOf6.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Game6.dart';
 
@@ -26,7 +27,10 @@ class _Game6State extends State<Game6> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Remember the word'),
+        title: Text(
+          'Remember the word',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -44,7 +48,7 @@ class _Game6State extends State<Game6> {
                 children: [
                   Text(
                     word1,
-                    style: TextStyle(fontSize: 30, fontFamily: "Roboto"),
+                    style: large_text
                   ),
                   SizedBox(
                     height: 40,
@@ -63,7 +67,10 @@ class _Game6State extends State<Game6> {
                     height: 20,
                   ),
                   RaisedButton(
-                    child: const Text("Next"),
+                    child: Text(
+                      "Next",
+                      style: small_text
+                    ),
                     onPressed: () {
                       print(inp + " | " + widget.word);
                       if (tile.getScore() > 3) {
@@ -91,10 +98,7 @@ class _Game6State extends State<Game6> {
                   ),
                   Text(
                     'Score: ${tile.getScore()}',
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Roboto'),
+                    style: large_text
                   )
                 ],
               ),

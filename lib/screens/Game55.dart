@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game5.dart';
 import 'package:memory_matrix/data/DataOf5.dart';
 
@@ -29,7 +30,10 @@ class _Game55State extends State<Game55> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory Matrix'),
+        title: Text(
+          'Memory Matrix',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -47,15 +51,15 @@ class _Game55State extends State<Game55> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Equal Cells.',
-                      style: TextStyle(fontSize: 30),
+                      style: large_text
                     ),
                   ),
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Remember the location of the same pictures. The open them in pairs. Try not to be wrong.',
-                      style: const TextStyle(fontSize: 14),
+                      style: small_text
                     ),
                   ),
                 ],
@@ -104,7 +108,10 @@ class _Game55State extends State<Game55> {
                   height: 30,
                 ),
                 RaisedButton(
-                  child: const Text("hide"),
+                  child: Text(
+                    "hide",
+                    style: large_text
+                  ),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,

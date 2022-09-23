@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 
 class Game44 extends StatefulWidget {
@@ -31,7 +32,10 @@ class _Game44State extends State<Game44> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory'),
+        title: Text(
+          'Memory',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -49,15 +53,15 @@ class _Game44State extends State<Game44> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Positions Change.',
-                      style: const TextStyle(fontSize: 30),
+                      style: large_text
                     ),
                   ),
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Remember the location of all point BEFORE EACH CLICK. Your task is to calculate how many points DIDN\'T change the position and choose the correct answer.',
-                      style: TextStyle(fontSize: 14),
+                      style: small_text
                     ),
                   ),
                 ],
@@ -93,7 +97,10 @@ class _Game44State extends State<Game44> {
                   height: 20,
                 ),
                 RaisedButton(
-                  child: const Text("hide"),
+                  child: Text(
+                    "hide",
+                    style: large_text
+                  ),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,

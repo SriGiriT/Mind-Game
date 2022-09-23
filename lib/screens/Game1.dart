@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 class Game1 extends StatefulWidget {
@@ -29,7 +30,7 @@ class _Game1State extends State<Game1> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory'),
+        title: Text('Memory', style: large_text),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -73,10 +74,7 @@ class _Game1State extends State<Game1> {
                 ),
                 Text(
                   'Score: ${widget.list[0].getScore()}',
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'),
+                  style: large_text,
                 ),
               ],
             ),
@@ -155,13 +153,8 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           child: isSelected
               ? Center(
-                  child: Text(
-                  widget.text.val.toString(),
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'),
-                ))
+                  child: Text(widget.text.val.toString(), style: small_text),
+                )
               : const Text(""),
         ),
       ),

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/data/DataOf6.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game6.dart';
 
 class Game66 extends StatefulWidget {
@@ -21,7 +22,10 @@ class _Game66State extends State<Game66> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Remember the word'),
+        title: Text(
+          'Remember the word',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -41,15 +45,15 @@ class _Game66State extends State<Game66> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: const Text(
+                      child: Text(
                         'Remember the word.',
-                        style: TextStyle(fontSize: 30),
+                        style: large_text,
                       ),
                     ),
                     Container(
-                      child: const Text(
+                      child: Text(
                         'Remember the word and type it correctly.',
-                        style: const TextStyle(fontSize: 14),
+                        style: small_text
                       ),
                     ),
                   ],
@@ -60,13 +64,16 @@ class _Game66State extends State<Game66> {
                 children: [
                   Text(
                     word1,
-                    style: TextStyle(fontSize: 24),
+                    style: large_text,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   RaisedButton(
-                    child: const Text("Start"),
+                    child: Text(
+                      "Start",
+                      style: large_text
+                    ),
                     onPressed: () {
                       setState(() {
                         Navigator.push(

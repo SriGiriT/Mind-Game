@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class Wrong extends StatefulWidget {
   const Wrong({Key? key}) : super(key: key);
@@ -23,25 +24,25 @@ class _WrongState extends State<Wrong> {
           },
         ),
         centerTitle: true,
-        title: Text('Wrong'),
+        title: Text('Wrong', style: large_text,),
       ),
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(child: Text('You have failed the game', style: TextStyle(fontSize: 20))),
+              Center(child: Text('You have failed the game', style: small_text)),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
                 },
                 child: Container(
-                  height: 30,
-                  width: 100,
+                  height: 50,
+                  width: 125,
                   child: Row(
                     children: [
                       Icon(Icons.replay),
-                      Text('Play again'),
+                      Text('Play again', style:small_text,),
                     ],
                   ),
                 ),

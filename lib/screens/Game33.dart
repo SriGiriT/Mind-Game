@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/data/DataOf3.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game3.dart';
 
 int score = 0;
@@ -25,7 +26,10 @@ class _Game33State extends State<Game33> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Ascending numbers'),
+        title: Text(
+          'Ascending numbers',
+          style: large_text,
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -43,15 +47,15 @@ class _Game33State extends State<Game33> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Ascending numbers.',
-                      style: TextStyle(fontSize: 30),
+                      style: large_text,
                     ),
                   ),
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Remember the location of the number in the table. Then you need to find them in ascending order, starting from 1. Try not to be wrong.',
-                      style: TextStyle(fontSize: 14),
+                      style: small_text,
                     ),
                   ),
                 ],
@@ -88,7 +92,10 @@ class _Game33State extends State<Game33> {
                   height: 20,
                 ),
                 RaisedButton(
-                  child: const Text("hide"),
+                  child: Text(
+                    "hide",
+                    style: large_text
+                  ),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -134,10 +141,7 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
             child: widget.text.val <= 4 + widget.text.getScore()
                 ? Text(widget.text.val.toString(),
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Roboto'))
+                    style: large_text)
                 : const Text(""),
           ),
         ),

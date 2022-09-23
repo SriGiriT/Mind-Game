@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class Game3 extends StatefulWidget {
   Game3(this.list);
@@ -24,7 +25,10 @@ class _Game3State extends State<Game3> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Ascending Numbers'),
+        title: Text(
+          'Ascending Numbers',
+          style: large_text,
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -65,10 +69,7 @@ class _Game3State extends State<Game3> {
             ),
             Text(
               'Score: ${widget.list[0].getScore()}',
-              style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto'),
+              style: large_text
             ),
           ],
         ),
@@ -132,12 +133,10 @@ class _SingleButtonState extends State<SingleButton> {
           child: widget.text.isSelected
               ? Center(
                   child: Text(
-                  widget.text.val.toString(),
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'),
-                ))
+                    widget.text.val.toString(),
+                    style: small_text
+                  ),
+                )
               : const Text(""),
         ),
       ),

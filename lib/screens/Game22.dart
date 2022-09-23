@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game2.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/data/DataOf2.dart';
@@ -24,7 +25,7 @@ class _Game12State extends State<Game22> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory Matrix'),
+        title: Text('Memory Matrix', style: large_text),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -43,17 +44,13 @@ class _Game12State extends State<Game22> {
                 children: [
                   // ignore: avoid_unnecessary_containers
                   Container(
-                    child: const Text(
-                      'Memory Matrix.',
-                      style: const TextStyle(fontSize: 30),
-                    ),
+                    child: Text('Memory Matrix.', style: large_text),
                   ),
                   // ignore: avoid_unnecessary_containers
                   Container(
-                    child: const Text(
-                      'You will see green squares in front of you, which are arranged in a random order.After pressing the start button, they will disappear, and you need to find them. Try to do it as quickly as possible, but don\' make mistakes.',
-                      style: TextStyle(fontSize: 14),
-                    ),
+                    child: Text(
+                        'You will see green squares in front of you, which are arranged in a random order.After pressing the start button, they will disappear, and you need to find them. Try to do it as quickly as possible, but don\' make mistakes.',
+                        style: small_text),
                   ),
                 ],
               ),
@@ -101,7 +98,10 @@ class _Game12State extends State<Game22> {
                   height: 30,
                 ),
                 RaisedButton(
-                  child: const Text("hide"),
+                  child: Text(
+                    "hide",
+                    style: large_text
+                  ),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,

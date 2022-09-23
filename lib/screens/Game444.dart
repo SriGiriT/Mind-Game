@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
@@ -36,7 +37,10 @@ class _Game444State extends State<Game444> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory'),
+        title: Text(
+          'Memory',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -87,22 +91,9 @@ class _Game444State extends State<Game444> {
             Container(
               child: Text(
                 'Score: ${dat.getScore()}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: large_text
               ),
             )
-            // RaisedButton(
-            //   child: Text("hide"),
-            //   onPressed: () {
-            //     setState(() {
-            //       list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-            //       Navigator.push(context,
-            //           MaterialPageRoute(builder: (context) => Game444(list1)));
-            //     });
-            //   },
-            // )
           ],
         ),
       ),
@@ -167,7 +158,7 @@ class _AnswerButtonState extends State<AnswerButton> {
           child: Center(
             child: Text(
               '${widget.ind}',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: large_text
             ),
           ),
         ),
@@ -227,139 +218,3 @@ class _SingleButtonState extends State<SingleButton> {
     );
   }
 }
-
-// import 'dart:math';
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter/src/foundation/key.dart';
-// import 'package:flutter/src/widgets/framework.dart';
-// import 'package:memory_matrix/screens/Game1.dart';
-// import 'package:memory_matrix/screens/Game4.dart';
-// List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-// class Game444 extends StatefulWidget {
-//   Game444(this.list);
-//   List<int> list;
-
-//   @override
-//   State<Game444> createState() => _Game444State();
-// }
-
-// int count = 1;
-
-// class _Game444State extends State<Game444> {
-//   @override
-//   Widget build(BuildContext context) {
-//     count = 1;
-//     final numbers = Set<int>();
-//     while (numbers.length < 3) {
-//       numbers.add(Random().nextInt(9) + 1);
-//     }
-//     List<int> lis = numbers.toList();
-//     print(lis);
-//     list1[lis[0] - 1] = 1;
-//     list1[lis[1] - 1] = 1;
-//     list1[lis[2] - 1] = 1;
-//     bool isVissible = true;
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.white54,
-//         centerTitle: true,
-//         title: Text('Memory'),
-//       ),
-//       body: SafeArea(
-//         // create matrix of 3 x 3 buttons
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 SingleButton(widget.list[0], 0, false, isVissible),
-//                 SingleButton(widget.list[1], 1, false, isVissible),
-//                 SingleButton(widget.list[2], 2, false, isVissible),
-//               ],
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 SingleButton(widget.list[3], 3, false, isVissible),
-//                 SingleButton(widget.list[4], 4, false, isVissible),
-//                 SingleButton(widget.list[5], 5, false, isVissible),
-//               ],
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 SingleButton(widget.list[6], 6, false, isVissible),
-//                 SingleButton(widget.list[7], 7, false, isVissible),
-//                 SingleButton(widget.list[8], 8, false, isVissible)
-//               ],
-//             ),
-//             SizedBox(
-//               height: 20,
-//             ),
-//             RaisedButton(
-//               child: Text("hide"),
-//               onPressed: () {
-//                 setState(() {
-//                   Navigator.push(context,
-//                       MaterialPageRoute(builder: (context) => Game4(list)));
-//                 });
-//               },
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class SingleButton extends StatefulWidget {
-//   SingleButton(this.text, this.index, this.isPressed, this.isVissible);
-//   int text;
-//   bool isPressed;
-//   int index;
-//   bool isVissible;
-
-//   @override
-//   State<SingleButton> createState() => _SingleButtonState();
-// }
-
-// class _SingleButtonState extends State<SingleButton> {
-//   void ConvertIspressed() {
-//     setState(() {
-//       if (widget.text == count) {
-//         count++;
-//       } else {
-//         Navigator.pushNamed(context, '/wrong');
-//       }
-//       widget.isPressed = !widget.isPressed;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: GestureDetector(
-//         onTap: ConvertIspressed,
-//         child: Container(
-//           width: 50,
-//           height: 50,
-//           decoration: BoxDecoration(
-//             border: Border.all(
-//               color: Colors.black,
-//               width: 2,
-//             ),
-//             borderRadius: BorderRadius.circular(10),
-//           ),
-//           // color: Colors.white,
-//           child: Center(
-//               child: widget.text == 1
-//                   ? Icon(Icons.fiber_manual_record)
-//                   : Text('')),
-//         ),
-//       ),
-//     );
-//   }
-// }

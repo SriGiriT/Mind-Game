@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class MySettings extends StatefulWidget {
   const MySettings({Key? key}) : super(key: key);
@@ -23,11 +24,11 @@ class _MySettingsState extends State<MySettings> {
           },
         ),
         centerTitle: true,
-        title: Text('Settings'),
+        title: Text('Settings', style: large_text,),
       ),
       body: Container(
         child: Center(
-          child: Text(" Settings will come here still in development"),
+          child: Text(" Settings will come here still in development", style: small_text),
         ),
       ),
     );

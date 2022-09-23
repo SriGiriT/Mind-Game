@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class Game2 extends StatefulWidget {
   Game2(this.list);
@@ -31,7 +32,10 @@ class _Game2State extends State<Game2> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory Matrix'),
+        title: Text(
+          'Memory Matrix',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -84,11 +88,7 @@ class _Game2State extends State<Game2> {
             ),
             Text(
               'Score: ${widget.list[0].getScore()}',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto',
-              ),
+              style: large_text
             ),
           ],
         ),

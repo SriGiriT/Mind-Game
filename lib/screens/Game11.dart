@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
+import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game1.dart';
 
 class Game11 extends StatefulWidget {
@@ -23,7 +26,10 @@ class _Game11State extends State<Game11> {
       appBar: AppBar(
         backgroundColor: Colors.white54,
         centerTitle: true,
-        title: const Text('Memory'),
+        title: Text(
+          'Memory',
+          style: large_text
+        ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -41,15 +47,15 @@ class _Game11State extends State<Game11> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Memory.',
-                      style: TextStyle(fontSize: 30),
+                      style: large_text
                     ),
                   ),
                   Container(
-                    child: const Text(
+                    child: Text(
                       'Remember the positions of all numbers and click the Hide button.After that, the number will be shown to you one by one - and you need to open them on the playing field. Try not to be wrong.',
-                      style: const TextStyle(fontSize: 14),
+                      style: small_text
                     ),
                   ),
                 ],
@@ -86,7 +92,10 @@ class _Game11State extends State<Game11> {
                   height: 20,
                 ),
                 RaisedButton(
-                  child: const Text("hide"),
+                  child: Text(
+                    "hide",
+                    style: large_text
+                  ),
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
@@ -132,10 +141,7 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
               child: Text(
             widget.text.toString(),
-            style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto'),
+            style: small_text
           )),
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class MyMainScreen extends StatefulWidget {
   @override
@@ -79,19 +80,6 @@ class _MyMainScreenState extends State<MyMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: const Icon(Icons.settings),
-      //       onPressed: () {
-      //         Navigator.pushNamed(context, '/settings');
-      //       },
-      //     ),
-      //   ],
-      //   centerTitle: true,
-      //   title: Text("Memory Matrix"),
-      //   backgroundColor: Colors.white54,
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -112,53 +100,51 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   ),
                 ],
               ),
-              const Text(
+              Text(
                 "Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: large_text
               ),
-              const Text(
+              Text(
                 "Practice daily or when you can't concentrate and you will see improvement very soon.",
-                style: TextStyle(color: Colors.grey),
+                style: small_text
               ),
               const SizedBox(
                 height: 20,
               ),
-              Listofgames(1, "Memory.                                         ",
-                  () {
+              Listofgames(1, "Memory. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game11');
               }, "Memorize positions", TilesForGame1.getTotalScore()),
-              Listofgames(2, "Memory Matrix.                           ", () {
+              Listofgames(2, "Memory Matrix. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game2');
               }, "Remember and find the right cells",
                   TilesForGame2.getTotalScore()),
-              Listofgames(3, "Ascending Numbers.                  ", () {
+              Listofgames(3, "Ascending Numbers. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game3');
               }, "Remember and find numbers in ascending order.",
                   TilesForGame3.getTotalScore()),
-              Listofgames(4, "Positions change.                        ", () {
+              Listofgames(4, "Positions change. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
               }, "Count the number of points that haven't changed their position.",
                   DataOf4.getTotalScore()),
-              Listofgames(5, "Equal cells.                                    ",
-                  () {
+              Listofgames(5, "Equal cells. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game5');
               }, "Find the identical cells", TilesForGame5.getTotalScore()),
-              Listofgames(6, "Remember word.                         ", () {
+              Listofgames(6, "Remember word. ", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
@@ -201,36 +187,26 @@ class Listofgames extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
               children: [
-                Text(
-                  '${ind}.',
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold),
-                ),
+                Text('${ind}.', style: large_text),
                 const SizedBox(
                   width: 5,
                 ),
                 Text(
                   "${text}",
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: large_text
                 ),
                 const SizedBox(
                   width: 20,
                 ),
                 Text(
                   "${score}",
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: large_text
                 ),
               ],
             ),
             Text(
               "${description}",
-              style: const TextStyle(color: Colors.grey),
+              style: small_text,
             ),
           ],
         ),

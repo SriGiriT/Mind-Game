@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/data/constants.dart';
 
 class Success extends StatefulWidget {
   const Success({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _SuccessState extends State<Success> {
           },
         ),
         centerTitle: true,
-        title: Text('Success'),
+        title: Text('Success', style: large_text),
       ),
       body: SafeArea(
         child: Center(
@@ -32,20 +33,20 @@ class _SuccessState extends State<Success> {
             children: [
               Center(
                 child: Text('You have successfully completed the game',
-                    style: TextStyle(fontSize: 20)),
+                    style: small_text),
               ),
-              Text('Your score is: 3', style: TextStyle(fontSize: 20)),
+              Text('Your score is: 10', style: small_text),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
                 },
                 child: Container(
-                  height: 30,
-                  width: 100,
+                  height: 50,
+                  width: 125,
                   child: Row(
                     children: [
                       Icon(Icons.replay),
-                      Text('Play again'),
+                      Text('Play again', style: small_text,),
                     ],
                   ),
                 ),
