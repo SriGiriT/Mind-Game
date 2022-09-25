@@ -10,12 +10,16 @@ import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Wrong.dart';
+import 'package:memory_matrix/theme/theme_constants.dart';
+import 'package:memory_matrix/theme/theme_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   runApp(const MyApp());
 }
+
+ThemeManager _themeManager = ThemeManager();
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -28,6 +32,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: lightTheme,
+      // darkTheme: darkTheme,
+      // themeMode: _themeManager.themeMode,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

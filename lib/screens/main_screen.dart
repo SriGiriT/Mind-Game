@@ -8,6 +8,9 @@ import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/data/constants.dart';
+import 'package:memory_matrix/theme/theme_manager.dart';
+
+ThemeManager _themeManager = ThemeManager();
 
 class MyMainScreen extends StatefulWidget {
   @override
@@ -15,6 +18,18 @@ class MyMainScreen extends StatefulWidget {
 }
 
 class _MyMainScreenState extends State<MyMainScreen> {
+
+    @override
+  void dispose() {
+    _themeManager.removeListener(themeListener);
+    super.dispose();
+  }
+
+  themeListener() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
   late BannerAd _bannerAd;
   late RewardedAd _rewardedAd;
   bool toShow() => Random().nextInt(6) == 1;
@@ -22,6 +37,8 @@ class _MyMainScreenState extends State<MyMainScreen> {
 
   @override
   void initState() {
+    _themeManager.addListener(themeListener);
+    super.initState();
     super.initState();
     _initBannerAd();
     loadRewardedAd();
@@ -80,34 +97,38 @@ class _MyMainScreenState extends State<MyMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(actions: [
+      //   Switch(
+      //       value: _themeManager.themeMode == ThemeMode.dark,
+      //       onChanged: (newValue) {
+      //         _themeManager.toggleTheme(newValue);
+      //       })
+      // ]),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/settings');
-                    },
-                    child: const Icon(
-                      Icons.settings_outlined,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.end,
+              //   children: [
+              //     GestureDetector(
+              //       onTap: () {
+              //         Navigator.pushNamed(context, '/settings');
+              //       },
+              //       child: const Icon(
+              //         Icons.settings_outlined,
+              //         size: 30,
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Text("Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
+                  style: large_text),
               Text(
-                "Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
-                style: large_text
-              ),
-              Text(
-                "Practice daily or when you can't concentrate and you will see improvement very soon.",
-                style: small_text
-              ),
+                  "Practice daily or when you can't concentrate and you will see improvement very soon.",
+                  style: small_text),
               const SizedBox(
                 height: 20,
               ),
@@ -136,7 +157,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
-              }, "Count the number of points that haven't changed their position.",
+              }, "Count the number of points that haven't",
                   DataOf4.getTotalScore()),
               Listofgames(5, "Equal cells. ", () {
                 if (toShow()) {
@@ -191,17 +212,11 @@ class Listofgames extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                Text(
-                  "${text}",
-                  style: large_text
-                ),
+                Text("${text}", style: large_text),
                 const SizedBox(
                   width: 20,
                 ),
-                Text(
-                  "${score}",
-                  style: large_text
-                ),
+                Text("${score}", style: large_text),
               ],
             ),
             Text(
