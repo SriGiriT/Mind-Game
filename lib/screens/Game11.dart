@@ -24,7 +24,7 @@ class _Game11State extends State<Game11> {
     list.shuffle();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',

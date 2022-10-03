@@ -30,7 +30,7 @@ class _Game44State extends State<Game44> {
     list[lis[2] - 1] = 1;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',

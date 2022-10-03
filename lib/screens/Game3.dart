@@ -23,7 +23,7 @@ class _Game3State extends State<Game3> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Ascending Numbers',

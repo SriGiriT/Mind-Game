@@ -28,6 +28,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF111328),
+        scaffoldBackgroundColor: Color(0xFF0A0E21),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

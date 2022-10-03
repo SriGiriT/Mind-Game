@@ -30,7 +30,7 @@ class _Game2State extends State<Game2> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory Matrix',

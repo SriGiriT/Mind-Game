@@ -24,7 +24,7 @@ class _Game33State extends State<Game33> {
     list.shuffle();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Ascending numbers',

@@ -23,7 +23,7 @@ class _Game12State extends State<Game22> {
     List<TilesForGame2> list = getPairs();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text('Memory Matrix', style: large_text),
         leading: IconButton(

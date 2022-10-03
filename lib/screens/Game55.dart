@@ -28,7 +28,7 @@ class _Game55State extends State<Game55> {
     print(list);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory Matrix',

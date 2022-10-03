@@ -36,7 +36,7 @@ class _Game4State extends State<Game4> {
     bool isVissible = true;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',

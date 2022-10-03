@@ -25,7 +25,7 @@ class _Game6State extends State<Game6> {
     TilesForGame6 tile = TilesForGame6();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Remember the word',
