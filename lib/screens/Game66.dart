@@ -70,6 +70,7 @@ class _Game66State extends State<Game66> {
                     height: 20,
                   ),
                   RaisedButton(
+                    color: button_color,
                     child: Text(
                       "Start",
                       style: large_text

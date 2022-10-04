@@ -102,14 +102,14 @@ class _SingleButtonState extends State<SingleButton> {
           widget.text.addScore();
           Navigator.pop(context);
         }
+      widget.text.setIsSelected(!widget.text.getIsSelected());
+      count++;
       } else {
         tryy--;
         if (tryy == 0) {
           Navigator.pushNamed(context, '/wrong');
         }
       }
-      count++;
-      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 
@@ -123,6 +123,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: widget.text.isSelected ? button_color : Color.fromARGB(255, 0, 0, 0),
             border: Border.all(
               color: Colors.black,
               width: 2,

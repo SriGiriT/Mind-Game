@@ -43,22 +43,25 @@ class _Game11State extends State<Game11> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      'Memory.',
-                      style: large_text
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Memory.',
+                        style: large_text
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      'Remember the positions of all numbers and click the Hide button.After that, the number will be shown to you one by one - and you need to open them on the playing field. Try not to be wrong.',
-                      style: small_text
+                    Container(
+                      child: Text(
+                        'Remember the positions of all numbers and click the Hide button.After that, the number will be shown to you one by one - and you need to open them on the playing field. Try not to be wrong.',
+                        style: small_text
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Column(
@@ -92,6 +95,7 @@ class _Game11State extends State<Game11> {
                   height: 20,
                 ),
                 RaisedButton(
+                  color: button_color,
                   child: Text(
                     "hide",
                     style: large_text
@@ -131,8 +135,9 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: button_color,
             border: Border.all(
-              color: Colors.black,
+              // color: Colors.black,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),

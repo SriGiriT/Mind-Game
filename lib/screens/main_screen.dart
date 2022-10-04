@@ -170,7 +170,7 @@ class Listofgames extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Text(
                       '${text}',
-                      style: small_text,
+                      style: large_text,
                     ),
             ),
           ),

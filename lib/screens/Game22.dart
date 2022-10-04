@@ -98,6 +98,7 @@ class _Game12State extends State<Game22> {
                   height: 30,
                 ),
                 RaisedButton(
+                  color: button_color,
                   child: Text(
                     "hide",
                     style: large_text
@@ -139,7 +140,7 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           elevation: widget.text.getIsSelected() ? 4 : 1,
           primary:
-              widget.text.getIconData() == 1 ? Colors.lightBlue : Colors.white,
+              widget.text.getIconData() == 1 ? button_color : Color.fromARGB(255, 255, 220, 220),
         ),
         onPressed: () {},
         child: const Text(""),

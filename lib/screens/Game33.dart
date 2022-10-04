@@ -92,6 +92,7 @@ class _Game33State extends State<Game33> {
                   height: 20,
                 ),
                 RaisedButton(
+                  color: button_color,
                   child: Text(
                     "hide",
                     style: large_text
@@ -131,6 +132,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: button_color,
             border: Border.all(
               color: Colors.black,
               width: 2,

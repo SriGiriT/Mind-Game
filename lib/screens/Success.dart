@@ -46,7 +46,7 @@ class _SuccessState extends State<Success> {
                   child: Row(
                     children: [
                       Icon(Icons.replay),
-                      Text('Play again', style: small_text,),
+                      Text('Play again', style: large_text,),
                     ],
                   ),
                 ),

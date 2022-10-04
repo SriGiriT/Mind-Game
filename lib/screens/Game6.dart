@@ -48,12 +48,14 @@ class _Game6State extends State<Game6> {
                 children: [
                   Text(
                     word1,
-                    style: large_text
+                    style: large_text.copyWith(color: Color.fromARGB(255, 42, 250, 156))
                   ),
                   SizedBox(
                     height: 40,
                     width: 150,
                     child: TextField(
+                      style: large_text,
+                      cursorColor: Color.fromARGB(255, 42, 250, 156),
                       autocorrect: true,
                       textAlign: TextAlign.center,
                       onChanged: (newText) {
@@ -69,11 +71,11 @@ class _Game6State extends State<Game6> {
                   RaisedButton(
                     child: Text(
                       "Next",
-                      style: small_text
+                      style: large_text
                     ),
                     onPressed: () {
                       print(inp + " | " + widget.word);
-                      if (tile.getScore() > 3) {
+                      if (tile.getScore() > 10) {
                         tile.resetScore();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Success()));
