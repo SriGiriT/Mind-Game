@@ -26,31 +26,34 @@ class _SuccessState extends State<Success> {
         title: Text('Success', style: large_text.copyWith(color: Colors.white)),
       ),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text('You have successfully completed the game',
-                    style: small_text),
-              ),
-              Text('Your score is: 10', style: small_text),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/');
-                },
-                child: Container(
-                  height: 50,
-                  width: 125,
-                  child: Row(
-                    children: [
-                      Icon(Icons.replay),
-                      Text('Play again', style: small_text.copyWith(color: Colors.white),),
-                    ],
+        child: Padding(
+          padding: const EdgeInsets.all(64.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text('You have successfully completed the game',
+                      style: small_text),
+                ),
+                Text('Your score is: 10', style: small_text),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 125,
+                    child: Row(
+                      children: [
+                        Icon(Icons.replay),
+                        Text('Play again', style: small_text.copyWith(color: Colors.white),),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

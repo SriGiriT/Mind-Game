@@ -26,27 +26,30 @@ class _WrongState extends State<Wrong> {
         title: Text('Wrong', style: large_text.copyWith(color: Colors.white),),
       ),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(child: Text('You have failed the game', style: small_text)),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/');
-                },
-                child: Container(
-                  height: 50,
-                  width: 125,
-                  child: Row(
-                    children: [
-                      Icon(Icons.replay,color: Colors.white,),
-                      Text('Play again', style:small_text.copyWith(color: Colors.white),),
-                    ],
+        child: Padding(
+          padding: const EdgeInsets.all(64.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(child: Text('You have failed the game', style: small_text)),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 125,
+                    child: Row(
+                      children: [
+                        Icon(Icons.replay,color: Colors.white,),
+                        Text('Play again', style:small_text.copyWith(color: Colors.white),),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -106,7 +106,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
                 }
                 Navigator.pushNamed(context, '/game2');
               }, TilesForGame2.getTotalScore(), "images/matrix.png"),
-              Listofgames(3, "Memory 2", () {
+              Listofgames(3, "Memory II", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
@@ -117,22 +117,19 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
-              }, DataOf4.getTotalScore(),
-              "images/third.png"),
+              }, DataOf4.getTotalScore(), "images/third.png"),
               Listofgames(5, "Equal cells", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game5');
-              }, TilesForGame5.getTotalScore(),
-              "images/four.png"),
-              Listofgames(6, "Hangman", () {
+              }, TilesForGame5.getTotalScore(), "images/four.png"),
+              Listofgames(6, "Remember", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game6');
-              }, TilesForGame6.getTotalScore(),
-              "images/six.png"),
+              }, TilesForGame6.getTotalScore(), "images/six.png"),
               //   ],
               // )
             ],
@@ -175,9 +172,13 @@ class Listofgames extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(image: AssetImage(img),height: 90, width: 90,),
+              Image(
+                image: AssetImage(img),
+                height: 90,
+                width: 90,
+              ),
               Text(
-                '${text}',
+                '${text} - ${score}',
                 style: large_text.copyWith(color: Colors.black, fontSize: 14),
               ),
             ],

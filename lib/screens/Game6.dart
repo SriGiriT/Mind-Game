@@ -10,7 +10,6 @@ import 'package:memory_matrix/screens/Game6.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-
 class Game6 extends StatefulWidget {
   Game6({required this.word});
   String word;
@@ -29,10 +28,7 @@ class _Game6State extends State<Game6> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'Hangman',
-          style: large_text.copyWith(color: Colors.white)
-        ),
+        title: Text('Hangman', style: large_text.copyWith(color: Colors.white)),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -48,10 +44,7 @@ class _Game6State extends State<Game6> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    word1,
-                    style: large_text
-                  ),
+                  Text(word1, style: large_text),
                   SizedBox(
                     height: 40,
                     width: 150,
@@ -71,39 +64,35 @@ class _Game6State extends State<Game6> {
                   ),
                   RaisedButton(
                     color: Colors.blue,
-                    child: Text(
-                      "Next",
-                      style: large_text.copyWith(color: Colors.white, fontWeight: FontWeight.normal)
-                    ),
+                    child: Text("Next",
+                        style: large_text.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal)),
                     onPressed: () {
                       print(inp + " | " + widget.word);
-                      if (tile.getScore() > 10) {
+                      bool isCorrect =
+                          new DataOf6().isCorrect(inp, widget.word);
+                      if (isCorrect) {
+                        tile.addScore();
+                        print(tile.getScore());
+                      }
+                      setState(() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Game6(word: word1)));
+                      });
+                      if (tile.getScore() == 10) {
                         tile.resetScore();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Success()));
-                      } else {
-                        bool isCorrect =
-                            new DataOf6().isCorrect(inp, widget.word);
-                        if (isCorrect) {
-                          tile.addScore();
-                          print(tile.getScore());
-                        }
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Game6(word: word1)));
-                        });
                       }
                     },
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Text(
-                    'Score: ${tile.getScore()}',
-                    style: large_text
-                  )
+                  Text('Score: ${tile.getScore()}', style: large_text)
                 ],
               ),
             ],

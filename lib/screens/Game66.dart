@@ -22,7 +22,7 @@ class _Game66State extends State<Game66> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Hangman',
+          'Remember',
           style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
@@ -45,13 +45,13 @@ class _Game66State extends State<Game66> {
                   children: [
                     Container(
                       child: Text(
-                        'Hangman.',
+                        'Remember.',
                         style: large_text,
                       ),
                     ),
                     Container(
                       child: Text(
-                        'Guess the word.',
+                        'Remember the word.',
                         style: small_text
                       ),
                     ),
@@ -61,8 +61,8 @@ class _Game66State extends State<Game66> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(
-                    image: AssetImage("images/six.png")
+                  Text(
+                    word1, style: large_text,
                   ),
                   const SizedBox(
                     height: 20,
