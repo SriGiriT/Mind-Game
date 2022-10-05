@@ -24,11 +24,10 @@ class _Game11State extends State<Game11> {
     list.shuffle();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',
-          style: large_text
+          style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -50,13 +49,13 @@ class _Game11State extends State<Game11> {
                   children: [
                     Container(
                       child: Text(
-                        'Memory.',
+                        'Memory',
                         style: large_text
                       ),
                     ),
                     Container(
                       child: Text(
-                        'Remember the positions of all numbers and click the Hide button.After that, the number will be shown to you one by one - and you need to open them on the playing field. Try not to be wrong.',
+                        'Remember the positions of all numbers and click the Hide button.',
                         style: small_text
                       ),
                     ),
@@ -95,10 +94,12 @@ class _Game11State extends State<Game11> {
                   height: 20,
                 ),
                 RaisedButton(
-                  color: button_color,
+                  color: Colors.blue,
                   child: Text(
                     "hide",
-                    style: large_text
+                    style: large_text.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal)
                   ),
                   onPressed: () {
                     setState(() {

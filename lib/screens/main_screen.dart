@@ -81,8 +81,9 @@ class _MyMainScreenState extends State<MyMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
-        title: Center(child: Text("Exercise", style: large_text)),
+        title: Center(
+            child: Text("Exercise",
+                style: large_text.copyWith(color: Colors.white))),
       ),
       body: SafeArea(
         child: Padding(
@@ -98,37 +99,40 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game11');
-              }, TilesForGame1.getTotalScore()),
+              }, TilesForGame1.getTotalScore(), Icons.wordpress),
               Listofgames(2, "Memory Matrix", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game2');
-              }, TilesForGame2.getTotalScore()),
+              }, TilesForGame2.getTotalScore(),Icons.wordpress),
               Listofgames(3, "Memory 2", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game3');
-              }, TilesForGame3.getTotalScore()),
+              }, TilesForGame3.getTotalScore(),Icons.wordpress),
               Listofgames(4, "Position change", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
-              }, DataOf4.getTotalScore()),
+              }, DataOf4.getTotalScore(),
+              Icons.wordpress),
               Listofgames(5, "Equal cells", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game5');
-              }, TilesForGame5.getTotalScore()),
+              }, TilesForGame5.getTotalScore(),
+              Icons.wordpress),
               Listofgames(6, "Remember word", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game6');
-              }, TilesForGame6.getTotalScore()),
+              }, TilesForGame6.getTotalScore(),
+              Icons.wordpress),
               //   ],
               // )
             ],
@@ -147,11 +151,12 @@ class _MyMainScreenState extends State<MyMainScreen> {
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.ind, this.text, this.pressed, this.score);
+  Listofgames(this.ind, this.text, this.pressed, this.score, this.icon);
   String text;
   int ind;
   void Function()? pressed;
   int score;
+  IconData icon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -160,22 +165,29 @@ class Listofgames extends StatelessWidget {
         onTap: pressed,
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFF1D1E33),
-            borderRadius: BorderRadius.circular(10.0)
-          ),
+              color: Color.fromARGB(255, 79, 166, 243),
+              border: Border.all(
+                color: Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(10.0)),
           height: 20,
           width: 20,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                      '${text}',
-                      style: large_text,
-                    ),
-            ),
-          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 90,
+                color: Colors.white,
+              ),
+              Text(
+                '${text}',
+                style: large_text.copyWith(color: Colors.black, fontSize: 14),
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 }

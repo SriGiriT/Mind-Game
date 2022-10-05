@@ -30,7 +30,6 @@ class _Game44State extends State<Game44> {
     list[lis[2] - 1] = 1;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',
@@ -49,22 +48,25 @@ class _Game44State extends State<Game44> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      'Positions Change.',
-                      style: large_text
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Positions Change.',
+                        style: large_text
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      'Remember the location of all point BEFORE EACH CLICK. Your task is to calculate how many points DIDN\'T change the position and choose the correct answer.',
-                      style: small_text
+                    Container(
+                      child: Text(
+                        'Remember the location of all point BEFORE EACH CLICK. Your task is to calculate how many points DIDN\'T change the position.',
+                        style: small_text
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Column(
@@ -97,10 +99,10 @@ class _Game44State extends State<Game44> {
                   height: 20,
                 ),
                 RaisedButton(
-                  color: button_color,
+                  color: Colors.blue,
                   child: Text(
                     "hide",
-                    style: large_text
+                    style: large_text.copyWith(color: Colors.white, fontWeight: FontWeight.normal)
                   ),
                   onPressed: () {
                     setState(() {
@@ -147,8 +149,7 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
               child: widget.text == 1
-                  ? const Icon(Icons.fiber_manual_record,
-                      color: Color.fromARGB(255, 82, 255, 177))
+                  ? const Icon(Icons.fiber_manual_record, color: Colors.redAccent,)
                   : const Text('')),
         ),
       ),

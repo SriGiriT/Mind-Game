@@ -3,7 +3,8 @@ class TilesForGame2 {
   static int totalScore = 0;
   bool isSelected;
   int val;
-  TilesForGame2(this.isSelected, this.val);
+  bool alreadySelected;
+  TilesForGame2(this.isSelected, this.val, this.alreadySelected);
 
   void setIconData(int va) {
     val = va;
@@ -39,5 +40,13 @@ class TilesForGame2 {
 
   static int getTotalScore() {
     return totalScore;
+  }
+
+  bool getAlreadySelected() {
+    return alreadySelected;
+  }
+
+  void setAlreadySelected() {
+    alreadySelected = true;
   }
 }

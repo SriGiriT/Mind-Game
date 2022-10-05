@@ -23,9 +23,8 @@ class _Game12State extends State<Game22> {
     List<TilesForGame2> list = getPairs();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
-        title: Text('Memory Matrix', style: large_text),
+        title: Text('Memory Matrix', style: large_text.copyWith(color: Colors.white)),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -49,7 +48,7 @@ class _Game12State extends State<Game22> {
                   // ignore: avoid_unnecessary_containers
                   Container(
                     child: Text(
-                        'You will see green squares in front of you, which are arranged in a random order.After pressing the start button, they will disappear, and you need to find them. Try to do it as quickly as possible, but don\' make mistakes.',
+                        'You will see green squares in front of you, which are arranged in a random order.',
                         style: small_text),
                   ),
                 ],
@@ -98,10 +97,13 @@ class _Game12State extends State<Game22> {
                   height: 30,
                 ),
                 RaisedButton(
-                  color: button_color,
+                  color: Colors.blue,
                   child: Text(
                     "hide",
-                    style: large_text
+                    style: large_text.copyWith(
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white
+                    )
                   ),
                   onPressed: () {
                     setState(() {
@@ -140,7 +142,7 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           elevation: widget.text.getIsSelected() ? 4 : 1,
           primary:
-              widget.text.getIconData() == 1 ? Color.fromARGB(255, 42, 250, 156) : button_color,
+              widget.text.getIconData() == 1 ? Colors.blue : button_color,
         ),
         onPressed: () {},
         child: const Text(""),

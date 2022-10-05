@@ -4,13 +4,13 @@ TextStyle small_text = TextStyle(
     fontSize: 20,
     fontFamily: "Roboto",
     fontWeight: FontWeight.normal,
-    color: Color.fromARGB(255, 42, 250, 156));
+    color: Colors.black);
 
 TextStyle large_text = TextStyle(
     fontSize: 24,
     fontFamily: "Roboto",
     fontWeight: FontWeight.bold,
-    color: Color.fromARGB(255, 42, 250, 156));
+    color: Colors.black);
 
-Color button_color = Colors.blue;
+Color button_color = Colors.white;
 Color box_color = Colors.white;

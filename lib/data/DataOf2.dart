@@ -6,7 +6,7 @@ List<TilesForGame2> getPairs() {
   List<int> list = List<int>.generate(16, (i) => Random().nextInt(2));
   int i = 0;
   while (i < 16) {
-    TilesForGame2 temp = new TilesForGame2(false, list[i++]);
+    TilesForGame2 temp = new TilesForGame2(false, list[i++], false);
     pairs.add(temp);
   }
   return pairs;

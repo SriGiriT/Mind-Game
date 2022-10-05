@@ -80,9 +80,21 @@ flutter:
         - asset: fonts/Pacifico-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    # - family: AlumniSansInlineOne-Regular
+    # - family: MyFlutterApp1
     #   fonts:
-    #     - asset: fonts/AlumniSansInlineOne-Regular.ttf
+    #     - asset: fonts/MyFlutterApp1.ttf
+    # - family: MyFlutterApp2
+    #   fonts:
+    #     - asset: fonts/MyFlutterApp2.ttf
+    # - family: MyFlutterApp3
+    #   fonts:
+    #     - asset: fonts/MyFlutterApp3.ttf
+    # - family: MyFlutterApp4
+    #   fonts:
+    #     - asset: fonts/MyFlutterApp4.ttf
+    # - family: MyFlutterApp1
+    #   fonts:
+    #     - asset: fonts/MyFlutterApp1.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

@@ -20,11 +20,10 @@ class _Game66State extends State<Game66> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Remember the word',
-          style: large_text
+          style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -40,7 +39,7 @@ class _Game66State extends State<Game66> {
             children: [
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -70,10 +69,10 @@ class _Game66State extends State<Game66> {
                     height: 20,
                   ),
                   RaisedButton(
-                    color: button_color,
+                    color: Colors.blue,
                     child: Text(
                       "Start",
-                      style: large_text
+                      style: large_text.copyWith(fontWeight: FontWeight.normal, color: Colors.white)
                     ),
                     onPressed: () {
                       setState(() {

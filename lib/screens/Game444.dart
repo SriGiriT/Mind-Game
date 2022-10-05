@@ -35,11 +35,10 @@ class _Game444State extends State<Game444> {
     bool isVissible = true;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',
-          style: large_text
+          style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -212,7 +211,7 @@ class _SingleButtonState extends State<SingleButton> {
               child: widget.text == 1
                   ? const Icon(
                       Icons.fiber_manual_record,
-                      color: Color.fromARGB(255, 42, 250, 156),
+                      color: Colors.redAccent,
                     )
                   : const Text('')),
         ),

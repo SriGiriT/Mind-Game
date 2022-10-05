@@ -25,11 +25,10 @@ class _Game6State extends State<Game6> {
     TilesForGame6 tile = TilesForGame6();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Remember the word',
-          style: large_text
+          style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -55,7 +54,6 @@ class _Game6State extends State<Game6> {
                     width: 150,
                     child: TextField(
                       style: large_text,
-                      cursorColor: Color.fromARGB(255, 42, 250, 156),
                       autocorrect: true,
                       textAlign: TextAlign.center,
                       onChanged: (newText) {
@@ -69,9 +67,10 @@ class _Game6State extends State<Game6> {
                     height: 20,
                   ),
                   RaisedButton(
+                    color: Colors.blue,
                     child: Text(
                       "Next",
-                      style: large_text
+                      style: large_text.copyWith(color: Colors.white, fontWeight: FontWeight.normal)
                     ),
                     onPressed: () {
                       print(inp + " | " + widget.word);

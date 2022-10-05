@@ -23,11 +23,10 @@ class _Game3State extends State<Game3> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Ascending Numbers',
-          style: large_text,
+          style: large_text.copyWith(color: Colors.white),
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -67,10 +66,7 @@ class _Game3State extends State<Game3> {
             const SizedBox(
               height: 20,
             ),
-            Text(
-              'Score: ${widget.list[0].getScore()}',
-              style: large_text
-            ),
+            Text('Score: ${widget.list[0].getScore()}', style: large_text),
           ],
         ),
       ),
@@ -87,30 +83,45 @@ class SingleButton extends StatefulWidget {
 }
 
 class _SingleButtonState extends State<SingleButton> {
+  bool isSelected = false;
+  bool canSelect = true;
   void ConvertIspressed() {
-    setState(() {
-      if (widget.text.val == count) {
-        print(count);
-        print(widget.text.val);
-        if (widget.text.getScore() == 7) {
-          widget.text.resetScore();
-          count = 0;
-          Navigator.pushNamed(context, '/success');
-          return;
+    if (canSelect) {
+      setState(() {
+        if (widget.text.val == count) {
+          print(count);
+          print(widget.text.val);
+          widget.text.setIsSelected(true);
+          isSelected = widget.text.getIsSelected();
+          if (count == widget.text.getScore() + 3 || count == 9) {
+            widget.text.addScore();
+            Navigator.pop(context);
+          }
+          if (widget.text.getScore() == 10) {
+            widget.text.resetScore();
+            count = 0;
+            Navigator.pushNamed(context, '/success');
+            return;
+          }
+          count++;
+        } else {
+          setState(() {
+            canSelect = false;
+            isSelected = true;
+          });
+          Future.delayed(const Duration(milliseconds: 600), () {
+            setState(() {
+              canSelect = true;
+              isSelected = false;
+            });
+          });
+          tryy--;
+          if (tryy == 0) {
+            Navigator.pushNamed(context, '/wrong');
+          }
         }
-        if (count == widget.text.getScore() + 3) {
-          widget.text.addScore();
-          Navigator.pop(context);
-        }
-      widget.text.setIsSelected(!widget.text.getIsSelected());
-      count++;
-      } else {
-        tryy--;
-        if (tryy == 0) {
-          Navigator.pushNamed(context, '/wrong');
-        }
-      }
-    });
+      });
+    }
   }
 
   @override
@@ -131,12 +142,9 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(10),
           ),
           // color: Colors.white,
-          child: widget.text.isSelected
+          child: isSelected
               ? Center(
-                  child: Text(
-                    widget.text.val.toString(),
-                    style: large_text
-                  ),
+                  child: Text(widget.text.val.toString(), style: large_text),
                 )
               : const Text(""),
         ),

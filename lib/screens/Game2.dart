@@ -32,10 +32,7 @@ class _Game2State extends State<Game2> {
       appBar: AppBar(
         backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
-        title: Text(
-          'Memory Matrix',
-          style: large_text
-        ),
+        title: Text('Memory Matrix', style: large_text),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -86,10 +83,7 @@ class _Game2State extends State<Game2> {
             const SizedBox(
               height: 30,
             ),
-            Text(
-              'Score: ${widget.list[0].getScore()}',
-              style: large_text
-            ),
+            Text('Score: ${widget.list[0].getScore()}', style: large_text),
           ],
         ),
       ),
@@ -114,7 +108,10 @@ class _SingleButtonState extends State<SingleButton> {
         if (widget.text.val == 1) {
           widget.text.setIsSelected(true);
           isSelected = widget.text.getIsSelected();
-          length--;
+          if (!widget.text.getAlreadySelected()) {
+            widget.text.setAlreadySelected();
+            length--;
+          }
           if (length == 0) {
             widget.text.addScore();
             if (widget.text.getScore() == 10) {
@@ -158,7 +155,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(0),
           ),
           elevation: isSelected ? 4 : 1,
-          primary: isSelected ? Color.fromARGB(255, 42, 250, 156): button_color,
+          primary: isSelected ? Colors.blue : Colors.white,
         ),
         onPressed: ConvertIspressed,
         child: const Text(""),

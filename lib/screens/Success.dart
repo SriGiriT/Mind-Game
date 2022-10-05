@@ -15,7 +15,6 @@ class _SuccessState extends State<Success> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20,
@@ -24,7 +23,7 @@ class _SuccessState extends State<Success> {
           },
         ),
         centerTitle: true,
-        title: Text('Success', style: large_text),
+        title: Text('Success', style: large_text.copyWith(color: Colors.white)),
       ),
       body: SafeArea(
         child: Center(
@@ -46,7 +45,7 @@ class _SuccessState extends State<Success> {
                   child: Row(
                     children: [
                       Icon(Icons.replay),
-                      Text('Play again', style: small_text,),
+                      Text('Play again', style: small_text.copyWith(color: Colors.white),),
                     ],
                   ),
                 ),

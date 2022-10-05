@@ -28,9 +28,8 @@ class _Game1State extends State<Game1> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
-        title: Text('Memory', style: large_text),
+        title: Text('Memory', style: large_text.copyWith(color: Colors.white)),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {

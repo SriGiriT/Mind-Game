@@ -15,7 +15,6 @@ class _WrongState extends State<Wrong> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20,
@@ -24,7 +23,7 @@ class _WrongState extends State<Wrong> {
           },
         ),
         centerTitle: true,
-        title: Text('Wrong', style: large_text,),
+        title: Text('Wrong', style: large_text.copyWith(color: Colors.white),),
       ),
       body: SafeArea(
         child: Center(
@@ -41,8 +40,8 @@ class _WrongState extends State<Wrong> {
                   width: 125,
                   child: Row(
                     children: [
-                      Icon(Icons.replay),
-                      Text('Play again', style:small_text,),
+                      Icon(Icons.replay,color: Colors.white,),
+                      Text('Play again', style:small_text.copyWith(color: Colors.white),),
                     ],
                   ),
                 ),

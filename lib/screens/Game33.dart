@@ -24,11 +24,10 @@ class _Game33State extends State<Game33> {
     list.shuffle();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
-          'Ascending numbers',
-          style: large_text,
+          'Ascending Numbers',
+          style: large_text.copyWith(color: Colors.white),
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -43,22 +42,25 @@ class _Game33State extends State<Game33> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      'Ascending numbers.',
-                      style: large_text,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Ascending numbers.',
+                        style: large_text,
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      'Remember the location of the number in the table. Then you need to find them in ascending order, starting from 1. Try not to be wrong.',
-                      style: small_text,
+                    Container(
+                      child: Text(
+                        'Remember the location of the number in the table.',
+                        style: small_text,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Column(
@@ -92,10 +94,11 @@ class _Game33State extends State<Game33> {
                   height: 20,
                 ),
                 RaisedButton(
-                  color: button_color,
+                  color: Colors.blue,
                   child: Text(
                     "hide",
-                    style: large_text
+                    style: large_text.copyWith(color: Colors.white, 
+                    fontWeight: FontWeight.normal)
                   ),
                   onPressed: () {
                     setState(() {

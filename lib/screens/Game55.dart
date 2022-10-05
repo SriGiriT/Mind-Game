@@ -28,11 +28,10 @@ class _Game55State extends State<Game55> {
     print(list);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory Matrix',
-          style: large_text
+          style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -46,7 +45,7 @@ class _Game55State extends State<Game55> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -108,10 +107,11 @@ class _Game55State extends State<Game55> {
                   height: 30,
                 ),
                 RaisedButton(
-                  color: button_color,
+                  color: Colors.blue,
                   child: Text(
                     "hide",
-                    style: large_text
+                    style: large_text.copyWith(color: Colors.white, 
+                    fontWeight: FontWeight.normal)
                   ),
                   onPressed: () {
                     setState(() {
@@ -158,7 +158,7 @@ class _SingleButtonState extends State<SingleButton> {
           // color: Colors.white,
           child: Center(
             child: Icon(widget.text,
-                size: 25, color: Color.fromARGB(255, 42, 250, 156)),
+                size: 25, ),
           ),
         ),
       ),
