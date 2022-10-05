@@ -158,7 +158,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(0),
           ),
           elevation: isSelected ? 4 : 1,
-          primary: isSelected ? button_color : Colors.white,
+          primary: isSelected ? Color.fromARGB(255, 42, 250, 156): button_color,
         ),
         onPressed: ConvertIspressed,
         child: const Text(""),

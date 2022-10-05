@@ -140,7 +140,7 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           elevation: widget.text.getIsSelected() ? 4 : 1,
           primary:
-              widget.text.getIconData() == 1 ? button_color : Color.fromARGB(255, 255, 220, 220),
+              widget.text.getIconData() == 1 ? Color.fromARGB(255, 42, 250, 156) : button_color,
         ),
         onPressed: () {},
         child: const Text(""),

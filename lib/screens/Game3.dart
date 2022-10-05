@@ -123,7 +123,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: widget.text.isSelected ? button_color : Color.fromARGB(255, 0, 0, 0),
+            color: button_color,
             border: Border.all(
               color: Colors.black,
               width: 2,
@@ -135,7 +135,7 @@ class _SingleButtonState extends State<SingleButton> {
               ? Center(
                   child: Text(
                     widget.text.val.toString(),
-                    style: small_text
+                    style: large_text
                   ),
                 )
               : const Text(""),

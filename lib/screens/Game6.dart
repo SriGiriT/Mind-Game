@@ -48,7 +48,7 @@ class _Game6State extends State<Game6> {
                 children: [
                   Text(
                     word1,
-                    style: large_text.copyWith(color: Color.fromARGB(255, 42, 250, 156))
+                    style: large_text
                   ),
                   SizedBox(
                     height: 40,

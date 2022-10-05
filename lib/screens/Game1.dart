@@ -153,7 +153,7 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           child: isSelected
               ? Center(
-                  child: Text(widget.text.val.toString(), style: small_text),
+                  child: Text(widget.text.val.toString(), style: large_text),
                 )
               : const Text(""),
         ),

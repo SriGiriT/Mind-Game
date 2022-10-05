@@ -146,7 +146,7 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
               child: Text(
             widget.text.toString(),
-            style: small_text
+            style: large_text
           )),
         ),
       ),
