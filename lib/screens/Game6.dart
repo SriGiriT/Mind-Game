@@ -7,6 +7,9 @@ import 'package:memory_matrix/data/DataOf6.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Game6.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
+
 
 class Game6 extends StatefulWidget {
   Game6({required this.word});
@@ -27,7 +30,7 @@ class _Game6State extends State<Game6> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Remember the word',
+          'Hangman',
           style: large_text.copyWith(color: Colors.white)
         ),
         leading: IconButton(

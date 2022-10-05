@@ -99,40 +99,40 @@ class _MyMainScreenState extends State<MyMainScreen> {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game11');
-              }, TilesForGame1.getTotalScore(), Icons.wordpress),
+              }, TilesForGame1.getTotalScore(), "images/first.png"),
               Listofgames(2, "Memory Matrix", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game2');
-              }, TilesForGame2.getTotalScore(),Icons.wordpress),
+              }, TilesForGame2.getTotalScore(), "images/matrix.png"),
               Listofgames(3, "Memory 2", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game3');
-              }, TilesForGame3.getTotalScore(),Icons.wordpress),
+              }, TilesForGame3.getTotalScore(), "images/second.png"),
               Listofgames(4, "Position change", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
               }, DataOf4.getTotalScore(),
-              Icons.wordpress),
+              "images/third.png"),
               Listofgames(5, "Equal cells", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game5');
               }, TilesForGame5.getTotalScore(),
-              Icons.wordpress),
-              Listofgames(6, "Remember word", () {
+              "images/four.png"),
+              Listofgames(6, "Hangman", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game6');
               }, TilesForGame6.getTotalScore(),
-              Icons.wordpress),
+              "images/six.png"),
               //   ],
               // )
             ],
@@ -151,12 +151,12 @@ class _MyMainScreenState extends State<MyMainScreen> {
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.ind, this.text, this.pressed, this.score, this.icon);
+  Listofgames(this.ind, this.text, this.pressed, this.score, this.img);
   String text;
   int ind;
   void Function()? pressed;
   int score;
-  IconData icon;
+  String img;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -175,11 +175,7 @@ class Listofgames extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                size: 90,
-                color: Colors.white,
-              ),
+              Image(image: AssetImage(img),height: 90, width: 90,),
               Text(
                 '${text}',
                 style: large_text.copyWith(color: Colors.black, fontSize: 14),
