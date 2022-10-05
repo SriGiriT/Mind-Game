@@ -23,7 +23,7 @@ class _Game3State extends State<Game3> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Ascending Numbers',
@@ -102,14 +102,14 @@ class _SingleButtonState extends State<SingleButton> {
           widget.text.addScore();
           Navigator.pop(context);
         }
+      widget.text.setIsSelected(!widget.text.getIsSelected());
+      count++;
       } else {
         tryy--;
         if (tryy == 0) {
           Navigator.pushNamed(context, '/wrong');
         }
       }
-      count++;
-      widget.text.setIsSelected(!widget.text.getIsSelected());
     });
   }
 
@@ -123,6 +123,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: button_color,
             border: Border.all(
               color: Colors.black,
               width: 2,
@@ -134,7 +135,7 @@ class _SingleButtonState extends State<SingleButton> {
               ? Center(
                   child: Text(
                     widget.text.val.toString(),
-                    style: small_text
+                    style: large_text
                   ),
                 )
               : const Text(""),

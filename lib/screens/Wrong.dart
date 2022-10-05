@@ -15,7 +15,7 @@ class _WrongState extends State<Wrong> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20,

@@ -80,137 +80,102 @@ class _MyMainScreenState extends State<MyMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF0A0E21),
+        title: Center(child: Text("Exercise", style: large_text)),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: GridView(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            padding: const EdgeInsets.all(8),
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/settings');
-                    },
-                    child: const Icon(
-                      Icons.settings_outlined,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                "Exercises.", // 6 no  8 yes 9 no 16 yes 23 yes.  nos 6 9.
-                style: large_text
-              ),
-              Text(
-                "Practice daily or when you can't concentrate and you will see improvement very soon.",
-                style: small_text
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Listofgames(1, "Memory. ", () {
+              Listofgames(1, "Memory", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game11');
-              }, "Memorize positions", TilesForGame1.getTotalScore()),
-              Listofgames(2, "Memory Matrix. ", () {
+              }, TilesForGame1.getTotalScore()),
+              Listofgames(2, "Memory Matrix", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game2');
-              }, "Remember and find the right cells",
-                  TilesForGame2.getTotalScore()),
-              Listofgames(3, "Ascending Numbers. ", () {
+              }, TilesForGame2.getTotalScore()),
+              Listofgames(3, "Memory 2", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game3');
-              }, "Remember and find numbers in ascending order.",
-                  TilesForGame3.getTotalScore()),
-              Listofgames(4, "Positions change. ", () {
+              }, TilesForGame3.getTotalScore()),
+              Listofgames(4, "Position change", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game4');
-              }, "Count the number of points that haven't changed their position.",
-                  DataOf4.getTotalScore()),
-              Listofgames(5, "Equal cells. ", () {
+              }, DataOf4.getTotalScore()),
+              Listofgames(5, "Equal cells", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game5');
-              }, "Find the identical cells", TilesForGame5.getTotalScore()),
-              Listofgames(6, "Remember word. ", () {
+              }, TilesForGame5.getTotalScore()),
+              Listofgames(6, "Remember word", () {
                 if (toShow()) {
                   showRewardedAd();
                 }
                 Navigator.pushNamed(context, '/game6');
-              }, "Remember the word!", TilesForGame6.getTotalScore()),
+              }, TilesForGame6.getTotalScore()),
+              //   ],
+              // )
             ],
           ),
         ),
       ),
-      bottomNavigationBar: _isAdLoaded
-          ? Container(
-              height: _bannerAd.size.height.toDouble(),
-              width: _bannerAd.size.width.toDouble(),
-              child: AdWidget(ad: _bannerAd),
-            )
-          : const SizedBox(),
+      // bottomNavigationBar: _isAdLoaded
+      //     ? Container(
+      //         height: _bannerAd.size.height.toDouble(),
+      //         width: _bannerAd.size.width.toDouble(),
+      //         child: AdWidget(ad: _bannerAd),
+      //       )
+      //     : const SizedBox(),
     );
   }
 }
 
 class Listofgames extends StatelessWidget {
-  Listofgames(this.ind, this.text, this.pressed, this.description, this.score);
+  Listofgames(this.ind, this.text, this.pressed, this.score);
   String text;
-  String description;
   int ind;
   void Function()? pressed;
   int score;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: pressed,
-      child: Container(
-        color: Colors.white70,
-        height: 100,
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: [
-                Text('${ind}.', style: large_text),
-                const SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  "${text}",
-                  style: large_text
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  "${score}",
-                  style: large_text
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: pressed,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xFF1D1E33),
+            borderRadius: BorderRadius.circular(10.0)
+          ),
+          height: 20,
+          width: 20,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                      '${text}',
+                      style: large_text,
+                    ),
             ),
-            Text(
-              "${description}",
-              style: small_text,
-            ),
-          ],
+          ),
+          ),
         ),
-      ),
     );
   }
 }

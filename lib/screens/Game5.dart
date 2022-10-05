@@ -26,7 +26,7 @@ class _Game5State extends State<Game5> {
     // }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory Matrix',
@@ -163,6 +163,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: button_color,
             border: Border.all(
               color: Colors.black,
               width: 2,
@@ -175,7 +176,7 @@ class _SingleButtonState extends State<SingleButton> {
                 ? Icon(
                     widget.text.iconToDisplay,
                     size: 25,
-                    color: const Color.fromARGB(221, 0, 0, 0),
+                    color: const Color.fromARGB(255, 42, 250, 156),
                   )
                 : const Text(""),
           ),

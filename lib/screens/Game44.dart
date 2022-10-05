@@ -30,7 +30,7 @@ class _Game44State extends State<Game44> {
     list[lis[2] - 1] = 1;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory',
@@ -97,6 +97,7 @@ class _Game44State extends State<Game44> {
                   height: 20,
                 ),
                 RaisedButton(
+                  color: button_color,
                   child: Text(
                     "hide",
                     style: large_text
@@ -136,6 +137,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            color: button_color,
             border: Border.all(
               color: Colors.black,
               width: 2,
@@ -146,7 +148,7 @@ class _SingleButtonState extends State<SingleButton> {
           child: Center(
               child: widget.text == 1
                   ? const Icon(Icons.fiber_manual_record,
-                      color: Colors.redAccent)
+                      color: Color.fromARGB(255, 82, 255, 177))
                   : const Text('')),
         ),
       ),

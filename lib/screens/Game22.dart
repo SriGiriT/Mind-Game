@@ -23,7 +23,7 @@ class _Game12State extends State<Game22> {
     List<TilesForGame2> list = getPairs();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text('Memory Matrix', style: large_text),
         leading: IconButton(
@@ -98,6 +98,7 @@ class _Game12State extends State<Game22> {
                   height: 30,
                 ),
                 RaisedButton(
+                  color: button_color,
                   child: Text(
                     "hide",
                     style: large_text
@@ -139,7 +140,7 @@ class _SingleButtonState extends State<SingleButton> {
           ),
           elevation: widget.text.getIsSelected() ? 4 : 1,
           primary:
-              widget.text.getIconData() == 1 ? Colors.lightBlue : Colors.white,
+              widget.text.getIconData() == 1 ? Color.fromARGB(255, 42, 250, 156) : button_color,
         ),
         onPressed: () {},
         child: const Text(""),

@@ -30,7 +30,7 @@ class _Game2State extends State<Game2> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text(
           'Memory Matrix',
@@ -158,7 +158,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(0),
           ),
           elevation: isSelected ? 4 : 1,
-          primary: isSelected ? Colors.blue : Colors.white,
+          primary: isSelected ? Color.fromARGB(255, 42, 250, 156): button_color,
         ),
         onPressed: ConvertIspressed,
         child: const Text(""),

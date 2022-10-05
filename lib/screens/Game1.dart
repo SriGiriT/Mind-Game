@@ -28,7 +28,7 @@ class _Game1State extends State<Game1> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white54,
+        backgroundColor: Color(0xFF0A0E21),
         centerTitle: true,
         title: Text('Memory', style: large_text),
         leading: IconButton(
@@ -149,11 +149,11 @@ class _SingleButtonState extends State<SingleButton> {
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
-            color: widget.text.isSelected ? Colors.white : Colors.white70,
+            color: widget.text.isSelected ? button_color : button_color,
           ),
           child: isSelected
               ? Center(
-                  child: Text(widget.text.val.toString(), style: small_text),
+                  child: Text(widget.text.val.toString(), style: large_text),
                 )
               : const Text(""),
         ),
