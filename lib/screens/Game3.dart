@@ -137,7 +137,7 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: button_color,
+            color: isSelected ? Colors.lightGreen : Color.fromARGB(255, 236, 91, 91),
             border: Border.all(
               color: Colors.black,
               width: 2,

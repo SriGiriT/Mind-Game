@@ -25,14 +25,15 @@ class _Game5State extends State<Game5> {
     //   print(widget.list[i]);
     // }
     return WillPopScope(
-      onWillPop: () => onBackPressed(context),
+      onWillPop: () {
+        icon = Icons.fire_extinguisher;
+        return onBackPressed(context);
+      },
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'Memory Matrix',
-            style: large_text.copyWith(color: Colors.white)
-          ),
+          title: Text('Memory Matrix',
+              style: large_text.copyWith(color: Colors.white)),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -83,10 +84,7 @@ class _Game5State extends State<Game5> {
               const SizedBox(
                 height: 30,
               ),
-              Text(
-                'Score: ${widget.list[0].getScore()}',
-                style: large_text
-              ),
+              Text('Score: ${widget.list[0].getScore()}', style: large_text),
             ],
           ),
         ),
@@ -122,6 +120,7 @@ class _SingleButtonState extends State<SingleButton> {
           if (count == 8) {
             widget.text.addScore();
             if (widget.text.getScore() == 10) {
+              icon = Icons.fire_extinguisher;
               widget.text.resetScore();
               Navigator.push(
                 context,
@@ -146,6 +145,7 @@ class _SingleButtonState extends State<SingleButton> {
           });
           tryy--;
           if (tryy == 0) {
+            icon = Icons.fire_extinguisher;
             print("attempt ended");
             tryy = 10;
             Navigator.pushNamed(context, '/wrong');
@@ -165,7 +165,9 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: button_color,
+            color: isSelected
+                ? Colors.lightGreen
+                : Color.fromARGB(255, 236, 91, 91),
             border: Border.all(
               color: Colors.black,
               width: 2,

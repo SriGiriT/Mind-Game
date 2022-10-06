@@ -151,7 +151,7 @@ class _SingleButtonState extends State<SingleButton> {
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
-            color: widget.text.isSelected ? button_color : button_color,
+            color: isSelected ? Colors.lightGreen : Color.fromARGB(255, 236, 91, 91),
           ),
           child: isSelected
               ? Center(
