@@ -77,72 +77,97 @@ class _MyMainScreenState extends State<MyMainScreen> {
     _bannerAd.load().then((value) => setState(() => _isAdLoaded = true));
   }
 
+  Future<bool> onBackPressed1() {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Do you really want to exit the game?"),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text("No"),
+          ),
+          FlatButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text("Yes"),
+          ),
+        ],
+      ),
+    ).then((value) => value ?? false);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text("Exercise",
-                style: large_text.copyWith(color: Colors.white))),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
-            padding: const EdgeInsets.all(8),
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Listofgames(1, "Memory", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game11');
-              }, TilesForGame1.getTotalScore(), "images/first.png"),
-              Listofgames(2, "Memory Matrix", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game2');
-              }, TilesForGame2.getTotalScore(), "images/matrix.png"),
-              Listofgames(3, "Memory II", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game3');
-              }, TilesForGame3.getTotalScore(), "images/second.png"),
-              Listofgames(4, "Position change", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game4');
-              }, DataOf4.getTotalScore(), "images/third.png"),
-              Listofgames(5, "Equal cells", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game5');
-              }, TilesForGame5.getTotalScore(), "images/four.png"),
-              Listofgames(6, "Remember", () {
-                if (toShow()) {
-                  showRewardedAd();
-                }
-                Navigator.pushNamed(context, '/game6');
-              }, TilesForGame6.getTotalScore(), "images/six.png"),
-              //   ],
-              // )
-            ],
+    return WillPopScope(
+      onWillPop: onBackPressed1,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Center(
+            child: Text(
+              "Exercise",
+              style: large_text.copyWith(color: Colors.white),
+            ),
           ),
         ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              padding: const EdgeInsets.all(8),
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Listofgames(1, "Memory", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game11');
+                }, TilesForGame1.getTotalScore(), "images/first.png"),
+                Listofgames(2, "Memory Matrix", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game2');
+                }, TilesForGame2.getTotalScore(), "images/matrix.png"),
+                Listofgames(3, "Memory II", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game3');
+                }, TilesForGame3.getTotalScore(), "images/second.png"),
+                Listofgames(4, "Position change", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game4');
+                }, DataOf4.getTotalScore(), "images/third.png"),
+                Listofgames(5, "Equal cells", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game5');
+                }, TilesForGame5.getTotalScore(), "images/four.png"),
+                Listofgames(6, "Remember", () {
+                  if (toShow()) {
+                    showRewardedAd();
+                  }
+                  Navigator.pushNamed(context, '/game6');
+                }, TilesForGame6.getTotalScore(), "images/six.png"),
+                //   ],
+                // )
+              ],
+            ),
+          ),
+        ),
+        // bottomNavigationBar: _isAdLoaded
+        //     ? Container(
+        //         height: _bannerAd.size.height.toDouble(),
+        //         width: _bannerAd.size.width.toDouble(),
+        //         child: AdWidget(ad: _bannerAd),
+        //       )
+        //     : const SizedBox(),
       ),
-      // bottomNavigationBar: _isAdLoaded
-      //     ? Container(
-      //         height: _bannerAd.size.height.toDouble(),
-      //         width: _bannerAd.size.width.toDouble(),
-      //         child: AdWidget(ad: _bannerAd),
-      //       )
-      //     : const SizedBox(),
     );
   }
 }

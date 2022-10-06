@@ -33,51 +33,54 @@ class _Game1State extends State<Game1> {
         leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              onBackPressed(context);
             }),
       ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(widget.list[0]),
-                    SingleButton(widget.list[1]),
-                    SingleButton(widget.list[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(widget.list[3]),
-                    SingleButton(widget.list[4]),
-                    SingleButton(widget.list[5]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(widget.list[6]),
-                    SingleButton(widget.list[7]),
-                    SingleButton(widget.list[8])
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Score: ${widget.list[0].getScore()}',
-                  style: large_text,
-                ),
-              ],
-            ),
-          ],
+      body: WillPopScope(
+        onWillPop: () => onBackPressed(context),
+        child: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(widget.list[0]),
+                      SingleButton(widget.list[1]),
+                      SingleButton(widget.list[2]),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(widget.list[3]),
+                      SingleButton(widget.list[4]),
+                      SingleButton(widget.list[5]),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(widget.list[6]),
+                      SingleButton(widget.list[7]),
+                      SingleButton(widget.list[8])
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Score: ${widget.list[0].getScore()}',
+                    style: large_text,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -21,100 +21,104 @@ class _Game12State extends State<Game22> {
     count = 1;
     // assign 0 or 1 to each button
     List<TilesForGame2> list = getPairs();
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Memory Matrix', style: large_text.copyWith(color: Colors.white)),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Memory Matrix',
+              style: large_text.copyWith(color: Colors.white)),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
+        ),
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      child: Text('Memory Matrix.', style: large_text),
+                    ),
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      child: Text(
+                          'You will see green squares in front of you, which are arranged in a random order.',
+                          style: small_text),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: Text('Memory Matrix.', style: large_text),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[0]),
+                      SingleButton(list[1]),
+                      SingleButton(list[2]),
+                      SingleButton(list[3]),
+                    ],
                   ),
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: Text(
-                        'You will see green squares in front of you, which are arranged in a random order.',
-                        style: small_text),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[4]),
+                      SingleButton(list[5]),
+                      SingleButton(list[6]),
+                      SingleButton(list[7]),
+                    ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[8]),
+                      SingleButton(list[9]),
+                      SingleButton(list[10]),
+                      SingleButton(list[11]),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[12]),
+                      SingleButton(list[13]),
+                      SingleButton(list[14]),
+                      SingleButton(list[15]),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  RaisedButton(
+                    color: Colors.blue,
+                    child: Text("hide",
+                        style: large_text.copyWith(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white)),
+                    onPressed: () {
+                      setState(() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Game2(list)));
+                      });
+                    },
+                  )
                 ],
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[0]),
-                    SingleButton(list[1]),
-                    SingleButton(list[2]),
-                    SingleButton(list[3]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[4]),
-                    SingleButton(list[5]),
-                    SingleButton(list[6]),
-                    SingleButton(list[7]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[8]),
-                    SingleButton(list[9]),
-                    SingleButton(list[10]),
-                    SingleButton(list[11]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[12]),
-                    SingleButton(list[13]),
-                    SingleButton(list[14]),
-                    SingleButton(list[15]),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                RaisedButton(
-                  color: Colors.blue,
-                  child: Text(
-                    "hide",
-                    style: large_text.copyWith(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white
-                    )
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Game2(list)));
-                    });
-                  },
-                )
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -141,8 +145,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(0),
           ),
           elevation: widget.text.getIsSelected() ? 4 : 1,
-          primary:
-              widget.text.getIconData() == 1 ? Colors.blue : button_color,
+          primary: widget.text.getIconData() == 1 ? Colors.blue : button_color,
         ),
         onPressed: () {},
         child: const Text(""),

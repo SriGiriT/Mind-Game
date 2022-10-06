@@ -28,63 +28,65 @@ class _Game2State extends State<Game2> {
         length++;
       }
     }
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
-        centerTitle: true,
-        title: Text('Memory Matrix', style: large_text),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[0]),
-                SingleButton(widget.list[1]),
-                SingleButton(widget.list[2]),
-                SingleButton(widget.list[3]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[4]),
-                SingleButton(widget.list[5]),
-                SingleButton(widget.list[6]),
-                SingleButton(widget.list[7]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[8]),
-                SingleButton(widget.list[9]),
-                SingleButton(widget.list[10]),
-                SingleButton(widget.list[11]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[12]),
-                SingleButton(widget.list[13]),
-                SingleButton(widget.list[14]),
-                SingleButton(widget.list[15]),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Text('Score: ${widget.list[0].getScore()}', style: large_text),
-          ],
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Memory Matrix', style: large_text.copyWith(color: Colors.white)),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
+        ),
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[0]),
+                  SingleButton(widget.list[1]),
+                  SingleButton(widget.list[2]),
+                  SingleButton(widget.list[3]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[4]),
+                  SingleButton(widget.list[5]),
+                  SingleButton(widget.list[6]),
+                  SingleButton(widget.list[7]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[8]),
+                  SingleButton(widget.list[9]),
+                  SingleButton(widget.list[10]),
+                  SingleButton(widget.list[11]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[12]),
+                  SingleButton(widget.list[13]),
+                  SingleButton(widget.list[14]),
+                  SingleButton(widget.list[15]),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text('Score: ${widget.list[0].getScore()}', style: large_text),
+            ],
+          ),
         ),
       ),
     );

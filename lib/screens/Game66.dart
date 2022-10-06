@@ -18,73 +18,76 @@ class _Game66State extends State<Game66> {
   @override
   String word1 = new DataOf6().getWord();
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Remember',
-          style: large_text.copyWith(color: Colors.white)
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Remember',
+            style: large_text.copyWith(color: Colors.white)
+          ),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
         ),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          'Remember.',
+                          style: large_text,
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          'Remember the word.',
+                          style: small_text
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: Text(
-                        'Remember.',
-                        style: large_text,
-                      ),
+                    Text(
+                      word1, style: large_text,
                     ),
-                    Container(
-                      child: Text(
-                        'Remember the word.',
-                        style: small_text
-                      ),
+                    const SizedBox(
+                      height: 20,
                     ),
+                    RaisedButton(
+                      color: Colors.blue,
+                      child: Text(
+                        "Start",
+                        style: large_text.copyWith(fontWeight: FontWeight.normal, color: Colors.white)
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Game6(word: word1)));
+                        });
+                      },
+                    )
                   ],
                 ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    word1, style: large_text,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  RaisedButton(
-                    color: Colors.blue,
-                    child: Text(
-                      "Start",
-                      style: large_text.copyWith(fontWeight: FontWeight.normal, color: Colors.white)
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Game6(word: word1)));
-                      });
-                    },
-                  )
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

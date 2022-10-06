@@ -21,53 +21,56 @@ class _Game3State extends State<Game3> {
     for (int i = 0; i < widget.list.length; i++) {
       print(widget.list[i].val);
     }
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Ascending Numbers',
-          style: large_text.copyWith(color: Colors.white),
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Ascending Numbers',
+            style: large_text.copyWith(color: Colors.white),
+          ),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
         ),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[0]),
-                SingleButton(widget.list[1]),
-                SingleButton(widget.list[2]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[3]),
-                SingleButton(widget.list[4]),
-                SingleButton(widget.list[5]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[6]),
-                SingleButton(widget.list[7]),
-                SingleButton(widget.list[8])
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text('Score: ${widget.list[0].getScore()}', style: large_text),
-          ],
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[0]),
+                  SingleButton(widget.list[1]),
+                  SingleButton(widget.list[2]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[3]),
+                  SingleButton(widget.list[4]),
+                  SingleButton(widget.list[5]),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[6]),
+                  SingleButton(widget.list[7]),
+                  SingleButton(widget.list[8])
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text('Score: ${widget.list[0].getScore()}', style: large_text),
+            ],
+          ),
         ),
       ),
     );

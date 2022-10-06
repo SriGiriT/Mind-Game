@@ -13,21 +13,24 @@ class MySettings extends StatefulWidget {
 class _MySettingsState extends State<MySettings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          iconSize: 20,
-          onPressed: () {
-            Navigator.pop(context);
-          },
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            iconSize: 20,
+            onPressed: () {
+              onBackPressed(context);
+            },
+          ),
+          centerTitle: true,
+          title: Text('Settings', style: large_text,),
         ),
-        centerTitle: true,
-        title: Text('Settings', style: large_text,),
-      ),
-      body: Container(
-        child: Center(
-          child: Text(" Settings will come here still in development", style: small_text),
+        body: Container(
+          child: Center(
+            child: Text(" Settings will come here still in development", style: small_text),
+          ),
         ),
       ),
     );

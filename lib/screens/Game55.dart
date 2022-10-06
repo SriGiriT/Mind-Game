@@ -26,103 +26,106 @@ class _Game55State extends State<Game55> {
     //   list.add(list1[lis[i] - 1]);
     // }
     print(list);
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Memory Matrix',
-          style: large_text.copyWith(color: Colors.white)
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Memory Matrix',
+            style: large_text.copyWith(color: Colors.white)
+          ),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
         ),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Equal Cells.',
+                        style: large_text
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        'Remember the location of the same pictures. The open them in pairs. Try not to be wrong.',
+                        style: small_text
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    child: Text(
-                      'Equal Cells.',
-                      style: large_text
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[0].iconToDisplay),
+                      SingleButton(list[1].iconToDisplay),
+                      SingleButton(list[2].iconToDisplay),
+                      SingleButton(list[3].iconToDisplay),
+                    ],
                   ),
-                  Container(
-                    child: Text(
-                      'Remember the location of the same pictures. The open them in pairs. Try not to be wrong.',
-                      style: small_text
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[4].iconToDisplay),
+                      SingleButton(list[5].iconToDisplay),
+                      SingleButton(list[6].iconToDisplay),
+                      SingleButton(list[7].iconToDisplay)
+                    ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[8].iconToDisplay),
+                      SingleButton(list[9].iconToDisplay),
+                      SingleButton(list[10].iconToDisplay),
+                      SingleButton(list[11].iconToDisplay)
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleButton(list[12].iconToDisplay),
+                      SingleButton(list[13].iconToDisplay),
+                      SingleButton(list[14].iconToDisplay),
+                      SingleButton(list[15].iconToDisplay)
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  RaisedButton(
+                    color: Colors.blue,
+                    child: Text(
+                      "hide",
+                      style: large_text.copyWith(color: Colors.white, 
+                      fontWeight: FontWeight.normal)
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Game5(list)));
+                      });
+                    },
+                  )
                 ],
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[0].iconToDisplay),
-                    SingleButton(list[1].iconToDisplay),
-                    SingleButton(list[2].iconToDisplay),
-                    SingleButton(list[3].iconToDisplay),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[4].iconToDisplay),
-                    SingleButton(list[5].iconToDisplay),
-                    SingleButton(list[6].iconToDisplay),
-                    SingleButton(list[7].iconToDisplay)
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[8].iconToDisplay),
-                    SingleButton(list[9].iconToDisplay),
-                    SingleButton(list[10].iconToDisplay),
-                    SingleButton(list[11].iconToDisplay)
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SingleButton(list[12].iconToDisplay),
-                    SingleButton(list[13].iconToDisplay),
-                    SingleButton(list[14].iconToDisplay),
-                    SingleButton(list[15].iconToDisplay)
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                RaisedButton(
-                  color: Colors.blue,
-                  child: Text(
-                    "hide",
-                    style: large_text.copyWith(color: Colors.white, 
-                    fontWeight: FontWeight.normal)
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Game5(list)));
-                    });
-                  },
-                )
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -24,68 +24,71 @@ class _Game5State extends State<Game5> {
     // for (int i = 0; i < widget.list.length; i++) {
     //   print(widget.list[i]);
     // }
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Memory Matrix',
-          style: large_text.copyWith(color: Colors.white)
+    return WillPopScope(
+      onWillPop: () => onBackPressed(context),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Memory Matrix',
+            style: large_text.copyWith(color: Colors.white)
+          ),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                onBackPressed(context);
+              }),
         ),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            }),
-      ),
-      body: SafeArea(
-        // create matrix of 3 x 3 buttons
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[0], 0),
-                SingleButton(widget.list[1], 1),
-                SingleButton(widget.list[2], 2),
-                SingleButton(widget.list[3], 3),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[4], 4),
-                SingleButton(widget.list[5], 5),
-                SingleButton(widget.list[6], 6),
-                SingleButton(widget.list[7], 7)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[8], 8),
-                SingleButton(widget.list[9], 9),
-                SingleButton(widget.list[10], 10),
-                SingleButton(widget.list[11], 11)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SingleButton(widget.list[12], 12),
-                SingleButton(widget.list[13], 13),
-                SingleButton(widget.list[14], 14),
-                SingleButton(widget.list[15], 15)
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Text(
-              'Score: ${widget.list[0].getScore()}',
-              style: large_text
-            ),
-          ],
+        body: SafeArea(
+          // create matrix of 3 x 3 buttons
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[0], 0),
+                  SingleButton(widget.list[1], 1),
+                  SingleButton(widget.list[2], 2),
+                  SingleButton(widget.list[3], 3),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[4], 4),
+                  SingleButton(widget.list[5], 5),
+                  SingleButton(widget.list[6], 6),
+                  SingleButton(widget.list[7], 7)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[8], 8),
+                  SingleButton(widget.list[9], 9),
+                  SingleButton(widget.list[10], 10),
+                  SingleButton(widget.list[11], 11)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SingleButton(widget.list[12], 12),
+                  SingleButton(widget.list[13], 13),
+                  SingleButton(widget.list[14], 14),
+                  SingleButton(widget.list[15], 15)
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Score: ${widget.list[0].getScore()}',
+                style: large_text
+              ),
+            ],
+          ),
         ),
       ),
     );
