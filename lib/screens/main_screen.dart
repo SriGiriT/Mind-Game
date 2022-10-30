@@ -160,13 +160,6 @@ class _MyMainScreenState extends State<MyMainScreen> {
             ),
           ),
         ),
-        // bottomNavigationBar: _isAdLoaded
-        //     ? Container(
-        //         height: _bannerAd.size.height.toDouble(),
-        //         width: _bannerAd.size.width.toDouble(),
-        //         child: AdWidget(ad: _bannerAd),
-        //       )
-        //     : const SizedBox(),
       ),
     );
   }

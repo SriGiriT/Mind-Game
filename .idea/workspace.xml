@@ -6,24 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="749e32db-bae4-4b27-8729-a87ab68b3541" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game11.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game11.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game22.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game22.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game3.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game33.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game33.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game4.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game44.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game44.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game444.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game444.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game5.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game5.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game55.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game55.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game6.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game6.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Game66.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Game66.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Settings_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Settings_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Success.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Success.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/Wrong.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/Wrong.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/main_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
