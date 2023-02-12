@@ -168,8 +168,8 @@ class _AnswerButtonState extends State<AnswerButton> {
             });
           }
           if (data.getScore() >= 2) {
-            StopWatch.stopStopwatch();
             TilesForGame4.timer = time;
+            StopWatch.stopStopwatch();
             data.resetScore();
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Success()));

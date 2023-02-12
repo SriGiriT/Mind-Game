@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
 
@@ -26,7 +27,8 @@ class _SuccessState extends State<Success> {
             },
           ),
           centerTitle: true,
-          title: Text('Success', style: large_text.copyWith(color: Colors.white)),
+          title:
+              Text('Success', style: large_text.copyWith(color: Colors.white)),
         ),
         body: SafeArea(
           child: Padding(
@@ -42,8 +44,12 @@ class _SuccessState extends State<Success> {
                   Text('Your score is: 10', style: small_text),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.popUntil(context, ModalRoute.withName('/'));
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyMainScreen()));
+                      StopWatch.stopStopwatch();
+                      // Navigator.popUntil(context, ModalRoute.withName('/'));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,
@@ -51,7 +57,10 @@ class _SuccessState extends State<Success> {
                       child: Row(
                         children: [
                           Icon(Icons.replay),
-                          Text('Play again', style: small_text.copyWith(color: Colors.white),),
+                          Text(
+                            'Play again',
+                            style: small_text.copyWith(color: Colors.white),
+                          ),
                         ],
                       ),
                     ),

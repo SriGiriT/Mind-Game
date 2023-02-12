@@ -4,7 +4,7 @@ class TilesForGame5 {
   static int score = 0;
   static int totalScore = 0;
   bool isSelected;
-  static String timer = "";
+  static String timer = "0:00:000";
   static int isFirst = 0;
   IconData iconToDisplay;
   TilesForGame5(this.isSelected, this.iconToDisplay);
@@ -35,10 +35,7 @@ class TilesForGame5 {
 
   void resetScore() {
     totalScore++;
-    int n = 10;
-    while (n-- > 0) {
-      score--;
-    }
+    score = 0;
   }
 
   static int getTotalScore() {

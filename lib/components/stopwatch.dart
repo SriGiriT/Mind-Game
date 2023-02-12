@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:memory_matrix/components/TilesForGame1.dart';
-
 class StopWatch {
-  static Timer _timer = StopWatch._timer;
+  static Timer _timer = 0 as Timer;
   static int _elapsedTime = 0;
   static bool isRuning = false;
 
@@ -21,6 +19,8 @@ class StopWatch {
 
   static void stopStopwatch() {
     isRuning = false;
+    stopwatchController.sink.add(0);
+    _elapsedTime = 0;
     _timer.cancel();
   }
 }

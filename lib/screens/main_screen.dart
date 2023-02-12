@@ -78,30 +78,32 @@ class _MyMainScreenState extends State<MyMainScreen> {
     _bannerAd.load().then((value) => setState(() => _isAdLoaded = true));
   }
 
-  Future<bool> onBackPressed1() {
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text("Do you really want to exit the game?"),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text("No"),
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: Center(child: new Text('Are you sure?')),
+            content: new Text('Do you want to exit the application?'),
+            actions: <Widget>[
+              new ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: new Text('Yes'),
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text("Yes"),
-          ),
-        ],
-      ),
-    ).then((value) => value ?? false);
+        )) ??
+        false;
   }
 
   @override
   Widget build(BuildContext context) {
     print(TilesForGame1.timer);
     return WillPopScope(
-      onWillPop: onBackPressed1,
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
           title: Center(
@@ -131,15 +133,13 @@ class _MyMainScreenState extends State<MyMainScreen> {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game2');
-                }, (TilesForGame2.timer),
-                    "images/matrix.png"),
+                }, (TilesForGame2.timer), "images/matrix.png"),
                 Listofgames(3, "Memory II", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game3');
-                }, TilesForGame3.timer,
-                    "images/second.png"),
+                }, TilesForGame3.timer, "images/second.png"),
                 Listofgames(4, "Position change", () {
                   if (toShow()) {
                     showRewardedAd();

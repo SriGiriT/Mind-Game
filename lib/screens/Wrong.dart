@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 import 'package:memory_matrix/data/constants.dart';
+import 'package:memory_matrix/screens/main_screen.dart';
 
 class Wrong extends StatefulWidget {
   const Wrong({Key? key}) : super(key: key);
@@ -25,7 +27,10 @@ class _WrongState extends State<Wrong> {
             },
           ),
           centerTitle: true,
-          title: Text('Wrong', style: large_text.copyWith(color: Colors.white),),
+          title: Text(
+            'Wrong',
+            style: large_text.copyWith(color: Colors.white),
+          ),
         ),
         body: SafeArea(
           child: Padding(
@@ -34,18 +39,32 @@ class _WrongState extends State<Wrong> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(child: Text('You have failed the game', style: small_text)),
+                  Center(
+                      child:
+                          Text('You have failed the game', style: small_text)),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.popUntil(context, ModalRoute.withName('/'));
+                      // Navigator.popUntil(context, ModalRoute.withName('/'));
+                      resetWrongScore();
+                      StopWatch.stopStopwatch();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,
                       width: 125,
                       child: Row(
                         children: [
-                          Icon(Icons.replay,color: Colors.white,),
-                          Text('Play again', style:small_text.copyWith(color: Colors.white),),
+                          Icon(
+                            Icons.replay,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            'Play again',
+                            style: small_text.copyWith(color: Colors.white),
+                          ),
                         ],
                       ),
                     ),

@@ -4,7 +4,7 @@ class TilesForGame2 {
   bool isSelected;
   int val;
   bool alreadySelected;
-  static String timer = "";
+  static String timer = "0:00:000";
   static int isFirst = 0;
   TilesForGame2(this.isSelected, this.val, this.alreadySelected);
 
@@ -34,10 +34,7 @@ class TilesForGame2 {
 
   void resetScore() {
     totalScore++;
-    int n = 10;
-    while (n-- > 0) {
-      score--;
-    }
+    score = 0;
   }
 
   static int getTotalScore() {

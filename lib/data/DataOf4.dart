@@ -11,10 +11,7 @@ class DataOf4 {
 
   void resetScore() {
     totalScore++;
-    int n = 10;
-    while (n-- > 0) {
-      score--;
-    }
+    score = 0;
   }
 
   static int getTotalScore() {

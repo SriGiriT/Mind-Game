@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/TilesForGame4.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/data/constants.dart';
@@ -150,7 +151,7 @@ class _AnswerButtonState extends State<AnswerButton> {
             });
           }
           if (data.getScore() >= 2) {
-            TilesForGame6.timer = time;
+            TilesForGame4.timer = time;
             StopWatch.stopStopwatch();
             data.resetScore();
             Navigator.push(context,

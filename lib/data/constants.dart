@@ -5,6 +5,7 @@ import 'package:memory_matrix/components/TilesForGame4.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/components/stopwatch.dart';
+import 'package:memory_matrix/screens/main_screen.dart';
 
 import '../components/TilesForGame2.dart';
 
@@ -35,7 +36,8 @@ Future<bool> onBackPressed(BuildContext context) {
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.popUntil(context, ModalRoute.withName('/'));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyMainScreen()));
             if (StopWatch.isRuning) {
               StopWatch.stopStopwatch();
             }
@@ -45,4 +47,13 @@ Future<bool> onBackPressed(BuildContext context) {
       ],
     ),
   ).then((value) => value ?? false);
+}
+
+void resetWrongScore() {
+  TilesForGame1.score = 0;
+  TilesForGame2.score = 0;
+  TilesForGame3.score = 0;
+  TilesForGame4.score = 0;
+  TilesForGame5.score = 0;
+  TilesForGame6.score = 0;
 }
