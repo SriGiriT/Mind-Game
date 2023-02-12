@@ -10,6 +10,7 @@ import 'package:memory_matrix/screens/Settings_screen.dart';
 import 'package:memory_matrix/screens/main_screen.dart';
 import 'package:memory_matrix/screens/Success.dart';
 import 'package:memory_matrix/screens/Wrong.dart';
+import 'package:memory_matrix/test.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

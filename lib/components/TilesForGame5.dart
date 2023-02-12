@@ -4,6 +4,8 @@ class TilesForGame5 {
   static int score = 0;
   static int totalScore = 0;
   bool isSelected;
+  static String timer = "";
+  static int isFirst = 0;
   IconData iconToDisplay;
   TilesForGame5(this.isSelected, this.iconToDisplay);
 

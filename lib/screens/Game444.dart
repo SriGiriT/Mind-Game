@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game4.dart';
 import 'package:memory_matrix/screens/Success.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 
 List<int> list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -51,6 +53,24 @@ class _Game444State extends State<Game444> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  StreamBuilder(
+                      stream: StopWatch.stopwatchController.stream,
+                      initialData: 0,
+                      builder: (context, snapshot) {
+                        int elapsedTime = snapshot.data as int;
+                        Duration duration = Duration(milliseconds: elapsedTime);
+                        String elapsedTimeString =
+                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                        time = elapsedTimeString;
+                        return Center(
+                          child: Text('timer: $elapsedTimeString'),
+                        );
+                      })
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -129,7 +149,9 @@ class _AnswerButtonState extends State<AnswerButton> {
               data.addScore();
             });
           }
-          if (data.getScore() >= 10) {
+          if (data.getScore() >= 2) {
+            TilesForGame6.timer = time;
+            StopWatch.stopStopwatch();
             data.resetScore();
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Success()));

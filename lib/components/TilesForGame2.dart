@@ -4,6 +4,8 @@ class TilesForGame2 {
   bool isSelected;
   int val;
   bool alreadySelected;
+  static String timer = "";
+  static int isFirst = 0;
   TilesForGame2(this.isSelected, this.val, this.alreadySelected);
 
   void setIconData(int va) {

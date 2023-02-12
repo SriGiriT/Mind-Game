@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
 import 'package:memory_matrix/data/constants.dart';
 
+import '../components/stopwatch.dart';
+
 class Game3 extends StatefulWidget {
   Game3(this.list);
   List<TilesForGame3> list;
@@ -13,10 +15,14 @@ class Game3 extends StatefulWidget {
 
 int count = 1;
 int tryy = 10;
+String time = "";
 
 class _Game3State extends State<Game3> {
   @override
   Widget build(BuildContext context) {
+    if (!StopWatch.isRuning) {
+      StopWatch.startStopwatch();
+    }
     count = 1;
     for (int i = 0; i < widget.list.length; i++) {
       print(widget.list[i].val);
@@ -41,6 +47,24 @@ class _Game3State extends State<Game3> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  StreamBuilder(
+                      stream: StopWatch.stopwatchController.stream,
+                      initialData: 0,
+                      builder: (context, snapshot) {
+                        int elapsedTime = snapshot.data as int;
+                        Duration duration = Duration(milliseconds: elapsedTime);
+                        String elapsedTimeString =
+                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                        time = elapsedTimeString;
+                        return Center(
+                          child: Text('timer: $elapsedTimeString'),
+                        );
+                      })
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -100,7 +124,9 @@ class _SingleButtonState extends State<SingleButton> {
             widget.text.addScore();
             Navigator.pop(context);
           }
-          if (widget.text.getScore() == 10) {
+          if (widget.text.getScore() == 2) {
+            StopWatch.stopStopwatch();
+            TilesForGame3.timer = time;
             widget.text.resetScore();
             count = 0;
             Navigator.pushNamed(context, '/success');

@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/data/constants.dart';
 
+import '../components/stopwatch.dart';
+
 class Game2 extends StatefulWidget {
   Game2(this.list);
   List<TilesForGame2> list;
@@ -13,10 +15,14 @@ class Game2 extends StatefulWidget {
 int score = 0;
 int length = 0;
 int tryy = 10;
+String time = "";
 
 class _Game2State extends State<Game2> {
   @override
   Widget build(BuildContext context) {
+    if (!StopWatch.isRuning) {
+      StopWatch.startStopwatch();
+    }
     length = 0;
     int n = 16;
     int tryy = 10;
@@ -33,7 +39,8 @@ class _Game2State extends State<Game2> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Memory Matrix', style: large_text.copyWith(color: Colors.white)),
+          title: Text('Memory Matrix',
+              style: large_text.copyWith(color: Colors.white)),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -45,6 +52,24 @@ class _Game2State extends State<Game2> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  StreamBuilder(
+                      stream: StopWatch.stopwatchController.stream,
+                      initialData: 0,
+                      builder: (context, snapshot) {
+                        int elapsedTime = snapshot.data as int;
+                        Duration duration = Duration(milliseconds: elapsedTime);
+                        String elapsedTimeString =
+                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                        time = elapsedTimeString;
+                        return Center(
+                          child: Text('timer: $elapsedTimeString'),
+                        );
+                      })
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -116,7 +141,9 @@ class _SingleButtonState extends State<SingleButton> {
           }
           if (length == 0) {
             widget.text.addScore();
-            if (widget.text.getScore() == 10) {
+            if (widget.text.getScore() == 2) {
+              StopWatch.stopStopwatch();
+              TilesForGame2.timer = time;
               widget.text.resetScore();
               Navigator.pushNamed(context, '/success');
               return;

@@ -23,10 +23,8 @@ class _Game66State extends State<Game66> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'Remember',
-            style: large_text.copyWith(color: Colors.white)
-          ),
+          title:
+              Text('Remember', style: large_text.copyWith(color: Colors.white)),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -52,10 +50,7 @@ class _Game66State extends State<Game66> {
                         ),
                       ),
                       Container(
-                        child: Text(
-                          'Remember the word.',
-                          style: small_text
-                        ),
+                        child: Text('Remember the word.', style: small_text),
                       ),
                     ],
                   ),
@@ -64,17 +59,17 @@ class _Game66State extends State<Game66> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      word1, style: large_text,
+                      word1,
+                      style: large_text,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    RaisedButton(
-                      color: Colors.blue,
-                      child: Text(
-                        "Start",
-                        style: large_text.copyWith(fontWeight: FontWeight.normal, color: Colors.white)
-                      ),
+                    ElevatedButton(
+                      child: Text("Start",
+                          style: large_text.copyWith(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white)),
                       onPressed: () {
                         setState(() {
                           Navigator.push(

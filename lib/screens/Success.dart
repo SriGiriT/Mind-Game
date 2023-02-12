@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/data/constants.dart';
+import 'package:memory_matrix/screens/main_screen.dart';
 
 class Success extends StatefulWidget {
   const Success({Key? key}) : super(key: key);
@@ -42,6 +43,7 @@ class _SuccessState extends State<Success> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.popUntil(context, ModalRoute.withName('/'));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,

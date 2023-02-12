@@ -4,6 +4,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
+import 'package:memory_matrix/components/TilesForGame4.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/components/TilesForGame6.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
@@ -83,11 +84,11 @@ class _MyMainScreenState extends State<MyMainScreen> {
       builder: (context) => AlertDialog(
         title: Text("Do you really want to exit the game?"),
         actions: <Widget>[
-          FlatButton(
+          ElevatedButton(
             onPressed: () => Navigator.pop(context, false),
             child: Text("No"),
           ),
-          FlatButton(
+          ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text("Yes"),
           ),
@@ -98,6 +99,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(TilesForGame1.timer);
     return WillPopScope(
       onWillPop: onBackPressed1,
       child: Scaffold(
@@ -123,37 +125,39 @@ class _MyMainScreenState extends State<MyMainScreen> {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game11');
-                }, TilesForGame1.getTotalScore(), "images/first.png"),
+                }, TilesForGame1.timer, "images/first.png"),
                 Listofgames(2, "Memory Matrix", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game2');
-                }, TilesForGame2.getTotalScore(), "images/matrix.png"),
+                }, (TilesForGame2.timer),
+                    "images/matrix.png"),
                 Listofgames(3, "Memory II", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game3');
-                }, TilesForGame3.getTotalScore(), "images/second.png"),
+                }, TilesForGame3.timer,
+                    "images/second.png"),
                 Listofgames(4, "Position change", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game4');
-                }, DataOf4.getTotalScore(), "images/third.png"),
+                }, TilesForGame4.timer, "images/third.png"),
                 Listofgames(5, "Equal cells", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game5');
-                }, TilesForGame5.getTotalScore(), "images/four.png"),
+                }, TilesForGame5.timer, "images/four.png"),
                 Listofgames(6, "Remember", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game6');
-                }, TilesForGame6.getTotalScore(), "images/six.png"),
+                }, TilesForGame6.timer, "images/six.png"),
                 //   ],
                 // )
               ],
@@ -170,7 +174,7 @@ class Listofgames extends StatelessWidget {
   String text;
   int ind;
   void Function()? pressed;
-  int score;
+  String score;
   String img;
   @override
   Widget build(BuildContext context) {

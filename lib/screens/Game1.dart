@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
@@ -17,10 +18,14 @@ class Game1 extends StatefulWidget {
 
 int count = 1;
 int tryy = 10;
+String time = "";
 
 class _Game1State extends State<Game1> {
   @override
   Widget build(BuildContext context) {
+    if (!StopWatch.isRuning) {
+      StopWatch.startStopwatch();
+    }
     count = 1;
     tryy = 10;
     for (int i = 0; i < widget.list.length; i++) {
@@ -43,6 +48,24 @@ class _Game1State extends State<Game1> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  StreamBuilder(
+                      stream: StopWatch.stopwatchController.stream,
+                      initialData: 0,
+                      builder: (context, snapshot) {
+                        int elapsedTime = snapshot.data as int;
+                        Duration duration = Duration(milliseconds: elapsedTime);
+                        String elapsedTimeString =
+                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                        time = elapsedTimeString;
+                        return Center(
+                          child: Text('timer: $elapsedTimeString'),
+                        );
+                      })
+                ],
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -107,7 +130,9 @@ class _SingleButtonState extends State<SingleButton> {
           isSelected = widget.text.getIsSelected();
           if (count == 10) {
             widget.text.addScore();
-            if (widget.text.getScore() == 10) {
+            if (widget.text.getScore() == 2) {
+              TilesForGame1.timer = time;
+              StopWatch.stopStopwatch();
               widget.text.resetScore();
               Navigator.pushNamed(context, '/success');
               return;
@@ -151,7 +176,9 @@ class _SingleButtonState extends State<SingleButton> {
               width: 2,
             ),
             borderRadius: BorderRadius.circular(10),
-            color: isSelected ? Colors.lightGreen : Color.fromARGB(255, 236, 91, 91),
+            color: isSelected
+                ? Colors.lightGreen
+                : Color.fromARGB(255, 236, 91, 91),
           ),
           child: isSelected
               ? Center(

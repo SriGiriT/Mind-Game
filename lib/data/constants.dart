@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/TilesForGame1.dart';
+import 'package:memory_matrix/components/TilesForGame3.dart';
+import 'package:memory_matrix/components/TilesForGame4.dart';
+import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/components/TilesForGame6.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 
-TextStyle small_text = TextStyle(
+import '../components/TilesForGame2.dart';
+
+TextStyle small_text = const TextStyle(
     fontSize: 20,
     fontFamily: "Roboto",
     fontWeight: FontWeight.normal,
     color: Colors.black);
 
-TextStyle large_text = TextStyle(
+TextStyle large_text = const TextStyle(
     fontSize: 24,
     fontFamily: "Roboto",
     fontWeight: FontWeight.bold,
@@ -21,13 +29,17 @@ Future<bool> onBackPressed(BuildContext context) {
     builder: (context) => AlertDialog(
       title: Text("Do you really want to exit the level?"),
       actions: <Widget>[
-        FlatButton(
+        ElevatedButton(
           onPressed: () => Navigator.pop(context, false),
           child: Text("No"),
         ),
-        FlatButton(
-          onPressed: () =>
-              Navigator.popUntil(context, ModalRoute.withName('/')),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.popUntil(context, ModalRoute.withName('/'));
+            if (StopWatch.isRuning) {
+              StopWatch.stopStopwatch();
+            }
+          },
           child: Text("Yes"),
         ),
       ],

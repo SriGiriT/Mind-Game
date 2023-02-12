@@ -3,6 +3,8 @@ import 'package:memory_matrix/components/TilesForGame5.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
+import '../components/stopwatch.dart';
+
 class Game5 extends StatefulWidget {
   Game5(this.list);
   List<TilesForGame5> list;
@@ -15,10 +17,14 @@ int score = 0;
 int length = 0;
 int count = 0;
 int tryy = 10;
+String time = "";
 
 class _Game5State extends State<Game5> {
   @override
   Widget build(BuildContext context) {
+    if (!StopWatch.isRuning) {
+      StopWatch.startStopwatch();
+    }
     tryy = 10;
     count = 0;
     // for (int i = 0; i < widget.list.length; i++) {
@@ -45,6 +51,24 @@ class _Game5State extends State<Game5> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  StreamBuilder(
+                      stream: StopWatch.stopwatchController.stream,
+                      initialData: 0,
+                      builder: (context, snapshot) {
+                        int elapsedTime = snapshot.data as int;
+                        Duration duration = Duration(milliseconds: elapsedTime);
+                        String elapsedTimeString =
+                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                        time = elapsedTimeString;
+                        return Center(
+                          child: Text('timer: $elapsedTimeString'),
+                        );
+                      })
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -119,7 +143,9 @@ class _SingleButtonState extends State<SingleButton> {
           count++;
           if (count == 8) {
             widget.text.addScore();
-            if (widget.text.getScore() == 10) {
+            if (widget.text.getScore() == 2) {
+              StopWatch.stopStopwatch();
+              TilesForGame5.timer = time;
               icon = Icons.fire_extinguisher;
               widget.text.resetScore();
               Navigator.push(

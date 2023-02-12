@@ -96,8 +96,8 @@ class _Game33State extends State<Game33> {
                   const SizedBox(
                     height: 20,
                   ),
-                  RaisedButton(
-                    color: Colors.blue,
+                  ElevatedButton(
+                    // color: Colors.blue,
                     child: Text("hide",
                         style: large_text.copyWith(
                             color: Colors.white,

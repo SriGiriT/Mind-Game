@@ -1,6 +1,8 @@
 class TilesForGame6 {
   static int score = 0;
   static int totalScore = 0;
+  static String timer = "";
+  static int isFirst = 0;
 
   void addScore() {
     score++;

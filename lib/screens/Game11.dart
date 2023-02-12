@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
+import 'package:memory_matrix/components/stopwatch.dart';
 import 'package:memory_matrix/data/DataOf1.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Game1.dart';
@@ -27,10 +28,8 @@ class _Game11State extends State<Game11> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'Memory',
-            style: large_text.copyWith(color: Colors.white)
-          ),
+          title:
+              Text('Memory', style: large_text.copyWith(color: Colors.white)),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -43,23 +42,20 @@ class _Game11State extends State<Game11> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        child: Text(
-                          'Memory',
-                          style: large_text
-                        ),
+                        child: Text('Memory', style: large_text),
                       ),
                       Container(
                         child: Text(
-                          'Remember the positions of all numbers and click the Hide button.',
-                          style: small_text
-                        ),
+                            'Remember the positions of all numbers and click the Hide button.',
+                            style: small_text),
                       ),
                     ],
                   ),
@@ -95,18 +91,18 @@ class _Game11State extends State<Game11> {
                   const SizedBox(
                     height: 20,
                   ),
-                  RaisedButton(
-                    color: Colors.blue,
-                    child: Text(
-                      "hide",
-                      style: large_text.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal)
-                    ),
+                  ElevatedButton(
+                    // color: Colors.blue,
+                    child: Text("hide",
+                        style: large_text.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal)),
                     onPressed: () {
                       setState(() {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Game1(list)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Game1(list)));
                       });
                     },
                   )
@@ -147,11 +143,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(10),
           ),
           // color: Colors.white,
-          child: Center(
-              child: Text(
-            widget.text.toString(),
-            style: large_text
-          )),
+          child: Center(child: Text(widget.text.toString(), style: large_text)),
         ),
       ),
     );
