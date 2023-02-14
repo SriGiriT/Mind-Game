@@ -13,16 +13,16 @@ TextStyle small_text = const TextStyle(
     fontSize: 20,
     fontFamily: "Roboto",
     fontWeight: FontWeight.normal,
-    color: Colors.black);
+    color: Colors.white);
 
 TextStyle large_text = const TextStyle(
     fontSize: 24,
     fontFamily: "Roboto",
     fontWeight: FontWeight.bold,
-    color: Colors.black);
+    color: Colors.white);
 
-Color button_color = Colors.white;
-Color box_color = Colors.white;
+Color button_color = Color(0xFF1D1E33);
+Color box_color = Color(0xFF1D1E33);
 
 Future<bool> onBackPressed(BuildContext context) {
   return showDialog(
@@ -36,9 +36,9 @@ Future<bool> onBackPressed(BuildContext context) {
         ),
         ElevatedButton(
           onPressed: () {
-            
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MyMainScreen()));
+            Navigator.popUntil(context, ModalRoute.withName('/'));
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => MyMainScreen()));
             if (StopWatch.isRuning) {
               StopWatch.stopStopwatch();
             }
@@ -59,9 +59,18 @@ void resetWrongScore() {
   TilesForGame6.score = 0;
 }
 
-Container timerContainer(String timer){
+Container timerContainer(String timer) {
   return Container(
     margin: EdgeInsets.all(10),
     padding: EdgeInsets.all(10),
-    child: Center(child: Text(timer, style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.green.shade400),),),);
+    child: Center(
+      child: Text(
+        timer,
+        style: TextStyle(
+            fontSize: 34,
+            fontWeight: FontWeight.bold,
+            color: Colors.green.shade400),
+      ),
+    ),
+  );
 }

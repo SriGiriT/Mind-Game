@@ -39,6 +39,7 @@ class _Game2State extends State<Game2> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title: Text('Memory Matrix',
               style: large_text.copyWith(color: Colors.white)),
@@ -184,7 +185,7 @@ class _SingleButtonState extends State<SingleButton> {
             borderRadius: BorderRadius.circular(0),
           ),
           elevation: isSelected ? 4 : 1,
-          primary: isSelected ? Colors.blue : Colors.white,
+          primary: isSelected ? Colors.blue : Color(0xFF1D1E33),
         ),
         onPressed: ConvertIspressed,
         child: const Text(""),

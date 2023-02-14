@@ -19,6 +19,7 @@ class _SuccessState extends State<Success> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             iconSize: 20,
@@ -46,10 +47,10 @@ class _SuccessState extends State<Success> {
                     onPressed: () {
                       StopWatch.stopStopwatch();
                       Navigator.popUntil(context, ModalRoute.withName('/'));
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyMainScreen()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,

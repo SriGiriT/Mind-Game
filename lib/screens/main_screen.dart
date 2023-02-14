@@ -118,6 +118,7 @@ class _MyMainScreenState extends State<MyMainScreen> {
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           title: Center(
             child: Text(
               "Exercise",
@@ -196,9 +197,9 @@ class Listofgames extends StatelessWidget {
         onTap: pressed,
         child: Container(
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 79, 166, 243),
+              color: Color(0xFF1D1E33),
               border: Border.all(
-                color: Colors.black,
+                color: Color(0xFF1D1E33),
               ),
               borderRadius: BorderRadius.circular(10.0)),
           height: 20,
@@ -213,7 +214,7 @@ class Listofgames extends StatelessWidget {
               ),
               Text(
                 '${text} - ${score}',
-                style: large_text.copyWith(color: Colors.black, fontSize: 14),
+                style: large_text.copyWith(color: Colors.white, fontSize: 14),
               ),
             ],
           ),

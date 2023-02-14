@@ -17,6 +17,7 @@ class _MySettingsState extends State<MySettings> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             iconSize: 20,

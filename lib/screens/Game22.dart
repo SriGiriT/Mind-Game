@@ -25,6 +25,7 @@ class _Game12State extends State<Game22> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title: Text('Memory Matrix',
               style: large_text.copyWith(color: Colors.white)),

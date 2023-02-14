@@ -36,6 +36,7 @@ class _Game6State extends State<Game6> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title:
               Text('Hangman', style: large_text.copyWith(color: Colors.white)),

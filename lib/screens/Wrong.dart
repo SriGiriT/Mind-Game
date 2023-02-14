@@ -19,6 +19,7 @@ class _WrongState extends State<Wrong> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             iconSize: 20,
@@ -47,10 +48,10 @@ class _WrongState extends State<Wrong> {
                       Navigator.popUntil(context, ModalRoute.withName('/'));
                       resetWrongScore();
                       StopWatch.stopStopwatch();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyMainScreen()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,

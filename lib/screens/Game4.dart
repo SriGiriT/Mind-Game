@@ -44,7 +44,9 @@ class _Game4State extends State<Game4> {
     return WillPopScope(
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
+          
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title:
               Text('Memory', style: large_text.copyWith(color: Colors.white)),

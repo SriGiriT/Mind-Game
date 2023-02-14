@@ -32,6 +32,7 @@ class _Game44State extends State<Game44> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title: Text('Memory', style: large_text),
           leading: IconButton(

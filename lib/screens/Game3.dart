@@ -32,6 +32,7 @@ class _Game3State extends State<Game3> {
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF0A0E21),
           centerTitle: true,
           title: Text(
             'Ascending Numbers',
