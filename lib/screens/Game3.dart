@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame3.dart';
+import 'package:memory_matrix/data/DataOf3.dart';
 import 'package:memory_matrix/data/constants.dart';
 
 import '../components/stopwatch.dart';
@@ -59,9 +60,7 @@ class _Game3State extends State<Game3> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -112,6 +111,7 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   bool isSelected = false;
   bool canSelect = true;
+  DataOf3 ds = DataOf3();
   void ConvertIspressed() {
     if (canSelect) {
       setState(() {
@@ -126,7 +126,7 @@ class _SingleButtonState extends State<SingleButton> {
           }
           if (widget.text.getScore() == 2) {
             StopWatch.stopStopwatch();
-            TilesForGame3.timer = time;
+            widget.text.saveSelecteedPage(time);
             widget.text.resetScore();
             count = 0;
             Navigator.pushNamed(context, '/success');
@@ -163,7 +163,9 @@ class _SingleButtonState extends State<SingleButton> {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: isSelected ? Colors.lightGreen : Color.fromARGB(255, 236, 91, 91),
+            color: isSelected
+                ? Colors.lightGreen
+                : Color.fromARGB(255, 236, 91, 91),
             border: Border.all(
               color: Colors.black,
               width: 2,

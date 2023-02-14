@@ -21,6 +21,7 @@ class Game4 extends StatefulWidget {
 int count = 1;
 int score = 0;
 String time = "";
+
 class _Game4State extends State<Game4> {
   @override
   Widget build(BuildContext context) {
@@ -41,14 +42,12 @@ class _Game4State extends State<Game4> {
     list1[lis[2] - 1] = 1;
     bool isVissible = true;
     return WillPopScope(
-      onWillPop: ()=>onBackPressed(context),
+      onWillPop: () => onBackPressed(context),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            'Memory',
-            style: large_text.copyWith(color: Colors.white)
-          ),
+          title:
+              Text('Memory', style: large_text.copyWith(color: Colors.white)),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
@@ -72,9 +71,7 @@ class _Game4State extends State<Game4> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -115,10 +112,7 @@ class _Game4State extends State<Game4> {
                 ],
               ),
               Container(
-                child: Text(
-                  'Score: ${dat.getScore()}',
-                  style: large_text
-                ),
+                child: Text('Score: ${dat.getScore()}', style: large_text),
               )
               // RaisedButton(
               //   child: Text("hide"),
@@ -168,7 +162,7 @@ class _AnswerButtonState extends State<AnswerButton> {
             });
           }
           if (data.getScore() >= 2) {
-            TilesForGame4.timer = time;
+            data.saveSelecteedPage(time);
             StopWatch.stopStopwatch();
             data.resetScore();
             Navigator.push(context,
@@ -194,10 +188,7 @@ class _AnswerButtonState extends State<AnswerButton> {
           ),
           // color: Colors.white,
           child: Center(
-            child: Text(
-              '${widget.ind}',
-              style: large_text
-            ),
+            child: Text('${widget.ind}', style: large_text),
           ),
         ),
       ),

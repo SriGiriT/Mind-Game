@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:memory_matrix/components/TilesForGame2.dart';
+import 'package:memory_matrix/data/DataOf2.dart';
 import 'package:memory_matrix/data/constants.dart';
 
 import '../components/stopwatch.dart';
@@ -64,9 +65,7 @@ class _Game2State extends State<Game2> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -128,6 +127,7 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   bool isSelected = false;
   bool canSelect = true;
+  DataOf2 ds = DataOf2();
   void ConvertIspressed() {
     if (canSelect) {
       setState(() {
@@ -143,7 +143,7 @@ class _SingleButtonState extends State<SingleButton> {
             widget.text.addScore();
             if (widget.text.getScore() == 2) {
               StopWatch.stopStopwatch();
-              TilesForGame2.timer = time;
+              ds.saveSelecteedPage(time);
               widget.text.resetScore();
               Navigator.pushNamed(context, '/success');
               return;

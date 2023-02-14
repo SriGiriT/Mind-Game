@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:memory_matrix/components/TilesForGame1.dart';
-import 'package:memory_matrix/components/TilesForGame2.dart';
-import 'package:memory_matrix/components/TilesForGame3.dart';
-import 'package:memory_matrix/components/TilesForGame4.dart';
-import 'package:memory_matrix/components/TilesForGame5.dart';
-import 'package:memory_matrix/components/TilesForGame6.dart';
+import 'package:memory_matrix/data/DataOf1.dart';
+import 'package:memory_matrix/data/DataOf2.dart';
+import 'package:memory_matrix/data/DataOf3.dart';
 import 'package:memory_matrix/data/DataOf4.dart';
+import 'package:memory_matrix/data/DataOf5.dart';
+import 'package:memory_matrix/data/DataOf6.dart';
 import 'package:memory_matrix/data/constants.dart';
 
 class MyMainScreen extends StatefulWidget {
@@ -27,6 +27,18 @@ class _MyMainScreenState extends State<MyMainScreen> {
     _initBannerAd();
     loadRewardedAd();
     _isAdLoaded = true;
+    DataOf1 dt = new DataOf1();
+    DataOf2 dt2 = new DataOf2();
+    DataOf3 dt3 = new DataOf3();
+    DataOf4 dt4 = new DataOf4();
+    DataOf5 dt5 = new DataOf5();
+    DataOf6 dt6 = new DataOf6();
+    dt.loadData();
+    dt2.loadData();
+    dt3.loadData();
+    dt4.loadData();
+    dt5.loadData();
+    dt6.loadData();
   }
 
   void loadRewardedAd() {
@@ -127,37 +139,37 @@ class _MyMainScreenState extends State<MyMainScreen> {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game11');
-                }, TilesForGame1.timer, "images/first.png"),
+                }, DataOf1.timer, "images/first.png"),
                 Listofgames(2, "Memory Matrix", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game2');
-                }, (TilesForGame2.timer), "images/matrix.png"),
+                }, (DataOf2.timer), "images/matrix.png"),
                 Listofgames(3, "Memory II", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game3');
-                }, TilesForGame3.timer, "images/second.png"),
+                }, DataOf3.timer, "images/second.png"),
                 Listofgames(4, "Position change", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game4');
-                }, TilesForGame4.timer, "images/third.png"),
+                }, DataOf4.timer, "images/third.png"),
                 Listofgames(5, "Equal cells", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game5');
-                }, TilesForGame5.timer, "images/four.png"),
+                }, DataOf5.timer, "images/four.png"),
                 Listofgames(6, "Remember", () {
                   if (toShow()) {
                     showRewardedAd();
                   }
                   Navigator.pushNamed(context, '/game6');
-                }, TilesForGame6.timer, "images/six.png"),
+                }, DataOf6.timer, "images/six.png"),
                 //   ],
                 // )
               ],

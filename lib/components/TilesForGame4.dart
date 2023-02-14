@@ -1,9 +1,11 @@
+import 'package:memory_matrix/components/stored_value.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class TilesForGame4 {
   static int score = 0;
   static int totalScore = 0;
   bool isSelected;
   int val;
-  static String timer = "0:00:000";
   static int isFirst = 0;
   TilesForGame4(this.isSelected, this.val);
 

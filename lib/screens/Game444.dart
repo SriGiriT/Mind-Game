@@ -66,9 +66,7 @@ class _Game444State extends State<Game444> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -151,12 +149,13 @@ class _AnswerButtonState extends State<AnswerButton> {
             });
           }
           if (data.getScore() >= 2) {
-            TilesForGame4.timer = time;
+            data.saveSelecteedPage(time);
             StopWatch.stopStopwatch();
             data.resetScore();
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Success()));
           } else {
+            Navigator.popUntil(context, ModalRoute.withName('/'));
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Game4(list1)));
           }

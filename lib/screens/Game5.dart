@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/data/DataOf4.dart';
 import 'package:memory_matrix/data/constants.dart';
 import 'package:memory_matrix/screens/Success.dart';
 
 import '../components/stopwatch.dart';
+import '../data/DataOf5.dart';
 
 class Game5 extends StatefulWidget {
   Game5(this.list);
@@ -63,9 +65,7 @@ class _Game5State extends State<Game5> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -129,6 +129,7 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   bool isSelected = false;
   bool canSelect = true;
+  DataOf5 ds = DataOf5();
   void ConvertIspressed() {
     if (canSelect) {
       setState(() {
@@ -145,7 +146,7 @@ class _SingleButtonState extends State<SingleButton> {
             widget.text.addScore();
             if (widget.text.getScore() == 2) {
               StopWatch.stopStopwatch();
-              TilesForGame5.timer = time;
+              ds.saveSelecteedPage(time);
               icon = Icons.fire_extinguisher;
               widget.text.resetScore();
               Navigator.push(

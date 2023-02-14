@@ -60,9 +60,7 @@ class _Game1State extends State<Game1> {
                         String elapsedTimeString =
                             '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
                         time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
+                        return timerContainer(elapsedTimeString);
                       })
                 ],
               ),
@@ -121,6 +119,7 @@ class SingleButton extends StatefulWidget {
 class _SingleButtonState extends State<SingleButton> {
   bool isSelected = false;
   bool canSelect = true;
+  DataOf1 ds = DataOf1();
   void ConvertIspressed() {
     if (canSelect) {
       setState(() {
@@ -131,7 +130,8 @@ class _SingleButtonState extends State<SingleButton> {
           if (count == 10) {
             widget.text.addScore();
             if (widget.text.getScore() == 2) {
-              TilesForGame1.timer = time;
+              // TilesForGame1.timer = time;
+              ds.saveSelecteedPage(time);
               StopWatch.stopStopwatch();
               widget.text.resetScore();
               Navigator.pushNamed(context, '/success');

@@ -36,6 +36,7 @@ Future<bool> onBackPressed(BuildContext context) {
         ),
         ElevatedButton(
           onPressed: () {
+            
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => MyMainScreen()));
             if (StopWatch.isRuning) {
@@ -56,4 +57,11 @@ void resetWrongScore() {
   TilesForGame4.score = 0;
   TilesForGame5.score = 0;
   TilesForGame6.score = 0;
+}
+
+Container timerContainer(String timer){
+  return Container(
+    margin: EdgeInsets.all(10),
+    padding: EdgeInsets.all(10),
+    child: Center(child: Text(timer, style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.green.shade400),),),);
 }

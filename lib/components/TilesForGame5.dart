@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:memory_matrix/components/stored_value.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TilesForGame5 {
+    static String timer = "0:00:000";
+  DataStorage ds = DataStorage("tile5");
+  @override
+  void initState() async {
+    timer = await ds.getMyVariable();
+  }
   static int score = 0;
   static int totalScore = 0;
   bool isSelected;
-  static String timer = "0:00:000";
   static int isFirst = 0;
   IconData iconToDisplay;
   TilesForGame5(this.isSelected, this.iconToDisplay);
@@ -40,5 +47,17 @@ class TilesForGame5 {
 
   static int getTotalScore() {
     return totalScore;
+  }
+  void saveSelecteedPage(String curr) async {
+    if (timer == "00:00:000") {
+      ds.setMyVariable(curr);
+    } else {
+      if (curr.compareTo(timer) == -1) {
+        timer = curr;
+        ds.setMyVariable(curr);
+      } else {
+        timer = timer;
+      }
+    }
   }
 }

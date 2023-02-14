@@ -44,7 +44,7 @@ class _WrongState extends State<Wrong> {
                           Text('You have failed the game', style: small_text)),
                   ElevatedButton(
                     onPressed: () {
-                      // Navigator.popUntil(context, ModalRoute.withName('/'));
+                      Navigator.popUntil(context, ModalRoute.withName('/'));
                       resetWrongScore();
                       StopWatch.stopStopwatch();
                       Navigator.push(

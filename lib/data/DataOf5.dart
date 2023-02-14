@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:memory_matrix/components/TilesForGame5.dart';
+import 'package:memory_matrix/components/stored_value.dart';
 
 List<IconData> list = [
   Icons.ac_unit,
@@ -66,4 +67,24 @@ List<TilesForGame5> getPairs() {
     pairs.add(tileModel);
   }
   return pairs;
+}
+class DataOf5 {
+  static String timer = "0:00:000";
+  DataStorage ds = DataStorage("tile5");
+  Future<void> loadData() async {
+    timer = await ds.getMyVariable();
+  }
+
+  void saveSelecteedPage(String curr) async {
+    if (timer == "00:00:000") {
+      ds.setMyVariable(curr);
+    } else {
+      if (curr.compareTo(timer) == -1) {
+        timer = curr;
+        ds.setMyVariable(curr);
+      } else {
+        timer = timer;
+      }
+    }
+  }
 }

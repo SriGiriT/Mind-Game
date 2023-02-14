@@ -31,6 +31,7 @@ class _Game6State extends State<Game6> {
       StopWatch.startStopwatch();
     }
     TilesForGame6 tile = TilesForGame6();
+    DataOf6 ds = DataOf6();
     return WillPopScope(
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
@@ -54,23 +55,22 @@ class _Game6State extends State<Game6> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  StreamBuilder(
-                      stream: StopWatch.stopwatchController.stream,
-                      initialData: 0,
-                      builder: (context, snapshot) {
-                        int elapsedTime = snapshot.data as int;
-                        Duration duration = Duration(milliseconds: elapsedTime);
-                        String elapsedTimeString =
-                            '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
-                        time = elapsedTimeString;
-                        return Center(
-                          child: Text('timer: $elapsedTimeString'),
-                        );
-                      })
-                ],
-              ),
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        StreamBuilder(
+                            stream: StopWatch.stopwatchController.stream,
+                            initialData: 0,
+                            builder: (context, snapshot) {
+                              int elapsedTime = snapshot.data as int;
+                              Duration duration =
+                                  Duration(milliseconds: elapsedTime);
+                              String elapsedTimeString =
+                                  '${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}.${(duration.inMilliseconds % 1000).toString().padLeft(3, '0')}';
+                              time = elapsedTimeString;
+                              return timerContainer(elapsedTimeString);
+                            })
+                      ],
+                    ),
                     Text(word1, style: large_text),
                     SizedBox(
                       height: 40,
@@ -110,7 +110,7 @@ class _Game6State extends State<Game6> {
                                   builder: (context) => Game6(word: word1)));
                         });
                         if (tile.getScore() == 2) {
-                          TilesForGame6.timer = time;
+                          ds.saveSelecteedPage(time);
                           StopWatch.stopStopwatch();
                           tile.resetScore();
                           Navigator.push(

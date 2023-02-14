@@ -45,7 +45,7 @@ class _SuccessState extends State<Success> {
                   ElevatedButton(
                     onPressed: () {
                       StopWatch.stopStopwatch();
-                      // Navigator.popUntil(context, ModalRoute.withName('/'));
+                      Navigator.popUntil(context, ModalRoute.withName('/'));
                       Navigator.push(
                           context,
                           MaterialPageRoute(
