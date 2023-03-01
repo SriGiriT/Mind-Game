@@ -214,7 +214,7 @@ class Listofgames extends StatelessWidget {
               ),
               Text(
                 '${text} - ${score}',
-                style: large_text.copyWith(color: Colors.white, fontSize: 14),
+                style: large_text.copyWith(color: Colors.green.shade400, fontSize: 14),
               ),
             ],
           ),

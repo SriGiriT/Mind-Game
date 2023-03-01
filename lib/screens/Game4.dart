@@ -116,16 +116,6 @@ class _Game4State extends State<Game4> {
               Container(
                 child: Text('Score: ${dat.getScore()}', style: large_text),
               )
-              // RaisedButton(
-              //   child: Text("hide"),
-              //   onPressed: () {
-              //     setState(() {
-              //       list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-              //       Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => Game4(list1)));
-              //     });
-              //   },
-              // )
             ],
           ),
         ),

@@ -47,10 +47,6 @@ class _SuccessState extends State<Success> {
                     onPressed: () {
                       StopWatch.stopStopwatch();
                       Navigator.popUntil(context, ModalRoute.withName('/'));
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,

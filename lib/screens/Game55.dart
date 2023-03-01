@@ -18,13 +18,8 @@ int count = 1;
 class _Game55State extends State<Game55> {
   @override
   Widget build(BuildContext context) {
-    // count = 1;
-    // assign 0 or 1 to each button
     List<TilesForGame5> list = getPairs();
     list.shuffle();
-    // for (int i = 0; i < 16; i++) {
-    //   list.add(list1[lis[i] - 1]);
-    // }
     print(list);
     return WillPopScope(
       onWillPop: () => onBackPressed(context),

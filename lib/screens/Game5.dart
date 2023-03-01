@@ -29,9 +29,6 @@ class _Game5State extends State<Game5> {
     }
     tryy = 10;
     count = 0;
-    // for (int i = 0; i < widget.list.length; i++) {
-    //   print(widget.list[i]);
-    // }
     return WillPopScope(
       onWillPop: () {
         icon = Icons.fire_extinguisher;

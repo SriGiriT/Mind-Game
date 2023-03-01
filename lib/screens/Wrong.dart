@@ -48,10 +48,6 @@ class _WrongState extends State<Wrong> {
                       Navigator.popUntil(context, ModalRoute.withName('/'));
                       resetWrongScore();
                       StopWatch.stopStopwatch();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => MyMainScreen()));
                     },
                     child: Container(
                       height: 50,
